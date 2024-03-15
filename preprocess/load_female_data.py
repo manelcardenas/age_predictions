@@ -47,7 +47,7 @@ def female_data():
                         data = img.get_fdata()
                         ## TESTING Guardar la imagen como un nuevo archivo .nii
                         zoomed_img = nib.Nifti1Image(data.astype(np.float32), img.affine) 
-                        output_path = f'/home/usuaris/imatge/joan.manel.cardenas/age_prediction/{subject_id}_before_zoom.nii'
+                        output_path = f'/home/usuaris/imatge/joan.manel.cardenas/age_prediction/subjects_data/{subject_id}_before_zoom.nii'
                         nib.save(zoomed_img, output_path)
                         # Agregar información a la lista correspondiente
                         file_info_zoomed = (subject_id, data)
