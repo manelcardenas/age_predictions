@@ -8,7 +8,7 @@ import numpy as np
 
 def female_data():
     # Leer el archivo CSV con la información de los sujetos
-    demographics = pd.read_csv('/home/usuaris/imatge/joan.manel.cardenas/age_prediction/demographics_icd_new_date3.csv')
+    demographics = pd.read_csv('/home/usuaris/imatge/joan.manel.cardenas/age_predictions/demographics_icd_new_date3.csv')
 
     # Ordenar los datos por el ID de los sujetos
     demographics.loc[:, 'Label'] = demographics['ID'].astype(str)
@@ -45,13 +45,15 @@ def female_data():
                         img = nib.load(nifti_file_path)
                         # Obtener los datos de la imagen
                         data = img.get_fdata()
+                        '''
                         ## TESTING Guardar la imagen como un nuevo archivo .nii
                         zoomed_img = nib.Nifti1Image(data.astype(np.float32), img.affine) 
-                        output_path = f'/home/usuaris/imatge/joan.manel.cardenas/age_prediction/subjects_data/{subject_id}_before_zoom.nii'
+                        output_path = f'/home/usuaris/imatge/joan.manel.cardenas/age_predictions/subjects_data/{subject_id}_before_crop.nii'
                         nib.save(zoomed_img, output_path)
+                        '''
                         # Agregar información a la lista correspondiente
-                        file_info_zoomed = (subject_id, data)
-                        female_files_info.append(file_info_zoomed)
+                        file_info = (subject_id, data)
+                        female_files_info.append(file_info)    #[N elementos de (ID, (182, 218, 182))]
 
     return female_files_info
 
