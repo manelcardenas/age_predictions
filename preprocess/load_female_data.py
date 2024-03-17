@@ -21,6 +21,7 @@ def female_data():
     for index, row in reorder_demogs.iterrows():
         subject_id = row['Label']
         sex = row['Sex']
+        actual_age = row['Age_modif']
         #TESTING
         if int(subject_id) >= 1003000:
             break
@@ -51,11 +52,12 @@ def female_data():
                         output_path = f'/home/usuaris/imatge/joan.manel.cardenas/age_predictions/subjects_data/{subject_id}_before_crop.nii'
                         nib.save(zoomed_img, output_path)
                         '''
+                        #print(f"ID: {subject_id}, Tamaño de data: {data.shape}, Edad: {actual_age}")
                         # Agregar información a la lista correspondiente
-                        file_info = (subject_id, data)
-                        female_files_info.append(file_info)    #[N elementos de (ID, (182, 218, 182))]
+                        file_info = (subject_id, data, actual_age)
+                        female_files_info.append(file_info)    #[N elementos de (ID, (182, 218, 182), edad_real)]
 
     return female_files_info
 
 
-#resultados = female_data()
+resultados = female_data()

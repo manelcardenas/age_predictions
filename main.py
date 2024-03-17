@@ -10,11 +10,14 @@ brains_tmp = []
 subj_id = []
 female_info_list = female_data()
 
-# Obtener los IDs de los sujetos
+# Array IDs de los sujetos
 subj_id = [file_info[0] for file_info in female_info_list]
 
-# Obtener los datos de las imágenes MRI
+# Array datos de las imágenes MRI
 brains_tmp = [file_info[1] for file_info in female_info_list]
+
+# Array edades de los sujetos
+subj_age = [file_info[2] for file_info in female_info_list]
 
 brains_cropped = process_female_files(brains_tmp, subj_id)
 

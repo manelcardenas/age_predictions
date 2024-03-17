@@ -11,7 +11,7 @@ def find_image_bounds(image, subject_id):
         min_dim = np.min(non_zero_points[dim])
         max_dim = np.max(non_zero_points[dim])
         bounds.append((min_dim, max_dim))
-        print(f"Subject ID: {subject_id}, Dimension: {dim}, Min: {min_dim}, Max: {max_dim}")
+        #print(f"Subject ID: {subject_id}, Dimension: {dim}, Min: {min_dim}, Max: {max_dim}")
     return bounds
 
 def find_absolute_bounds(images, subject_ids):
@@ -24,10 +24,12 @@ def find_absolute_bounds(images, subject_ids):
         min_dim = min(bounds[dim][0] for bounds in all_bounds)
         max_dim = max(bounds[dim][1] for bounds in all_bounds)
         abs_bounds.append((min_dim, max_dim))
+    '''##TESTING
     # Imprimir los límites absolutos
     print("Límites absolutos por dimensión:")
     for dim, (min_dim, max_dim) in enumerate(abs_bounds):
         print(f"Dimensión {dim}: Mínimo Absoluto = {min_dim}, Máximo Absoluto = {max_dim}")
+    '''
     return abs_bounds
 
 
