@@ -2,7 +2,6 @@ import os
 import pandas as pd
 import zipfile
 import nibabel as nib
-#from scipy.ndimage import zoom
 import numpy as np
 
 
@@ -51,8 +50,9 @@ def female_data():
                         zoomed_img = nib.Nifti1Image(data.astype(np.float32), img.affine) 
                         output_path = f'/home/usuaris/imatge/joan.manel.cardenas/age_predictions/subjects_data/{subject_id}_before_crop.nii'
                         nib.save(zoomed_img, output_path)
+                        
+                        print(f"ID: {subject_id}, Tamaño de data: {data.shape}, Edad: {actual_age}")
                         '''
-                        #print(f"ID: {subject_id}, Tamaño de data: {data.shape}, Edad: {actual_age}")
                         # Agregar información a la lista correspondiente
                         file_info = (subject_id, data, actual_age)
                         female_files_info.append(file_info)    #[N elementos de (ID, (182, 218, 182), edad_real)]
@@ -60,4 +60,4 @@ def female_data():
     return female_files_info
 
 
-resultados = female_data()
+#resultados = female_data()

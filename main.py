@@ -1,5 +1,4 @@
 from preprocess.load_female_data import female_data
-from preprocess.crop_center import process_female_files
 import nibabel as nib
 import os
 import numpy as np
@@ -19,7 +18,21 @@ brains_tmp = [file_info[1] for file_info in female_info_list]
 # Array edades de los sujetos
 subj_age = [file_info[2] for file_info in female_info_list]
 
-brains_cropped = process_female_files(brains_tmp, subj_id)
+# Nuevo tamaño deseado para las imágenes
+new_shape = (160, 192, 160)
+
+# Lista para almacenar las imágenes recortadas
+brains_cropped = []
+
+# Recortar cada imagen para centrarla en el nuevo tamaño
+for brain in brains_tmp:
+    start = tuple(map(lambda a, da: a//2-da//2, brain.shape, new_shape))   #slice(11, 171)
+    end = tuple(map(lambda start, size: start+size, start, new_shape))      #slice(13, 205)
+    slices = tuple(slice(s, e) for s, e in zip(start, end))
+    cropped_brain = brain[slices]
+    brains_cropped.append(cropped_brain)
+    
+
 
 '''
 ##TESTING
