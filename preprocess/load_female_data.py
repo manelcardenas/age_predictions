@@ -22,7 +22,7 @@ def female_data():
         sex = row['Sex']
         actual_age = row['Age_modif']
         #TESTING
-        if int(subject_id) >= 1003000:
+        if int(subject_id) >= 4003000:
             break
         # Solo procesar si el sujeto es una mujer (sex == 0)
         if sex == 0:
