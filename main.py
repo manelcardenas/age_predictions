@@ -1,4 +1,4 @@
-from preprocess.load_female_data import female_data
+from preprocess.h5_file_creation import female_data
 import nibabel as nib
 import os
 import numpy as np
