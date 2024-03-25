@@ -1,67 +1,70 @@
-from preprocess.data_transform import num2vect
+from m_utils.data_transform import num2vect
 import h5py
 import numpy as np
-from scipy.stats import norm
+from torch.utils.data import Dataset, DataLoader
+import torch
+#import sklearn
+from sklearn.model_selection import train_test_split
+
+class MRIDataset(Dataset):
+    def __init__(self, h5_path, keys, age_dist):
+        self.h5_path = h5_path
+        self.keys = keys
+        self.age_dist = age_dist
+        self.length = len(keys)
+
+    def __len__(self):
+        return self.length
+
+    def __getitem__(self, idx):
+        with h5py.File(self.h5_path, 'r') as file:
+            subject_id = self.keys[idx]
+            subject_group = file[subject_id]
+            mri_data = subject_group['MRI'][:]
+            
+            # Normalización Z de los datos MRI
+            mri_data = (mri_data - np.mean(mri_data)) / np.std(mri_data)
+            
+            # Convertir los datos a tensores de PyTorch
+            mri_data_tensor = torch.from_numpy(mri_data).unsqueeze(0).float()  # Añade un canal
+            age_dist_tensor = torch.from_numpy(self.age_dist[idx]).float()
+            
+        return mri_data_tensor, age_dist_tensor
 
 # Ruta al archivo .h5 de mujeres
-female_h5_path = '/home/usuaris/imatge/joan.manel.cardenas/females_data.h5'
+h5_path = '/home/usuaris/imatge/joan.manel.cardenas/females_data.h5'
+#h5_path = '/home/usuaris/imatge/joan.manel.cardenas/males_data.h5'
 
-with h5py.File(female_h5_path, 'r') as h5_file:
+with h5py.File(h5_path, 'r') as h5_file:
     sigma = len(h5_file.keys())  # Número total de sujetos
-    
-    ages = []  # Lista para recopilar todas las edades
-    for subject_id, subject_group in h5_file.items():
-        age = subject_group.attrs['Age']
-        ages.append(age)
+    keys = list(h5_file.keys())
+    ages = [h5_file[subject_id].attrs['Age'] for subject_id in keys]
 
-    # Redondear y convertir a enteros los mínimos y máximos
-    age_min = int(np.floor(min(ages)))
-    age_max = int(np.ceil(max(ages)))
-    age_range = [age_min, age_max]
-    age_step = 1  # Paso de edad
-
-    print(f"Número total de sujetos (sigma): {sigma}")
-    print(f"Rango de edad (age_range): {age_range}")
-
-    # Convertir la lista de edades a np.array
-    age_array = np.array(ages)
-    #print(f"Total de edades antes de la conversión a np.array: {len(ages)}")
-    print(f"Edades después de la conversión a np.array: {age_array}")
-
-    # Llamada a num2vect para el array completo de edades
-    age_dist, bin_centers = num2vect(age_array, age_range, age_step, sigma)
-    print(f"Distribuciones de probabilidad para las edades: {age_dist}")
-    print(f"Centros de los bins: {bin_centers}")
+# Calcular las distribuciones de edad
+age_array = np.array(ages)
+age_min, age_max = int(np.floor(min(ages))), int(np.ceil(max(ages)))
+age_range = [age_min, age_max]
+age_step = 1  # Paso de edad
+print(f"Número total de sujetos (sigma): {sigma}")
+print(f"Rango de edad (age_range): {age_range}")
+print(f"Edades después de la conversión a np.array: {age_array}")
+age_dist, bin_centers = num2vect(age_array, age_range, age_step, sigma)
+print(f"Distribuciones de probabilidad para las edades: {age_dist}")
+print(f"Centros de los bins: {bin_centers}")
 
 
+# Dividir los datos
+keys_train, keys_test, age_dist_train, age_dist_test = train_test_split(keys, age_dist, test_size=0.2, random_state=42)  #, stratify=age_dist
+keys_train, keys_val, age_dist_train, age_dist_val = train_test_split(keys_train, age_dist_train, test_size=0.25, random_state=42) #, stratify=age_dist_train
+
+# Crear instancias del dataset para cada subconjunto
+dataset_train = MRIDataset(h5_path, keys_train, age_dist_train)
+dataset_val = MRIDataset(h5_path, keys_val, age_dist_val)
+dataset_test = MRIDataset(h5_path, keys_test, age_dist_test)
 
 
 '''
-
 y = torch.tensor(y, dtype=torch.float32)
 print(f'Label shape: {y.shape}')
-
-# Nuevo tamaño deseado para las imágenes
-new_shape = (160, 192, 160)
-
-# Lista para almacenar las imágenes recortadas
-brains_cropped = []
-
-# Recortar cada imagen para centrarla en el nuevo tamaño
-for brain in brains_tmp:
-    start = tuple(map(lambda a, da: a//2-da//2, brain.shape, new_shape))    #slice(11, 171)
-    end = tuple(map(lambda start, size: start+size, start, new_shape))      #slice(13, 205)
-    slices = tuple(slice(s, e) for s, e in zip(start, end))
-    cropped_brain = brain[slices]
-    brains_cropped.append(cropped_brain)
 '''
-    
 
-'''
-##TESTING
-# Guardar las imágenes en formato .nii después de las modificaciones
-for i, brain in enumerate(brains_cropped):
-    output_path = f'/home/usuaris/imatge/joan.manel.cardenas/age_predictions/subjects_data/{subj_id[i]}_after_crop.nii'
-    nifti_img = nib.Nifti1Image(brain.squeeze(), np.eye(4))  # Crear un objeto Nifti1Image
-    nib.save(nifti_img, output_path)  # Guardar la imagen en formato .nii
-'''

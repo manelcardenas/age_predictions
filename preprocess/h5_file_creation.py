@@ -4,6 +4,10 @@ import zipfile
 import nibabel as nib
 import numpy as np
 import h5py
+import sys
+sys.path.append('/home/usuaris/imatge/joan.manel.cardenas/age_predictions')
+from m_utils.crop_center import center_crop
+
 
 # Leer el archivo CSV con la información de los sujetos
 demographics = pd.read_csv('/home/usuaris/imatge/joan.manel.cardenas/age_predictions/demographics_icd_new_date3.csv')
@@ -26,7 +30,7 @@ male_h5_file = h5py.File(male_h5_path, 'w')
 for index, row in reorder_demogs.iterrows():
     subject_id = row['Label']
     sex = row['Sex']
-    actual_age = row['Age_modif']
+    actual_age = row['Age']
     
     # Limitar la ejecución para fines de prueba
     if int(subject_id) >= 1050000:
@@ -46,14 +50,17 @@ for index, row in reorder_demogs.iterrows():
                 img = nib.load(nifti_file_path)
                 data = img.get_fdata()
 
+                # Aplicar el recorte central
+                cropped_data = center_crop(data)
+
                 # Elegir el archivo .h5 basado en el género del sujeto
                 h5_file = female_h5_file if sex == 0 else male_h5_file
                 subject_group = h5_file.create_group(subject_id)
-                subject_group.create_dataset('MRI', data=data)
+                subject_group.create_dataset('MRI', data=cropped_data)
                 subject_group.attrs['Age'] = actual_age
                 subject_group.attrs['Sex'] = 'Female' if sex == 0 else 'Male'
                 
-                #print(f"Datos guardados para el ID: {subject_id}, Sexo: {sex}, Edad: {actual_age}, Tamaño de datos: {data.shape}")
+                print(f"Datos guardados para el ID: {subject_id}, Sexo: {sex}, Edad: {actual_age}, Tamaño de datos: {cropped_data.shape}")
 
 # Asegurar el cierre de los archivos después de su uso
 female_h5_file.close()
