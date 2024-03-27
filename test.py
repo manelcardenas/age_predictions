@@ -1,0 +1,36 @@
+from m_utils.data_transform import num2vect
+import h5py
+import numpy as np
+from torch.utils.data import Dataset, DataLoader
+import torch
+
+# Ruta al archivo .h5 de mujeres
+h5_path = '/home/usuaris/imatge/joan.manel.cardenas/females_data.h5'
+#h5_path = '/home/usuaris/imatge/joan.manel.cardenas/males_data.h5'
+
+with h5py.File(h5_path, 'r') as h5_file:
+    sigma = len(h5_file.keys())  # Número total de sujetos
+    keys = list(h5_file.keys())
+    ages = [h5_file[subject_id].attrs['Age'] for subject_id in keys]
+
+# Calcular las distribuciones de edad
+age_array = np.array(ages)
+age_min, age_max = int(np.floor(min(ages))), int(np.ceil(max(ages)))
+age_range = [42,82]
+age_step = 1  # Paso de edad
+
+# Calcular el número esperado de bins
+bin_length = age_range[1] - age_range[0]
+if bin_length % age_step != 0:
+    print("El rango de edad no es divisible por age_step. Por favor, revisa tus parámetros.")
+else:
+    bin_number = int(bin_length / age_step)
+    print(f"Número total de sujetos (sigma): {len(age_array)}")
+    print(f"Rango de edad (age_range): {age_range}")
+    print(f"Edades después de la conversión a np.array: {age_array}")
+    print(f"Se esperan {bin_number} bins basados en el rango de edad y el paso de edad.")
+
+    # Ahora, llamar a num2vect para transformar las edades en distribuciones de probabilidad
+    age_dist, bin_centers = num2vect(age_array, age_range, age_step, sigma)
+    print(f"Distribuciones de probabilidad para las edades: {age_dist.shape}")
+    print(f"Centros de los bins: {bin_centers}")
