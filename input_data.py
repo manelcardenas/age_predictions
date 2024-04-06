@@ -79,7 +79,7 @@ model = model.to(device)
 
 num_epochs = 10
 
-# Ciclo de entrenamiento con validación
+# Ciclo de entrenamiento 
 for epoch in range(num_epochs):
     model.train()
     running_loss = 0.0
