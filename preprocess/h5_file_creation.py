@@ -31,8 +31,9 @@ male_h5_file = h5py.File(male_h5_path, 'w')
 for index, row in reorder_demogs.iterrows():
     subject_id = row['Label']
     sex = row['Sex']
-    actual_age = row['Age']
-    
+    #actual_age = row['Age_modif']
+    actual_age = round(row['Age_modif'], 2)
+
     # Limitar la ejecución para fines de prueba
     if int(subject_id) >= 1040000:
         break

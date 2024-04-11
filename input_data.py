@@ -34,27 +34,40 @@ class MRIDataset(Dataset):
         return mri_data_tensor, age_dist_tensor
 
 # Ruta al archivo .h5 de mujeres
-h5_path = '/home/usuaris/imatge/joan.manel.cardenas/females_data.h5'
-#h5_path = '/home/usuaris/imatge/joan.manel.cardenas/males_data.h5'
+h5_path = '/home/usuaris/imatge/joan.manel.cardenas/MN_females_data.h5'
+#h5_path = '/home/usuaris/imatge/joan.manel.cardenas/MN_males_data.h5'
 
 with h5py.File(h5_path, 'r') as h5_file:
-    sigma = len(h5_file.keys())  # Número total de sujetos
+    #sigma = len(h5_file.keys())  # Número total de sujetos
     keys = list(h5_file.keys())
     ages = [h5_file[subject_id].attrs['Age'] for subject_id in keys]
 
-# Calcular las distribuciones de edad
-age_array = np.array(ages)
-#age_min, age_max = int(np.floor(min(ages))), int(np.ceil(max(ages)))
-#age_range = [age_min, age_max]
 age_range = [42,82]
 age_step = 1  # Paso de edad
-print(f"Número total de sujetos (sigma): {sigma}")
-print(f"Rango de edad (age_range): {age_range}")
-print(f"Edades después de la conversión a np.array: {age_array}")
-age_dist, bin_centers = num2vect(age_array, age_range, age_step, sigma)
+sigma = 1
+age_dist_list = []
+
+for age in ages:
+    age_array = np.array([age,])
+    age_dist, _ = num2vect(age_array, age_range, age_step, sigma)
+    age_dist_list.append(age_dist)
+
+# Convertir la lista de distribuciones a un arreglo de numpy para facilitar el manejo posterior
+age_dist_array = np.array(age_dist_list)    
+
+# Calcular las distribuciones de edad
+#age_array = np.array(ages)
+#age_min, age_max = int(np.floor(min(ages))), int(np.ceil(max(ages)))
+#age_range = [age_min, age_max]
+#age_range = [42,82]
+#age_step = 1  # Paso de edad
+#print(f"Número total de sujetos (sigma): {sigma}")
+#print(f"Rango de edad (age_range): {age_range}")
+#print(f"Edades después de la conversión a np.array: {age_array}")
+#age_dist, bin_centers = num2vect(age_array, age_range, age_step, sigma)
 
 # Dividir los datos
-keys_train_val, keys_test, age_dist_train_val, age_dist_test = train_test_split(keys, age_dist, test_size=0.2, random_state=42) # (train,val) / test      stratify=age_dist
+keys_train_val, keys_test, age_dist_train_val, age_dist_test = train_test_split(keys, age_dist_array, test_size=0.2, random_state=42) # (train,val) / test      stratify=age_dist
 keys_train, keys_val, age_dist_train, age_dist_val = train_test_split(keys_train_val, age_dist_train_val, test_size=0.25, random_state=42)#,  train/val  stratify=age_dist_train
 
 #TODO. CREAR GRAFICAS DE LAS DISTRIBUCIONES DE EDAD DE CADA SET. TAMBIEN DE PASO GARANTIZAR QUE KEYS TIENE LA LISTA DE IDS CORRECTO
@@ -64,9 +77,9 @@ dataset_val = MRIDataset(h5_path, keys_val, age_dist_val)
 dataset_test = MRIDataset(h5_path, keys_test, age_dist_test)
 
 #dataloader
-train_loader = DataLoader(dataset_train, batch_size=64, shuffle=True)
-val_loader = DataLoader(dataset_val, batch_size=64, shuffle=False)
-test_loader = DataLoader(dataset_test, batch_size=64, shuffle=False)
+train_loader = DataLoader(dataset_train, batch_size=16, shuffle=True)
+val_loader = DataLoader(dataset_val, batch_size=16, shuffle=False)
+test_loader = DataLoader(dataset_test, batch_size=16, shuffle=False)
 #NUM_WORKERS,PIN_MEMORY, DROP_LAST 
 
 model = CNNmodel()
@@ -77,7 +90,7 @@ optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model = model.to(device)
 
-num_epochs = 10
+num_epochs = 100
 
 # Ciclo de entrenamiento 
 for epoch in range(num_epochs):
