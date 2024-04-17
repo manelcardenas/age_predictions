@@ -7,6 +7,9 @@ import torch
 from sklearn.model_selection import train_test_split
 from model.model import CNNmodel
 from model.loss import my_KLDivLoss
+import matplotlib.pyplot as plt
+import os
+import time
 
 class MRIDataset(Dataset):
     def __init__(self, h5_path, keys, age_dist):
@@ -31,11 +34,11 @@ class MRIDataset(Dataset):
             mri_data_tensor = torch.from_numpy(mri_data).float().unsqueeze(0)  # [C, D, H, W]
             age_dist_tensor = torch.from_numpy(self.age_dist[idx]).float()
             
-        return mri_data_tensor, age_dist_tensor
+        return mri_data_tensor, age_dist_tensor, subject_id
 
 # Ruta al archivo .h5 de mujeres
-h5_path = '/home/usuaris/imatge/joan.manel.cardenas/MN_females_data.h5'
-#h5_path = '/home/usuaris/imatge/joan.manel.cardenas/MN_males_data.h5'
+#h5_path = '/home/usuaris/imatge/joan.manel.cardenas/MN_females_data.h5'
+h5_path = '/mnt/work/datasets/UKBiobank/MN_females_data.h5'
 
 with h5py.File(h5_path, 'r') as h5_file:
     #sigma = len(h5_file.keys())  # Número total de sujetos
@@ -46,80 +49,155 @@ age_range = [42,82]
 age_step = 1  # Paso de edad
 sigma = 1
 age_dist_list = []
+bin_center_list = []
 
 for age in ages:
     age_array = np.array([age,])
-    age_dist, _ = num2vect(age_array, age_range, age_step, sigma)
+    age_dist, bc = num2vect(age_array, age_range, age_step, sigma)
     age_dist_list.append(age_dist)
+    bin_center_list.append(bc)
 
 # Convertir la lista de distribuciones a un arreglo de numpy para facilitar el manejo posterior
 age_dist_array = np.array(age_dist_list)    
 
-# Calcular las distribuciones de edad
-#age_array = np.array(ages)
-#age_min, age_max = int(np.floor(min(ages))), int(np.ceil(max(ages)))
-#age_range = [age_min, age_max]
-#age_range = [42,82]
-#age_step = 1  # Paso de edad
-#print(f"Número total de sujetos (sigma): {sigma}")
-#print(f"Rango de edad (age_range): {age_range}")
-#print(f"Edades después de la conversión a np.array: {age_array}")
-#age_dist, bin_centers = num2vect(age_array, age_range, age_step, sigma)
-
 # Dividir los datos
 keys_train_val, keys_test, age_dist_train_val, age_dist_test = train_test_split(keys, age_dist_array, test_size=0.2, random_state=42) # (train,val) / test      stratify=age_dist
 keys_train, keys_val, age_dist_train, age_dist_val = train_test_split(keys_train_val, age_dist_train_val, test_size=0.25, random_state=42)#,  train/val  stratify=age_dist_train
-
+print("Division de datos completada")
 #TODO. CREAR GRAFICAS DE LAS DISTRIBUCIONES DE EDAD DE CADA SET. TAMBIEN DE PASO GARANTIZAR QUE KEYS TIENE LA LISTA DE IDS CORRECTO
 # Crear instancias del dataset para cada subconjunto
 dataset_train = MRIDataset(h5_path, keys_train, age_dist_train)
+print("dataset_train creado")
 dataset_val = MRIDataset(h5_path, keys_val, age_dist_val)
+print("dataset_val creado")
 dataset_test = MRIDataset(h5_path, keys_test, age_dist_test)
+print("dataset_test creado")
 
 #dataloader
-train_loader = DataLoader(dataset_train, batch_size=16, shuffle=True)
-val_loader = DataLoader(dataset_val, batch_size=16, shuffle=False)
-test_loader = DataLoader(dataset_test, batch_size=16, shuffle=False)
+train_loader = DataLoader(dataset_train, batch_size=8, shuffle=True, num_workers=10, pin_memory=True)
+print("dataloader_train creado")
+val_loader = DataLoader(dataset_val, batch_size=8, shuffle=False, num_workers=10, pin_memory=True)
+print("dataloader_val creado")
+test_loader = DataLoader(dataset_test, batch_size=8, shuffle=False, num_workers=10, pin_memory=True)
+print("dataloader_test creado")
 #NUM_WORKERS,PIN_MEMORY, DROP_LAST 
 
 model = CNNmodel()
 #loss_function = torch.nn.MSELoss()
-#loss_function = torch.nn.KLDivLoss(reduction='batchmean')
 optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model = model.to(device)
 
-num_epochs = 100
+num_epochs = 10
+
+def calculate_mae(predictions, targets):
+    return torch.mean(torch.abs(predictions - targets))
+
+def plot_age_distribution(ages, subject_ids, bin_centers_list):
+    save_dir = 'subjects_data'  # Nombre del subdirectorio
+    os.makedirs(save_dir, exist_ok=True)  # Crea el subdirectorio si no existe
+    
+    for i in range(len(ages)):
+        age = ages[i].cpu().numpy().reshape(-1)
+        subject_id = subject_ids[i]
+        bin_centers = bin_centers_list[i]
+        plt.figure()
+        plt.bar(bin_centers, age)  # Utiliza bin_centers en lugar de age_range
+        plt.title(f'Subject ID: {subject_id}, Age Distribution')
+        plt.xlabel('Age Bin')
+        plt.ylabel('Probability')
+        plt.savefig(os.path.join(save_dir, f'subject_{subject_id}_age_distribution.png'))
 
 # Ciclo de entrenamiento 
 for epoch in range(num_epochs):
+    start_epoch = time.time()
     model.train()
     running_loss = 0.0
-    for inputs, ages in train_loader:
+    running_mae = 0.0
+    for inputs, ages, subject_ids in train_loader:
+        print(f'Input train data shape: {inputs.shape}')
         optimizer.zero_grad()
         outputs = model(inputs)
-        loss = my_KLDivLoss(outputs[0].squeeze(), ages)
+        x = outputs[0].cpu().view(-1, 1, 40)
+        print(f'ages: {ages.shape}')  #torch.Size([8, 1, 40]).
+        print(f'outputs: {x.shape}')  #torch.Size([8, 1, 40]).
+        loss = my_KLDivLoss(x, ages)
+        mae = calculate_mae(x, ages)
+        #loss = my_KLDivLoss(outputs[0].squeeze(), ages)
         loss.backward()
         optimizer.step()
         running_loss += loss.item()
+        running_mae += mae.item()
     
     # Calculando el loss de entrenamiento promedio por época
     train_loss = running_loss / len(train_loader)
-    print(f'Epoch {epoch + 1}, Train Loss: {train_loss}')
+    train_mae = running_mae / len(train_loader)
+    end_epoch = time.time()  # Termina el temporizador para esta época
+    epoch_time = end_epoch - start_epoch  # Calcula el tiempo de ejecución de la época
+    print(f'Epoch {epoch + 1}, Time: {epoch_time:.2f} seconds')
+    print(f'Epoch {epoch + 1}, Train Loss: {train_loss}, Train MAE: {train_mae}')
     
     # Fase de validación
     model.eval()
     val_loss = 0.0
+    val_mae = 0.0
     with torch.no_grad():
-        for inputs, ages in val_loader:
+        for inputs, ages, subject_ids in val_loader:
             outputs = model(inputs)
-            loss = my_KLDivLoss(outputs[0].squeeze(), ages)
+            x = outputs[0].cpu().view(-1, 1, 40)
+            mae = calculate_mae(x, ages)
+            loss = my_KLDivLoss(x, ages)
             val_loss += loss.item()
+            val_mae += mae.item()
     
     # Calculando el loss de validación promedio por época
     val_loss /= len(val_loader)
-    print(f'Epoch {epoch + 1}, Validation Loss: {val_loss}')
+    val_mae /= len(val_loader)
+    print(f'Epoch {epoch + 1}, Validation Loss: {val_loss}, Validation MAE: {val_mae}')
 
+    #plot_age_distribution(ages, subject_ids, bin_center_list)
+    '''
+    # Evaluation
+    model.eval() # Don't forget this. BatchNorm will be affected if not in eval mode.
+    with torch.no_grad():
+        for i, (inputs, ages) in enumerate(test_loader):
+            outputs = model(inputs)
+            adjusted_outputs = outputs[0][:, 0].unsqueeze(0)
+            # Obtener las salidas del modelo y transformarlas
+            #x = outputs[0].cpu().reshape([1, -1])
+            x = adjusted_outputs.cpu().reshape([1, -1])
+            print(f'Output shape: {x.shape}')
+            x = x.numpy().reshape(-1)
+            prob = np.exp(x)
+
+            # Calcular la predicción utilizando el producto punto con los bin_centers (bc)
+            pred = prob @ bc
+
+            # Visualizar la distribución de probabilidad
+            plt.bar(bc, prob)
+            plt.title(f'Prediction: age={pred:.2f}')
+            plt.xlabel('Age')
+            plt.ylabel('Probability')
+        
+            # Crear el directorio para guardar los archivos PNG si no existe
+            save_dir = 'subjects_data'
+            os.makedirs(save_dir, exist_ok=True)
+            # Guardar la visualización como un archivo PNG
+            plt.savefig(os.path.join(save_dir, f'prediction_epoch{epoch}_example_{i}.png'))
+        
+            # Limpiar la figura actual para la siguiente iteración
+            plt.clf()
+
+            # Imprimir la pérdida asociada con la predicción
+            #loss = my_KLDivLoss(outputs[0].squeeze(), ages).item()
+            #print(f'Loss: {loss}')
+
+            # Detener después de mostrar un número específico de ejemplos (por ejemplo, 5)
+            # Si deseas mostrar más ejemplos, puedes modificar este número.
+            if i == 5:
+                break
+
+'''
 print('Entrenamiento finalizado')
 

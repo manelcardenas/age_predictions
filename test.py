@@ -19,7 +19,8 @@ ages_nparrays = [np.array([age,]) for age in ages]
 
 # Ver algunos ejemplos
 for i, age_array in enumerate(ages_nparrays[:4]):  # Mostrar los primeros 5 para ejemplo
-    print(f"Age {i}: {age_array}")
+    subject_id = keys[i]
+    print(f"Age {i}: {age_array}, Subject ID: {subject_id}")
     age_range = [42,82]
     age_step = 1  # Paso de edad
     sigma = 1
@@ -28,7 +29,8 @@ for i, age_array in enumerate(ages_nparrays[:4]):  # Mostrar los primeros 5 para
     print(f'Label shape: {age_dist.shape}')
     y = age_dist.numpy().reshape(-1)
     plt.bar(bin_centers, y)
-    plt.savefig('soft_label.png')  # Guarda el gráfico en un archivo
+    plt.title(f'Subject ID: {subject_id}')
+    plt.savefig(f'soft_label_{subject_id}.png')  # Guarda el gráfico en un archivo
     plt.close()  # Cierra la figura para liberar memoria
 '''
 # Calcular las distribuciones de edad

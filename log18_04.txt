@@ -1,0 +1,1 @@
+srun: job 26879 queued and waiting for resources

@@ -21,8 +21,8 @@ zip_directory = '/mnt/work/datasets/UKBiobank'
 output_directory = '/home/usuaris/imatge/joan.manel.cardenas/'  
 
 # Crear o abrir archivos .h5 de salida para hombres y mujeres
-female_h5_path = os.path.join(output_directory, "MN_females_data.h5")
-male_h5_path = os.path.join(output_directory, "MN_males_data.h5")
+female_h5_path = os.path.join(output_directory, "one_females_data.h5")
+male_h5_path = os.path.join(output_directory, "one_males_data.h5")
 
 # Inicializar archivos .h5 para mujeres y hombres
 female_h5_file = h5py.File(female_h5_path, 'w')
@@ -35,7 +35,7 @@ for index, row in reorder_demogs.iterrows():
     actual_age = round(row['Age_modif'], 2)
 
     # Limitar la ejecución para fines de prueba
-    if int(subject_id) >= 1040000:
+    if int(subject_id) >= 1001000:
         break
     
     zip_filename = f"{subject_id}_20252_2_0.zip"
