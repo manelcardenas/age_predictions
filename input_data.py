@@ -89,7 +89,7 @@ optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model = model.to(device)
 
-num_epochs = 10
+num_epochs = 100
 
 def calculate_mae(predictions, targets):
     return torch.mean(torch.abs(predictions - targets))
@@ -112,7 +112,11 @@ def plot_age_distribution(ages, subject_ids, bin_centers_list):
 # Ciclo de entrenamiento 
 for epoch in range(num_epochs):
     start_epoch = time.time()
+    start_train = time.time()
     model.train()
+    end_train = time.time()
+    train_time = end_train - start_train
+    print(f'model.train() done, Time: {train_time:.2f} seconds')
     running_loss = 0.0
     running_mae = 0.0
     for inputs, ages, subject_ids in train_loader:
@@ -122,11 +126,27 @@ for epoch in range(num_epochs):
         x = outputs[0].cpu().view(-1, 1, 40)
         print(f'ages: {ages.shape}')  #torch.Size([8, 1, 40]).
         print(f'outputs: {x.shape}')  #torch.Size([8, 1, 40]).
+        start_loss = time.time()
         loss = my_KLDivLoss(x, ages)
+        end_loss = time.time()
+        loss_time = end_loss - start_loss
+        print(f'KLD loss done, Time: {loss_time:.2f} seconds')
+        start_mae = time.time()
         mae = calculate_mae(x, ages)
+        end_mae = time.time()
+        mae_time = end_mae - start_mae
+        print(f'MAE done, Time: {mae_time:.2f} seconds')
         #loss = my_KLDivLoss(outputs[0].squeeze(), ages)
+        start_backward = time.time()
         loss.backward()
+        end_backward = time.time()
+        backward_time = end_backward - start_backward
+        print(f'loss.backward() done, Time: {backward_time:.2f} seconds')
+        start_optimizer = time.time()
         optimizer.step()
+        end_optimizer = time.time()
+        optimizer_time = end_optimizer - start_optimizer
+        print(f'optimizer.step() done, Time: {optimizer_time:.2f} seconds')
         running_loss += loss.item()
         running_mae += mae.item()
     

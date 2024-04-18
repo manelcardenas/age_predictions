@@ -6,8 +6,8 @@ import torch
 import matplotlib.pyplot as plt
 
 # Ruta al archivo .h5 de mujeres
-h5_path = '/home/usuaris/imatge/joan.manel.cardenas/MN_females_data.h5'
-#h5_path = '/home/usuaris/imatge/joan.manel.cardenas/MN_males_data.h5'
+#h5_path = '/home/usuaris/imatge/joan.manel.cardenas/MN_females_data.h5'
+h5_path = '/mnt/work/datasets/UKBiobank/MN_females_data.h5'
 
 with h5py.File(h5_path, 'r') as h5_file:
     #sigma = len(h5_file.keys())  # Número total de sujetos

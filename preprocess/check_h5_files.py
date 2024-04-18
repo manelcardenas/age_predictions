@@ -35,8 +35,8 @@ def crear_imagenes_mri(h5_path, output_directory, num_sujetos=3):
             sujetos_procesados += 1
 
 # Uso de las funciones
-h5_path = '/home/usuaris/imatge/joan.manel.cardenas/one_females_data.h5'
-#h5_path = '/mnt/work/datasets/UKBiobank/MN_males_data.h5'
+#h5_path = '/home/usuaris/imatge/joan.manel.cardenas/MN_males_data.h5'
+h5_path = '/mnt/work/datasets/UKBiobank/MN_males_data.h5'
 output_directory = '/home/usuaris/imatge/joan.manel.cardenas/age_predictions/subjects_data/'
 
 # LLamar 1a funcion: Imprimir información de los sujetos 
