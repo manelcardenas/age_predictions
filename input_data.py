@@ -74,11 +74,11 @@ dataset_test = MRIDataset(h5_path, keys_test, age_dist_test)
 print("dataset_test creado")
 
 #dataloader
-train_loader = DataLoader(dataset_train, batch_size=8, shuffle=True, num_workers=10, pin_memory=True)
+train_loader = DataLoader(dataset_train, batch_size=2, shuffle=True, num_workers=10, pin_memory=True)
 print("dataloader_train creado")
-val_loader = DataLoader(dataset_val, batch_size=8, shuffle=False, num_workers=10, pin_memory=True)
+val_loader = DataLoader(dataset_val, batch_size=2, shuffle=False, num_workers=10, pin_memory=True)
 print("dataloader_val creado")
-test_loader = DataLoader(dataset_test, batch_size=8, shuffle=False, num_workers=10, pin_memory=True)
+test_loader = DataLoader(dataset_test, batch_size=2, shuffle=False, num_workers=10, pin_memory=True)
 print("dataloader_test creado")
 #NUM_WORKERS,PIN_MEMORY, DROP_LAST 
 
@@ -87,6 +87,7 @@ model = CNNmodel()
 optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+print("CUDA is available:", torch.cuda.is_available())  # Print para verificar si CUDA está disponible
 model = model.to(device)
 
 num_epochs = 100
@@ -122,6 +123,8 @@ for epoch in range(num_epochs):
     for inputs, ages, subject_ids in train_loader:
         print(f'Input train data shape: {inputs.shape}')
         optimizer.zero_grad()
+        inputs = inputs.to(device)
+        #inputs = inputs.cuda()  # Assuming inputs is your input tensor
         outputs = model(inputs)
         x = outputs[0].cpu().view(-1, 1, 40)
         print(f'ages: {ages.shape}')  #torch.Size([8, 1, 40]).
@@ -164,6 +167,7 @@ for epoch in range(num_epochs):
     val_mae = 0.0
     with torch.no_grad():
         for inputs, ages, subject_ids in val_loader:
+            inputs = inputs.to(device)
             outputs = model(inputs)
             x = outputs[0].cpu().view(-1, 1, 40)
             mae = calculate_mae(x, ages)
