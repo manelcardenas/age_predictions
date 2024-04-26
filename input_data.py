@@ -1,10 +1,10 @@
 from m_utils.data_transform import num2vect
+from m_utils.plots import *
 import h5py
 import numpy as np
 from torch.utils.data import Dataset, DataLoader
 import torch
 from torchsummary import summary
-#import sklearn
 from sklearn.model_selection import train_test_split
 from model.model import CNNmodel
 from model.loss import my_KLDivLoss
@@ -82,8 +82,7 @@ test_loader = DataLoader(dataset_test, batch_size=4, shuffle=False, num_workers=
 
 model = CNNmodel()
 optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
-#input_size = ([2, 1, 160, 192, 160])
-#summary(model)
+summary(model, input_size=(1, 160, 192, 160))
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print("CUDA is available:", torch.cuda.is_available())  # Print para verificar si CUDA está disponible
@@ -176,56 +175,10 @@ for epoch in range(num_epochs):
     val_mae /= len(val_loader)
     val_maes.append(val_mae)
     print(f'Epoch {epoch + 1}, Val Loss: {val_loss}, Val MAE: {val_mae}')
-'''
-    # Evaluation
-    model.eval() # Don't forget this. BatchNorm will be affected if not in eval mode.
-    with torch.no_grad():
-        for inputs, ages, subject_ids in test_loader:
-            inputs = inputs.to(device)
-            outputs = model(inputs)
-            x = outputs[0].view(-1, 1, 40)
-            for i in range(inputs.size(0)):  # Iterar sobre cada muestra en el lote
-                subject_id = subject_ids[i]  # Obtener el ID del sujeto
-                age = ages[i].item()  # Obtener la edad del sujeto
-                x_sample = x[i].numpy().reshape(-1)
-                prob = np.exp(x_sample)
-                pred = prob @ bin_center_list[i]  # Calcular la predicción utilizando el producto punto con los bin_centers
-                # Visualizar la distribución de probabilidad
-                plt.bar(bin_center_list[i], prob)
-                plt.title(f'Subject ID: {subject_id}, Prediction: age={pred:.2f}')
-                plt.xlabel('Age')
-                plt.ylabel('Probability')
-                # Agregar el subject_id a la leyenda
-                plt.legend([f'Prediction for Subject ID {subject_id}'])
-                # Crear el directorio para guardar los archivos PNG si no existe
-                # Guardar la visualización como un archivo PNG
-                plt.savefig(os.path.join(save_dir, f'prediction_epoch{epoch}_subject_{subject_id}.png'))
-                #Limpiar la figura actual para la siguiente iteración
-                plt.clf()
 
-            # Detener después de mostrar un número específico de ejemplos (por ejemplo, 5)
-            # Si deseas mostrar más ejemplos, puedes modificar este número.
-                if i == 5:
-                    break
-'''
-    # Graficar y guardar las pérdidas
-plt.plot(train_losses, label='Training Loss')
-plt.plot(val_losses, label='Validation Loss')
-plt.xlabel('Epoch')
-plt.ylabel('Loss')
-plt.title('Training and Validation Loss')
-plt.legend()
-plt.savefig(os.path.join(save_dir, 'loss_plot.png'))  # Guardar la figura como un archivo .png
-plt.close()  # Cerrar la figura actual para liberar memoria
-
-plt.plot(train_maes, label='Training MAE')
-plt.plot(val_maes, label='Validation MAE')
-plt.xlabel('Epoch')
-plt.ylabel('MAE')
-plt.title('Training and Validation MAE')
-plt.legend()
-plt.savefig(os.path.join(save_dir, 'mae_plot.png'))  # Guardar la figura como un archivo .png
-plt.close()  # Cerrar la figura actual para liberar memoria
+# Llamar a estas funciones después de que finalice el entrenamiento
+plot_and_save_loss(train_losses, val_losses, save_dir)
+plot_and_save_mae(train_maes, val_maes, save_dir)
 
 print('Entrenamiento finalizado')
 
