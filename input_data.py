@@ -1,16 +1,26 @@
 from m_utils.data_transform import num2vect
 from m_utils.plots import *
+from model.loss import my_KLDivLoss
+from model.model import CNNmodel
+
 import h5py
 import numpy as np
-from torch.utils.data import Dataset, DataLoader
-import torch
-from torchsummary import summary
-from sklearn.model_selection import train_test_split
-from model.model import CNNmodel
-from model.loss import my_KLDivLoss
 import matplotlib.pyplot as plt
 import os
 import time
+import torch
+import wandb
+import psutil
+
+from torch.utils.data import Dataset, DataLoader
+from torch.nn.parallel import DataParallel
+from torch.utils.data.distributed import DistributedSampler
+from torchsummary import summary
+from sklearn.model_selection import train_test_split
+
+
+wandb.init(project='Brain_age', entity='manelcardenas')
+
 
 class MRIDataset(Dataset):
     def __init__(self, h5_path, keys, age_dist):
@@ -67,41 +77,64 @@ for age in ages:
 # Convertir la lista de distribuciones a un arreglo de numpy para facilitar el manejo posterior
 age_dist_array = np.array(age_dist_list)    
 
+
 # Dividir los datos
 keys_train_val, keys_test, age_dist_train_val, age_dist_test = train_test_split(keys, age_dist_array, test_size=0.2, random_state=42) # (train,val) / test      stratify=age_dist
 keys_train, keys_val, age_dist_train, age_dist_val = train_test_split(keys_train_val, age_dist_train_val, test_size=0.25, random_state=42)#,  train/val  stratify=age_dist_train
-
+#datasets
 dataset_train = MRIDataset(h5_path, keys_train, age_dist_train)
 dataset_val = MRIDataset(h5_path, keys_val, age_dist_val)
 dataset_test = MRIDataset(h5_path, keys_test, age_dist_test)
-
+#paralelization
+train_sampler = DistributedSampler(dataset_train)
+val_sampler = DistributedSampler(dataset_val)
+test_sampler = DistributedSampler(dataset_test)
 #dataloader
-train_loader = DataLoader(dataset_train, batch_size=4, shuffle=True, num_workers=10, pin_memory=True) #DROP_LAST 
-val_loader = DataLoader(dataset_val, batch_size=4, shuffle=False, num_workers=10, pin_memory=True) #DROP_LAST 
-test_loader = DataLoader(dataset_test, batch_size=4, shuffle=False, num_workers=10, pin_memory=True) #DROP_LAST 
+train_loader = DataLoader(dataset_train, batch_size=8, sampler=train_sampler, num_workers=10, pin_memory=True) #DROP_LAST
+val_loader = DataLoader(dataset_val, batch_size=8, sampler=val_sampler, num_workers=10, pin_memory=True)
+test_loader = DataLoader(dataset_test, batch_size=8, sampler=test_sampler, num_workers=10, pin_memory=True)
 
+'''
+#dataloader
+train_loader = DataLoader(dataset_train, batch_size=8, shuffle=True, num_workers=10, pin_memory=True) #DROP_LAST 
+val_loader = DataLoader(dataset_val, batch_size=8, shuffle=False, num_workers=10, pin_memory=True) #DROP_LAST 
+test_loader = DataLoader(dataset_test, batch_size=8, shuffle=False, num_workers=10, pin_memory=True) #DROP_LAST 
+'''
 model = CNNmodel()
-optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
-summary(model, input_size=(1, 160, 192, 160))
+optimizer = torch.optim.SGD(model.parameters(), lr=0.01, momentum=0.9, weight_decay=0.001) 
+#optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
+#summary(model, input_size=(1, 160, 192, 160))
+
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-print("CUDA is available:", torch.cuda.is_available())  # Print para verificar si CUDA está disponible
+print("CUDA is available:", torch.cuda.is_available())  
 model = model.to(device)
+
+# Paralelización del modelo
+if torch.cuda.device_count() > 1:
+    print("Using", torch.cuda.device_count(), "GPUs for model parallelization.")
+    model = DataParallel(model)
 
 num_epochs = 100
 
 def calculate_mae(predictions, targets):
     return torch.mean(torch.abs(predictions - targets))
 
+def adjust_learning_rate(optimizer, epoch):
+    lr = 0.01 * (0.3 ** (epoch // 30))  # Multiplicar por 0.3 cada 30 épocas
+    for param_group in optimizer.param_groups:
+        param_group['lr'] = lr
 
 train_losses = []
 val_losses = []
 train_maes = []
 val_maes = []
+
 # Ciclo de entrenamiento 
 for epoch in range(num_epochs):
     start_epoch = time.time()
     model.train()
+    adjust_learning_rate(optimizer, epoch)
     running_loss = 0.0
     running_mae = 0.0
     for inputs, age_dist, age_real, subject_ids in train_loader:
@@ -123,11 +156,28 @@ for epoch in range(num_epochs):
         
         # Convertir a tensor y calcular el MAE
         preds = torch.tensor(preds)
-        preds_rounded = torch.round(preds * 100) / 100  # Redondear a dos decimales
+        preds_rounded = torch.round(preds * 100) / 100  
         mae = calculate_mae(preds_rounded, age_real)
         loss = my_KLDivLoss(x, age_dist)
-
         loss.backward()
+
+        # Monitoreo de recursos del sistema
+        # Obtener información sobre el uso de la CPU
+        cpu_percent = psutil.cpu_percent()
+        cpu_count = psutil.cpu_count()
+        # Obtener información sobre el uso de la memoria
+        memory = psutil.virtual_memory()
+        total_memory = memory.total
+        available_memory = memory.available
+        used_memory = memory.used
+        memory_percent = memory.percent
+
+        # Registrar métricas en W&B
+        wandb.log({'loss': loss.item(), 'mae': mae.item(), 
+                   'cpu_percent': cpu_percent, 'cpu_count': cpu_count,
+                   'total_memory': total_memory, 'available_memory': available_memory,
+                   'used_memory': used_memory, 'memory_percent': memory_percent})
+
         optimizer.step()
         running_loss += loss.item()
         running_mae += mae.item()
@@ -138,8 +188,11 @@ for epoch in range(num_epochs):
     train_mae = running_mae / len(train_loader)
     train_maes.append(train_mae) 
 
+    # Registrar métricas en Weights & Biases
+    wandb.log({'train_loss': train_loss, 'train_mae': train_mae})
+
     end_epoch = time.time()  # Termina el temporizador para esta época
-    epoch_time = end_epoch - start_epoch  # Calcula el tiempo de ejecución de la época
+    epoch_time = end_epoch - start_epoch  
     print(f'Epoch {epoch + 1}, Time: {epoch_time:.2f} seconds')
     print(f'Epoch {epoch + 1}, Train Loss: {train_loss}, Train MAE: {train_mae}')
     
@@ -163,7 +216,7 @@ for epoch in range(num_epochs):
             # Convertir a tensor y calcular el MAE
             preds = torch.tensor(preds)
             preds_rounded = torch.round(preds * 100) / 100  # Redondear a dos decimales
-            mae = calculate_mae(preds_rounded, age_real)  # Utiliza age_real en lugar de ages
+            mae = calculate_mae(preds_rounded, age_real)  
             loss = my_KLDivLoss(x, age_dist)
             
             val_loss += loss.item()
@@ -175,6 +228,8 @@ for epoch in range(num_epochs):
     val_mae /= len(val_loader)
     val_maes.append(val_mae)
     print(f'Epoch {epoch + 1}, Val Loss: {val_loss}, Val MAE: {val_mae}')
+    # Registrar métricas en Weights & Biases
+    wandb.log({'val_loss': val_loss, 'val_mae': val_mae})
 
 # Llamar a estas funciones después de que finalice el entrenamiento
 plot_and_save_loss(train_losses, val_losses, save_dir)
