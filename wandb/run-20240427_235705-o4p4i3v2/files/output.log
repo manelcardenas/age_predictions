@@ -1,0 +1,7 @@
+CUDA is available: True
+Using 4 GPUs for model parallelization.
+Creating DDP model for rank 0 GPU
+Traceback (most recent call last):
+  File "/home/usuaris/imatge/joan.manel.cardenas/age_predictions/input_data.py", line 128, in <module>
+    print(f'Creating DDP model for rank {dist.get_local_rank()} GPU')
+TypeError: DistributedSampler.__init__() got an unexpected keyword argument 'device_ids'

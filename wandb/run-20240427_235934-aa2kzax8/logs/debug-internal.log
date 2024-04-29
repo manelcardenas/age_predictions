@@ -1,0 +1,195 @@
+2024-04-27 23:59:34,173 INFO    StreamThr :2013429 [internal.py:wandb_internal():86] W&B internal server running at pid: 2013429, started at: 2024-04-27 23:59:34.172162
+2024-04-27 23:59:34,174 DEBUG   HandlerThread:2013429 [handler.py:handle_request():146] handle_request: status
+2024-04-27 23:59:34,191 INFO    WriterThread:2013429 [datastore.py:open_for_write():87] open: /home/usuaris/imatge/joan.manel.cardenas/age_predictions/wandb/run-20240427_235934-aa2kzax8/run-aa2kzax8.wandb
+2024-04-27 23:59:34,192 DEBUG   SenderThread:2013429 [sender.py:send():379] send: header
+2024-04-27 23:59:34,205 DEBUG   SenderThread:2013429 [sender.py:send():379] send: run
+2024-04-27 23:59:34,680 INFO    SenderThread:2013429 [dir_watcher.py:__init__():211] watching files in: /home/usuaris/imatge/joan.manel.cardenas/age_predictions/wandb/run-20240427_235934-aa2kzax8/files
+2024-04-27 23:59:34,680 INFO    SenderThread:2013429 [sender.py:_start_run_threads():1124] run started: aa2kzax8 with start time 1714255174.173913
+2024-04-27 23:59:34,829 DEBUG   HandlerThread:2013429 [handler.py:handle_request():146] handle_request: check_version
+2024-04-27 23:59:34,830 DEBUG   SenderThread:2013429 [sender.py:send_request():406] send_request: check_version
+2024-04-27 23:59:34,967 DEBUG   HandlerThread:2013429 [handler.py:handle_request():146] handle_request: run_start
+2024-04-27 23:59:34,981 DEBUG   HandlerThread:2013429 [system_info.py:__init__():26] System info init
+2024-04-27 23:59:34,981 DEBUG   HandlerThread:2013429 [system_info.py:__init__():41] System info init done
+2024-04-27 23:59:34,981 INFO    HandlerThread:2013429 [system_monitor.py:start():194] Starting system monitor
+2024-04-27 23:59:34,981 INFO    SystemMonitor:2013429 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-04-27 23:59:34,982 INFO    HandlerThread:2013429 [system_monitor.py:probe():214] Collecting system info
+2024-04-27 23:59:34,982 INFO    SystemMonitor:2013429 [interfaces.py:start():190] Started cpu monitoring
+2024-04-27 23:59:34,983 INFO    SystemMonitor:2013429 [interfaces.py:start():190] Started disk monitoring
+2024-04-27 23:59:34,984 INFO    SystemMonitor:2013429 [interfaces.py:start():190] Started gpu monitoring
+2024-04-27 23:59:34,985 INFO    SystemMonitor:2013429 [interfaces.py:start():190] Started memory monitoring
+2024-04-27 23:59:34,985 INFO    SystemMonitor:2013429 [interfaces.py:start():190] Started network monitoring
+2024-04-27 23:59:35,038 DEBUG   HandlerThread:2013429 [system_info.py:probe():150] Probing system
+2024-04-27 23:59:35,041 DEBUG   HandlerThread:2013429 [system_info.py:_probe_git():135] Probing git
+2024-04-27 23:59:35,051 DEBUG   HandlerThread:2013429 [system_info.py:_probe_git():143] Probing git done
+2024-04-27 23:59:35,051 DEBUG   HandlerThread:2013429 [system_info.py:probe():198] Probing system done
+2024-04-27 23:59:35,051 DEBUG   HandlerThread:2013429 [system_monitor.py:probe():223] {'os': 'Linux-5.15.0-78-generic-x86_64-with-glibc2.35', 'python': '3.10.14', 'heartbeatAt': '2024-04-27T21:59:35.038167', 'startedAt': '2024-04-27T21:59:34.151040', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': '/home/usuaris/imatge/joan.manel.cardenas/age_predictions/input_data.py', 'codePathLocal': 'input_data.py', 'codePath': 'input_data.py', 'git': {'remote': 'git@github.com:manelcardenas/age_predictions.git', 'commit': 'd755eb0691aeb183168099017c5040cdb8dcc2bb'}, 'email': 'joan.manel.cardenas@estudiantat.upc.edu', 'root': '/home/usuaris/imatge/joan.manel.cardenas/age_predictions', 'host': 'gpic12', 'username': 'joan.manel.cardenas', 'executable': '/home/usuaris/imatge/joan.manel.cardenas/.conda/envs/Brain_age/bin/python3', 'cpu_count': 20, 'cpu_count_logical': 40, 'cpu_freq': {'current': 1535.888725, 'min': 1000.0, 'max': 3200.0}, 'cpu_freq_per_core': [{'current': 2999.889, 'min': 1000.0, 'max': 3200.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3200.0}, {'current': 2000.006, 'min': 1000.0, 'max': 3200.0}, {'current': 3200.0, 'min': 1000.0, 'max': 3200.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3200.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3200.0}, {'current': 2200.0, 'min': 1000.0, 'max': 3200.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3200.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3200.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3200.0}, {'current': 3200.0, 'min': 1000.0, 'max': 3200.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3200.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3200.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3200.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3200.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3200.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3200.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3200.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3200.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3200.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3200.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3200.0}, {'current': 2000.0, 'min': 1000.0, 'max': 3200.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3200.0}, {'current': 1200.0, 'min': 1000.0, 'max': 3200.0}, {'current': 3100.0, 'min': 1000.0, 'max': 3200.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3200.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3200.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3200.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3200.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3200.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3200.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3200.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3200.0}, {'current': 3200.0, 'min': 1000.0, 'max': 3200.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3200.0}, {'current': 3200.0, 'min': 1000.0, 'max': 3200.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3200.0}, {'current': 3200.0, 'min': 1000.0, 'max': 3200.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3200.0}], 'disk': {'/': {'total': 97.87200164794922, 'used': 25.361671447753906}}, 'gpu': 'NVIDIA GeForce RTX 2080 Ti', 'gpu_count': 4, 'gpu_devices': [{'name': 'NVIDIA GeForce RTX 2080 Ti', 'memory_total': 11811160064}, {'name': 'NVIDIA GeForce RTX 2080 Ti', 'memory_total': 11811160064}, {'name': 'NVIDIA GeForce RTX 2080 Ti', 'memory_total': 11811160064}, {'name': 'NVIDIA GeForce RTX 2080 Ti', 'memory_total': 11811160064}], 'memory': {'total': 376.5495300292969}}
+2024-04-27 23:59:35,051 INFO    HandlerThread:2013429 [system_monitor.py:probe():224] Finished collecting system info
+2024-04-27 23:59:35,051 INFO    HandlerThread:2013429 [system_monitor.py:probe():227] Publishing system info
+2024-04-27 23:59:35,051 DEBUG   HandlerThread:2013429 [system_info.py:_save_conda():207] Saving list of conda packages installed into the current environment
+2024-04-27 23:59:35,685 INFO    Thread-12 :2013429 [dir_watcher.py:_on_file_created():271] file/dir created: /home/usuaris/imatge/joan.manel.cardenas/age_predictions/wandb/run-20240427_235934-aa2kzax8/files/conda-environment.yaml
+2024-04-27 23:59:39,680 DEBUG   HandlerThread:2013429 [system_info.py:_save_conda():222] Saving conda packages done
+2024-04-27 23:59:39,683 INFO    HandlerThread:2013429 [system_monitor.py:probe():229] Finished publishing system info
+2024-04-27 23:59:39,685 INFO    Thread-12 :2013429 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/usuaris/imatge/joan.manel.cardenas/age_predictions/wandb/run-20240427_235934-aa2kzax8/files/conda-environment.yaml
+2024-04-27 23:59:39,686 INFO    Thread-12 :2013429 [dir_watcher.py:_on_file_created():271] file/dir created: /home/usuaris/imatge/joan.manel.cardenas/age_predictions/wandb/run-20240427_235934-aa2kzax8/files/wandb-metadata.json
+2024-04-27 23:59:39,706 DEBUG   SenderThread:2013429 [sender.py:send():379] send: files
+2024-04-27 23:59:39,707 INFO    SenderThread:2013429 [sender.py:_save_file():1390] saving file wandb-metadata.json with policy now
+2024-04-27 23:59:39,708 DEBUG   HandlerThread:2013429 [handler.py:handle_request():146] handle_request: status_report
+2024-04-27 23:59:40,123 DEBUG   HandlerThread:2013429 [handler.py:handle_request():146] handle_request: python_packages
+2024-04-27 23:59:40,124 DEBUG   SenderThread:2013429 [sender.py:send_request():406] send_request: python_packages
+2024-04-27 23:59:40,125 DEBUG   HandlerThread:2013429 [handler.py:handle_request():146] handle_request: stop_status
+2024-04-27 23:59:40,126 DEBUG   HandlerThread:2013429 [handler.py:handle_request():146] handle_request: internal_messages
+2024-04-27 23:59:40,126 DEBUG   SenderThread:2013429 [sender.py:send_request():406] send_request: stop_status
+2024-04-27 23:59:40,375 DEBUG   SenderThread:2013429 [sender.py:send():379] send: telemetry
+2024-04-27 23:59:40,383 INFO    wandb-upload_0:2013429 [upload_job.py:push():131] Uploaded file /tmp/tmp2rb4c7e3wandb/tygsc80c-wandb-metadata.json
+2024-04-27 23:59:40,687 INFO    Thread-12 :2013429 [dir_watcher.py:_on_file_created():271] file/dir created: /home/usuaris/imatge/joan.manel.cardenas/age_predictions/wandb/run-20240427_235934-aa2kzax8/files/requirements.txt
+2024-04-27 23:59:45,377 DEBUG   HandlerThread:2013429 [handler.py:handle_request():146] handle_request: status_report
+2024-04-27 23:59:50,378 DEBUG   HandlerThread:2013429 [handler.py:handle_request():146] handle_request: status_report
+2024-04-27 23:59:55,132 DEBUG   HandlerThread:2013429 [handler.py:handle_request():146] handle_request: internal_messages
+2024-04-27 23:59:55,137 DEBUG   HandlerThread:2013429 [handler.py:handle_request():146] handle_request: stop_status
+2024-04-27 23:59:55,137 DEBUG   SenderThread:2013429 [sender.py:send_request():406] send_request: stop_status
+2024-04-27 23:59:55,387 DEBUG   HandlerThread:2013429 [handler.py:handle_request():146] handle_request: status_report
+2024-04-28 00:00:00,388 DEBUG   HandlerThread:2013429 [handler.py:handle_request():146] handle_request: status_report
+2024-04-28 00:00:00,960 DEBUG   SenderThread:2013429 [sender.py:send():379] send: exit
+2024-04-28 00:00:00,960 INFO    SenderThread:2013429 [sender.py:send_exit():586] handling exit code: 1
+2024-04-28 00:00:00,961 INFO    SenderThread:2013429 [sender.py:send_exit():588] handling runtime: 25
+2024-04-28 00:00:00,963 INFO    SenderThread:2013429 [sender.py:_save_file():1390] saving file wandb-summary.json with policy end
+2024-04-28 00:00:00,963 INFO    SenderThread:2013429 [sender.py:send_exit():594] send defer
+2024-04-28 00:00:00,963 DEBUG   HandlerThread:2013429 [handler.py:handle_request():146] handle_request: defer
+2024-04-28 00:00:00,964 INFO    HandlerThread:2013429 [handler.py:handle_request_defer():172] handle defer: 0
+2024-04-28 00:00:00,964 DEBUG   SenderThread:2013429 [sender.py:send_request():406] send_request: defer
+2024-04-28 00:00:00,964 INFO    SenderThread:2013429 [sender.py:send_request_defer():610] handle sender defer: 0
+2024-04-28 00:00:00,964 INFO    SenderThread:2013429 [sender.py:transition_state():614] send defer: 1
+2024-04-28 00:00:00,964 DEBUG   HandlerThread:2013429 [handler.py:handle_request():146] handle_request: defer
+2024-04-28 00:00:00,965 INFO    HandlerThread:2013429 [handler.py:handle_request_defer():172] handle defer: 1
+2024-04-28 00:00:00,965 DEBUG   SenderThread:2013429 [sender.py:send_request():406] send_request: defer
+2024-04-28 00:00:00,965 INFO    SenderThread:2013429 [sender.py:send_request_defer():610] handle sender defer: 1
+2024-04-28 00:00:00,965 INFO    SenderThread:2013429 [sender.py:transition_state():614] send defer: 2
+2024-04-28 00:00:00,965 DEBUG   HandlerThread:2013429 [handler.py:handle_request():146] handle_request: defer
+2024-04-28 00:00:00,965 INFO    HandlerThread:2013429 [handler.py:handle_request_defer():172] handle defer: 2
+2024-04-28 00:00:00,965 INFO    HandlerThread:2013429 [system_monitor.py:finish():203] Stopping system monitor
+2024-04-28 00:00:00,966 DEBUG   SystemMonitor:2013429 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2024-04-28 00:00:00,966 DEBUG   SystemMonitor:2013429 [system_monitor.py:_start():179] Finished system metrics aggregation loop
+2024-04-28 00:00:00,966 DEBUG   SystemMonitor:2013429 [system_monitor.py:_start():183] Publishing last batch of metrics
+2024-04-28 00:00:00,967 INFO    HandlerThread:2013429 [interfaces.py:finish():202] Joined cpu monitor
+2024-04-28 00:00:00,967 INFO    HandlerThread:2013429 [interfaces.py:finish():202] Joined disk monitor
+2024-04-28 00:00:01,306 INFO    HandlerThread:2013429 [interfaces.py:finish():202] Joined gpu monitor
+2024-04-28 00:00:01,306 INFO    HandlerThread:2013429 [interfaces.py:finish():202] Joined memory monitor
+2024-04-28 00:00:01,306 INFO    HandlerThread:2013429 [interfaces.py:finish():202] Joined network monitor
+2024-04-28 00:00:01,307 DEBUG   SenderThread:2013429 [sender.py:send_request():406] send_request: defer
+2024-04-28 00:00:01,307 INFO    SenderThread:2013429 [sender.py:send_request_defer():610] handle sender defer: 2
+2024-04-28 00:00:01,307 INFO    SenderThread:2013429 [sender.py:transition_state():614] send defer: 3
+2024-04-28 00:00:01,307 DEBUG   SenderThread:2013429 [sender.py:send():379] send: stats
+2024-04-28 00:00:01,308 DEBUG   HandlerThread:2013429 [handler.py:handle_request():146] handle_request: defer
+2024-04-28 00:00:01,308 INFO    HandlerThread:2013429 [handler.py:handle_request_defer():172] handle defer: 3
+2024-04-28 00:00:01,308 DEBUG   SenderThread:2013429 [sender.py:send_request():406] send_request: defer
+2024-04-28 00:00:01,308 INFO    SenderThread:2013429 [sender.py:send_request_defer():610] handle sender defer: 3
+2024-04-28 00:00:01,308 INFO    SenderThread:2013429 [sender.py:transition_state():614] send defer: 4
+2024-04-28 00:00:01,308 DEBUG   HandlerThread:2013429 [handler.py:handle_request():146] handle_request: defer
+2024-04-28 00:00:01,309 INFO    HandlerThread:2013429 [handler.py:handle_request_defer():172] handle defer: 4
+2024-04-28 00:00:01,309 DEBUG   SenderThread:2013429 [sender.py:send_request():406] send_request: defer
+2024-04-28 00:00:01,309 INFO    SenderThread:2013429 [sender.py:send_request_defer():610] handle sender defer: 4
+2024-04-28 00:00:01,309 INFO    SenderThread:2013429 [sender.py:transition_state():614] send defer: 5
+2024-04-28 00:00:01,309 DEBUG   HandlerThread:2013429 [handler.py:handle_request():146] handle_request: defer
+2024-04-28 00:00:01,309 INFO    HandlerThread:2013429 [handler.py:handle_request_defer():172] handle defer: 5
+2024-04-28 00:00:01,310 DEBUG   SenderThread:2013429 [sender.py:send():379] send: summary
+2024-04-28 00:00:01,311 INFO    SenderThread:2013429 [sender.py:_save_file():1390] saving file wandb-summary.json with policy end
+2024-04-28 00:00:01,311 DEBUG   SenderThread:2013429 [sender.py:send_request():406] send_request: defer
+2024-04-28 00:00:01,311 INFO    SenderThread:2013429 [sender.py:send_request_defer():610] handle sender defer: 5
+2024-04-28 00:00:01,311 INFO    SenderThread:2013429 [sender.py:transition_state():614] send defer: 6
+2024-04-28 00:00:01,312 DEBUG   HandlerThread:2013429 [handler.py:handle_request():146] handle_request: defer
+2024-04-28 00:00:01,312 INFO    HandlerThread:2013429 [handler.py:handle_request_defer():172] handle defer: 6
+2024-04-28 00:00:01,312 DEBUG   SenderThread:2013429 [sender.py:send_request():406] send_request: defer
+2024-04-28 00:00:01,312 INFO    SenderThread:2013429 [sender.py:send_request_defer():610] handle sender defer: 6
+2024-04-28 00:00:01,316 DEBUG   HandlerThread:2013429 [handler.py:handle_request():146] handle_request: status_report
+2024-04-28 00:00:01,512 INFO    SenderThread:2013429 [sender.py:transition_state():614] send defer: 7
+2024-04-28 00:00:01,513 DEBUG   HandlerThread:2013429 [handler.py:handle_request():146] handle_request: defer
+2024-04-28 00:00:01,513 INFO    HandlerThread:2013429 [handler.py:handle_request_defer():172] handle defer: 7
+2024-04-28 00:00:01,513 DEBUG   SenderThread:2013429 [sender.py:send_request():406] send_request: defer
+2024-04-28 00:00:01,513 INFO    SenderThread:2013429 [sender.py:send_request_defer():610] handle sender defer: 7
+2024-04-28 00:00:01,704 INFO    Thread-12 :2013429 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/usuaris/imatge/joan.manel.cardenas/age_predictions/wandb/run-20240427_235934-aa2kzax8/files/config.yaml
+2024-04-28 00:00:01,704 INFO    Thread-12 :2013429 [dir_watcher.py:_on_file_created():271] file/dir created: /home/usuaris/imatge/joan.manel.cardenas/age_predictions/wandb/run-20240427_235934-aa2kzax8/files/output.log
+2024-04-28 00:00:01,705 INFO    Thread-12 :2013429 [dir_watcher.py:_on_file_created():271] file/dir created: /home/usuaris/imatge/joan.manel.cardenas/age_predictions/wandb/run-20240427_235934-aa2kzax8/files/wandb-summary.json
+2024-04-28 00:00:01,960 DEBUG   HandlerThread:2013429 [handler.py:handle_request():146] handle_request: poll_exit
+2024-04-28 00:00:02,968 INFO    SenderThread:2013429 [sender.py:transition_state():614] send defer: 8
+2024-04-28 00:00:02,969 DEBUG   SenderThread:2013429 [sender.py:send_request():406] send_request: poll_exit
+2024-04-28 00:00:02,969 DEBUG   HandlerThread:2013429 [handler.py:handle_request():146] handle_request: defer
+2024-04-28 00:00:02,970 INFO    HandlerThread:2013429 [handler.py:handle_request_defer():172] handle defer: 8
+2024-04-28 00:00:02,970 DEBUG   SenderThread:2013429 [sender.py:send_request():406] send_request: defer
+2024-04-28 00:00:02,970 INFO    SenderThread:2013429 [sender.py:send_request_defer():610] handle sender defer: 8
+2024-04-28 00:00:02,970 INFO    SenderThread:2013429 [job_builder.py:build():318] Attempting to build job artifact
+2024-04-28 00:00:02,971 INFO    SenderThread:2013429 [job_builder.py:_get_source_type():455] is repo sourced job
+2024-04-28 00:00:02,998 INFO    SenderThread:2013429 [job_builder.py:build():431] adding wandb-job metadata file
+2024-04-28 00:00:03,006 INFO    SenderThread:2013429 [sender.py:transition_state():614] send defer: 9
+2024-04-28 00:00:03,007 DEBUG   HandlerThread:2013429 [handler.py:handle_request():146] handle_request: defer
+2024-04-28 00:00:03,007 INFO    HandlerThread:2013429 [handler.py:handle_request_defer():172] handle defer: 9
+2024-04-28 00:00:03,007 DEBUG   SenderThread:2013429 [sender.py:send():379] send: artifact
+2024-04-28 00:00:03,706 INFO    Thread-12 :2013429 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/usuaris/imatge/joan.manel.cardenas/age_predictions/wandb/run-20240427_235934-aa2kzax8/files/output.log
+2024-04-28 00:00:03,824 INFO    SenderThread:2013429 [sender.py:send_artifact():1468] sent artifact job-git_github.com_manelcardenas_age_predictions.git_input_data.py - {'id': 'QXJ0aWZhY3Q6ODEzMTc1NDUz', 'state': 'COMMITTED', 'artifactSequence': {'id': 'QXJ0aWZhY3RDb2xsZWN0aW9uOjE2NzU3OTMzMA==', 'latestArtifact': {'id': 'QXJ0aWZhY3Q6ODEzMTc1NDUz', 'versionIndex': 1}}}
+2024-04-28 00:00:03,824 DEBUG   SenderThread:2013429 [sender.py:send_request():406] send_request: defer
+2024-04-28 00:00:03,824 INFO    SenderThread:2013429 [sender.py:send_request_defer():610] handle sender defer: 9
+2024-04-28 00:00:03,824 INFO    SenderThread:2013429 [dir_watcher.py:finish():358] shutting down directory watcher
+2024-04-28 00:00:03,970 DEBUG   HandlerThread:2013429 [handler.py:handle_request():146] handle_request: poll_exit
+2024-04-28 00:00:04,707 INFO    SenderThread:2013429 [dir_watcher.py:finish():388] scan: /home/usuaris/imatge/joan.manel.cardenas/age_predictions/wandb/run-20240427_235934-aa2kzax8/files
+2024-04-28 00:00:04,708 INFO    SenderThread:2013429 [dir_watcher.py:finish():402] scan save: /home/usuaris/imatge/joan.manel.cardenas/age_predictions/wandb/run-20240427_235934-aa2kzax8/files/requirements.txt requirements.txt
+2024-04-28 00:00:04,708 INFO    SenderThread:2013429 [dir_watcher.py:finish():402] scan save: /home/usuaris/imatge/joan.manel.cardenas/age_predictions/wandb/run-20240427_235934-aa2kzax8/files/wandb-metadata.json wandb-metadata.json
+2024-04-28 00:00:04,709 INFO    SenderThread:2013429 [dir_watcher.py:finish():402] scan save: /home/usuaris/imatge/joan.manel.cardenas/age_predictions/wandb/run-20240427_235934-aa2kzax8/files/output.log output.log
+2024-04-28 00:00:04,709 INFO    SenderThread:2013429 [dir_watcher.py:finish():402] scan save: /home/usuaris/imatge/joan.manel.cardenas/age_predictions/wandb/run-20240427_235934-aa2kzax8/files/conda-environment.yaml conda-environment.yaml
+2024-04-28 00:00:04,709 INFO    SenderThread:2013429 [dir_watcher.py:finish():402] scan save: /home/usuaris/imatge/joan.manel.cardenas/age_predictions/wandb/run-20240427_235934-aa2kzax8/files/config.yaml config.yaml
+2024-04-28 00:00:04,721 INFO    SenderThread:2013429 [dir_watcher.py:finish():402] scan save: /home/usuaris/imatge/joan.manel.cardenas/age_predictions/wandb/run-20240427_235934-aa2kzax8/files/wandb-summary.json wandb-summary.json
+2024-04-28 00:00:04,722 INFO    SenderThread:2013429 [sender.py:transition_state():614] send defer: 10
+2024-04-28 00:00:04,722 DEBUG   SenderThread:2013429 [sender.py:send_request():406] send_request: poll_exit
+2024-04-28 00:00:04,722 DEBUG   HandlerThread:2013429 [handler.py:handle_request():146] handle_request: defer
+2024-04-28 00:00:04,722 INFO    HandlerThread:2013429 [handler.py:handle_request_defer():172] handle defer: 10
+2024-04-28 00:00:04,725 DEBUG   SenderThread:2013429 [sender.py:send_request():406] send_request: defer
+2024-04-28 00:00:04,725 INFO    SenderThread:2013429 [sender.py:send_request_defer():610] handle sender defer: 10
+2024-04-28 00:00:04,725 INFO    SenderThread:2013429 [file_pusher.py:finish():172] shutting down file pusher
+2024-04-28 00:00:04,970 DEBUG   HandlerThread:2013429 [handler.py:handle_request():146] handle_request: poll_exit
+2024-04-28 00:00:04,971 DEBUG   SenderThread:2013429 [sender.py:send_request():406] send_request: poll_exit
+2024-04-28 00:00:05,115 INFO    wandb-upload_0:2013429 [upload_job.py:push():131] Uploaded file /home/usuaris/imatge/joan.manel.cardenas/age_predictions/wandb/run-20240427_235934-aa2kzax8/files/requirements.txt
+2024-04-28 00:00:05,479 INFO    wandb-upload_1:2013429 [upload_job.py:push():131] Uploaded file /home/usuaris/imatge/joan.manel.cardenas/age_predictions/wandb/run-20240427_235934-aa2kzax8/files/output.log
+2024-04-28 00:00:05,493 INFO    wandb-upload_3:2013429 [upload_job.py:push():131] Uploaded file /home/usuaris/imatge/joan.manel.cardenas/age_predictions/wandb/run-20240427_235934-aa2kzax8/files/config.yaml
+2024-04-28 00:00:05,512 INFO    wandb-upload_2:2013429 [upload_job.py:push():131] Uploaded file /home/usuaris/imatge/joan.manel.cardenas/age_predictions/wandb/run-20240427_235934-aa2kzax8/files/conda-environment.yaml
+2024-04-28 00:00:05,523 INFO    wandb-upload_4:2013429 [upload_job.py:push():131] Uploaded file /home/usuaris/imatge/joan.manel.cardenas/age_predictions/wandb/run-20240427_235934-aa2kzax8/files/wandb-summary.json
+2024-04-28 00:00:05,723 INFO    Thread-11 (_thread_body):2013429 [sender.py:transition_state():614] send defer: 11
+2024-04-28 00:00:05,724 DEBUG   HandlerThread:2013429 [handler.py:handle_request():146] handle_request: defer
+2024-04-28 00:00:05,724 INFO    HandlerThread:2013429 [handler.py:handle_request_defer():172] handle defer: 11
+2024-04-28 00:00:05,725 DEBUG   SenderThread:2013429 [sender.py:send_request():406] send_request: defer
+2024-04-28 00:00:05,725 INFO    SenderThread:2013429 [sender.py:send_request_defer():610] handle sender defer: 11
+2024-04-28 00:00:05,725 INFO    SenderThread:2013429 [file_pusher.py:join():178] waiting for file pusher
+2024-04-28 00:00:05,725 INFO    SenderThread:2013429 [sender.py:transition_state():614] send defer: 12
+2024-04-28 00:00:05,726 DEBUG   HandlerThread:2013429 [handler.py:handle_request():146] handle_request: defer
+2024-04-28 00:00:05,726 INFO    HandlerThread:2013429 [handler.py:handle_request_defer():172] handle defer: 12
+2024-04-28 00:00:05,726 DEBUG   SenderThread:2013429 [sender.py:send_request():406] send_request: defer
+2024-04-28 00:00:05,726 INFO    SenderThread:2013429 [sender.py:send_request_defer():610] handle sender defer: 12
+2024-04-28 00:00:05,726 INFO    SenderThread:2013429 [file_stream.py:finish():614] file stream finish called
+2024-04-28 00:00:05,885 INFO    SenderThread:2013429 [file_stream.py:finish():618] file stream finish is done
+2024-04-28 00:00:05,886 INFO    SenderThread:2013429 [sender.py:transition_state():614] send defer: 13
+2024-04-28 00:00:05,886 DEBUG   HandlerThread:2013429 [handler.py:handle_request():146] handle_request: defer
+2024-04-28 00:00:05,886 INFO    HandlerThread:2013429 [handler.py:handle_request_defer():172] handle defer: 13
+2024-04-28 00:00:05,887 DEBUG   SenderThread:2013429 [sender.py:send_request():406] send_request: defer
+2024-04-28 00:00:05,887 INFO    SenderThread:2013429 [sender.py:send_request_defer():610] handle sender defer: 13
+2024-04-28 00:00:05,887 INFO    SenderThread:2013429 [sender.py:transition_state():614] send defer: 14
+2024-04-28 00:00:05,887 DEBUG   HandlerThread:2013429 [handler.py:handle_request():146] handle_request: defer
+2024-04-28 00:00:05,887 INFO    HandlerThread:2013429 [handler.py:handle_request_defer():172] handle defer: 14
+2024-04-28 00:00:05,888 DEBUG   SenderThread:2013429 [sender.py:send():379] send: final
+2024-04-28 00:00:05,888 DEBUG   SenderThread:2013429 [sender.py:send():379] send: footer
+2024-04-28 00:00:05,888 DEBUG   SenderThread:2013429 [sender.py:send_request():406] send_request: defer
+2024-04-28 00:00:05,888 INFO    SenderThread:2013429 [sender.py:send_request_defer():610] handle sender defer: 14
+2024-04-28 00:00:05,889 DEBUG   HandlerThread:2013429 [handler.py:handle_request():146] handle_request: poll_exit
+2024-04-28 00:00:05,890 DEBUG   SenderThread:2013429 [sender.py:send_request():406] send_request: poll_exit
+2024-04-28 00:00:05,890 DEBUG   HandlerThread:2013429 [handler.py:handle_request():146] handle_request: poll_exit
+2024-04-28 00:00:05,891 DEBUG   SenderThread:2013429 [sender.py:send_request():406] send_request: poll_exit
+2024-04-28 00:00:05,891 DEBUG   HandlerThread:2013429 [handler.py:handle_request():146] handle_request: server_info
+2024-04-28 00:00:05,892 DEBUG   SenderThread:2013429 [sender.py:send_request():406] send_request: server_info
+2024-04-28 00:00:05,896 DEBUG   HandlerThread:2013429 [handler.py:handle_request():146] handle_request: get_summary
+2024-04-28 00:00:05,897 DEBUG   HandlerThread:2013429 [handler.py:handle_request():146] handle_request: sampled_history
+2024-04-28 00:00:05,898 DEBUG   HandlerThread:2013429 [handler.py:handle_request():146] handle_request: internal_messages
+2024-04-28 00:00:06,039 INFO    MainThread:2013429 [wandb_run.py:_footer_history_summary_info():3936] rendering history
+2024-04-28 00:00:06,039 INFO    MainThread:2013429 [wandb_run.py:_footer_history_summary_info():3968] rendering summary
+2024-04-28 00:00:06,039 INFO    MainThread:2013429 [wandb_run.py:_footer_sync_info():3895] logging synced files
+2024-04-28 00:00:06,040 DEBUG   HandlerThread:2013429 [handler.py:handle_request():146] handle_request: shutdown
+2024-04-28 00:00:06,040 INFO    HandlerThread:2013429 [handler.py:finish():866] shutting down handler
+2024-04-28 00:00:06,892 INFO    WriterThread:2013429 [datastore.py:close():296] close: /home/usuaris/imatge/joan.manel.cardenas/age_predictions/wandb/run-20240427_235934-aa2kzax8/run-aa2kzax8.wandb
+2024-04-28 00:00:07,039 INFO    SenderThread:2013429 [sender.py:finish():1546] shutting down sender
+2024-04-28 00:00:07,039 INFO    SenderThread:2013429 [file_pusher.py:finish():172] shutting down file pusher
+2024-04-28 00:00:07,039 INFO    SenderThread:2013429 [file_pusher.py:join():178] waiting for file pusher

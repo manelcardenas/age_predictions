@@ -14,13 +14,13 @@ import psutil
 
 from torch.utils.data import Dataset, DataLoader
 from torch.nn.parallel import DataParallel
-from torch.utils.data.distributed import DistributedSampler
+from torch.utils.data.distributed import DistributedSampler as DDP
+from tensorfn import distributed as dist
 from torchsummary import summary
 from sklearn.model_selection import train_test_split
 
 
 wandb.init(project='Brain_age', entity='manelcardenas')
-
 
 class MRIDataset(Dataset):
     def __init__(self, h5_path, keys, age_dist):
@@ -85,10 +85,13 @@ keys_train, keys_val, age_dist_train, age_dist_val = train_test_split(keys_train
 dataset_train = MRIDataset(h5_path, keys_train, age_dist_train)
 dataset_val = MRIDataset(h5_path, keys_val, age_dist_val)
 dataset_test = MRIDataset(h5_path, keys_test, age_dist_test)
+
+
 #paralelization
-train_sampler = DistributedSampler(dataset_train)
-val_sampler = DistributedSampler(dataset_val)
-test_sampler = DistributedSampler(dataset_test)
+train_sampler = DDP(dataset_train)
+val_sampler = DDP(dataset_val)
+test_sampler = DDP(dataset_test)
+
 #dataloader
 train_loader = DataLoader(dataset_train, batch_size=8, sampler=train_sampler, num_workers=10, pin_memory=True) #DROP_LAST
 val_loader = DataLoader(dataset_val, batch_size=8, sampler=val_sampler, num_workers=10, pin_memory=True)
@@ -110,10 +113,20 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print("CUDA is available:", torch.cuda.is_available())  
 model = model.to(device)
 
+'''
 # Paralelización del modelo
 if torch.cuda.device_count() > 1:
     print("Using", torch.cuda.device_count(), "GPUs for model parallelization.")
     model = DataParallel(model)
+'''
+
+# use DataParallel if more than 1 GPU available >>> DistributedDataParallel is proven to be significantly faster than torch.nn.DataParallel for single-node multi-GPU data parallel training.
+if torch.cuda.device_count() > 1: # and not device.type == 'cpu':
+        #model = nn.DataParallel(model)
+        if dist.is_primary():
+            print(f'Using {torch.cuda.device_count()} GPUs for model parallelization.')
+        print(f'Creating DDP model for rank {dist.get_local_rank()} GPU')
+        model = DDP(model, device_ids=[dist.get_local_rank()], output_device=dist.get_local_rank())
 
 num_epochs = 100
 
