@@ -1,0 +1,200 @@
+{
+    "os": "Linux-5.15.0-89-generic-x86_64-with-glibc2.35",
+    "python": "3.10.14",
+    "heartbeatAt": "2024-05-05T10:42:54.356679",
+    "startedAt": "2024-05-05T10:42:53.693248",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "/home/usuaris/imatge/joan.manel.cardenas/age_predictions/main.py",
+    "codePathLocal": "main.py",
+    "codePath": "main.py",
+    "git": {
+        "remote": "git@github.com:manelcardenas/age_predictions.git",
+        "commit": "f02d4dd64d0831cc90ccad25e3b2f9d0e5136511"
+    },
+    "email": "joan.manel.cardenas@estudiantat.upc.edu",
+    "root": "/home/usuaris/imatge/joan.manel.cardenas/age_predictions",
+    "host": "gpic09",
+    "username": "joan.manel.cardenas",
+    "executable": "/home/usuaris/imatge/joan.manel.cardenas/.conda/envs/Brain_age2/bin/python",
+    "cpu_count": 16,
+    "cpu_count_logical": 32,
+    "cpu_freq": {
+        "current": 1452.23584375,
+        "min": 1200.0,
+        "max": 3000.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 2971.582,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1200.0,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1200.0,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1200.0,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1200.0,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1200.0,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1200.0,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 3000.0,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 2099.965,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1200.0,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1200.0,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1200.0,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1200.0,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1200.0,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1200.0,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1200.0,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 3000.0,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1200.0,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1200.0,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1200.0,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 3000.0,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1200.0,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1200.0,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1200.0,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1200.0,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1200.0,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1200.0,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1200.0,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1200.0,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1200.0,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1200.0,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1200.0,
+            "min": 1200.0,
+            "max": 3000.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 97.87200164794922,
+            "used": 23.050067901611328
+        }
+    },
+    "memory": {
+        "total": 251.7731819152832
+    }
+}

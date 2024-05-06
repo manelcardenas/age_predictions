@@ -2,56 +2,30 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 import psutil
-from torch.utils.data.distributed import DistributedSampler as DDP
-from torch.utils.data import Dataset, DataLoader
-from tensorfn import distributed as dist
 import wandb
 import time
 import os
 import h5py
 import numpy as np
+
+from torch.utils.data import DataLoader
+from torch.nn.parallel import DataParallel
+from torchsummary import summary
 from sklearn.model_selection import train_test_split
+
+from m_utils.data_transform import *
+from m_utils.plots import *
 from model.loss import my_KLDivLoss
 from model.model import CNNmodel
-from m_utils.data_transform import num2vect
+from model.mri_dataset import MRIDataset
 
 wandb.init(project='Brain_age', entity='manelcardenas')
-# Inicializa el proceso de grupo
-dist.init_process_group(backend='gloo', init_method='env://')
 
-class MRIDataset(Dataset):
-    def __init__(self, h5_path, keys, age_dist):
-        self.h5_path = h5_path
-        self.keys = keys
-        self.age_dist = age_dist
-        self.length = len(keys)
-
-    def __len__(self):
-        return self.length
-
-    def __getitem__(self, idx):
-        with h5py.File(self.h5_path, 'r') as file:
-            subject_id = self.keys[idx]
-            subject_group = file[subject_id]
-            mri_data = subject_group['MRI'][:]
-            
-            # Normalización Z de los datos MRI
-            mri_data = (mri_data - np.mean(mri_data)) / np.std(mri_data)
-            
-            # Convertir los datos a tensores de PyTorch
-            mri_data_tensor = torch.from_numpy(mri_data).float().unsqueeze(0)  # [C, D, H, W]
-            age_dist_tensor = torch.from_numpy(self.age_dist[idx]).float()
-
-            # Obtener la edad real del sujeto del archivo HDF5
-            age = subject_group.attrs['Age']
-            age_tensor = torch.tensor(age).float()  # Convertir a tensor
-            
-        return mri_data_tensor, age_dist_tensor, age_tensor, subject_id
-
-# Ruta al archivo .h5 de mujeres
+#H5 file path
 #h5_path = '/home/usuaris/imatge/joan.manel.cardenas/MN_females_data.h5'
 h5_path = '/mnt/work/datasets/UKBiobank/MN_females_data.h5'
 
+#Storage path
 save_dir = 'subjects_data'
 os.makedirs(save_dir, exist_ok=True)
 
@@ -83,50 +57,27 @@ dataset_train = MRIDataset(h5_path, keys_train, age_dist_train)
 dataset_val = MRIDataset(h5_path, keys_val, age_dist_val)
 dataset_test = MRIDataset(h5_path, keys_test, age_dist_test)
 
-
-#paralelization
-train_sampler = DDP(dataset_train)
-val_sampler = DDP(dataset_val)
-test_sampler = DDP(dataset_test)
-
-#dataloader
-train_loader = DataLoader(dataset_train, batch_size=8, sampler=train_sampler, num_workers=10, pin_memory=True) #DROP_LAST
-val_loader = DataLoader(dataset_val, batch_size=8, sampler=val_sampler, num_workers=10, pin_memory=True)
-test_loader = DataLoader(dataset_test, batch_size=8, sampler=test_sampler, num_workers=10, pin_memory=True)
-
-'''
 #dataloader
 train_loader = DataLoader(dataset_train, batch_size=8, shuffle=True, num_workers=10, pin_memory=True) #DROP_LAST 
 val_loader = DataLoader(dataset_val, batch_size=8, shuffle=False, num_workers=10, pin_memory=True) #DROP_LAST 
 test_loader = DataLoader(dataset_test, batch_size=8, shuffle=False, num_workers=10, pin_memory=True) #DROP_LAST 
-'''
-def main(rank, args):
-    # Your training and validation code goes here
+
+
+def main():
+
     model = CNNmodel()
     optimizer = torch.optim.SGD(model.parameters(), lr=0.01, momentum=0.9, weight_decay=0.001) 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model = model.to(device)
 
-    if torch.cuda.device_count() > 1: # and not device.type == 'cpu':
-        if dist.is_primary():
-            print(f'Using {torch.cuda.device_count()} GPUs for model parallelization.')
-        print(f'Creating DDP model for rank {dist.get_local_rank()} GPU')
-        model = nn.parallel.DistributedDataParallel(model, device_ids=[dist.get_local_rank()], output_device=dist.get_local_rank())
+    # Paralelización del modelo
+    if torch.cuda.device_count() > 1:
+        print("Using", torch.cuda.device_count(), "GPUs for model parallelization.")
+        model = DataParallel(model)
     
     num_epochs = 100
-
-    def calculate_mae(predictions, targets):
-        return torch.mean(torch.abs(predictions - targets))
-
-    def adjust_learning_rate(optimizer, epoch):
-        lr = 0.01 * (0.3 ** (epoch // 30))  # Multiplicar por 0.3 cada 30 épocas
-        for param_group in optimizer.param_groups:
-            param_group['lr'] = lr
-
-    train_losses = []
-    val_losses = []
-    train_maes = []
-    val_maes = []
+    best_val_mae = float('inf')
+    best_model_path = 'best_model.pth'
 
     # Ciclo de entrenamiento 
     for epoch in range(num_epochs):
@@ -157,14 +108,27 @@ def main(rank, args):
             loss.backward()
             optimizer.step()
 
+            # Monitoreo de recursos del sistema
+            # Obtener información sobre el uso de la memoria
+            memory = psutil.virtual_memory()
+            available_memory = memory.available
+            used_memory = memory.used
+            memory_percent = memory.percent
+
+            # Registrar métricas en W&B
+            wandb.log({'loss': loss.item(), 'mae': mae.item(), 
+                        'available_memory': available_memory,
+                        'used_memory': used_memory, 'memory_percent': memory_percent})
+
             running_loss += loss.item()
             running_mae += mae.item()
 
         # Calculando el loss de entrenamiento promedio por época
         train_loss = running_loss / len(train_loader)
-        train_losses.append(train_loss)
         train_mae = running_mae / len(train_loader)
-        train_maes.append(train_mae) 
+
+        # Registrar métricas en Weights & Biases
+        wandb.log({'train_loss': train_loss, 'train_mae': train_mae})
 
         end_epoch = time.time()  # Termina el temporizador para esta época
         epoch_time = end_epoch - start_epoch  
@@ -199,21 +163,48 @@ def main(rank, args):
 
         # Calculando el loss de validación promedio por época
         val_loss /= len(val_loader)
-        val_losses.append(val_loss)
         val_mae /= len(val_loader)
-        val_maes.append(val_mae)
         print(f'Epoch {epoch + 1}, Val Loss: {val_loss}, Val MAE: {val_mae}')
+        # Registrar métricas en Weights & Biases
+        wandb.log({'val_loss': val_loss, 'val_mae': val_mae})
+        if val_mae < best_val_mae:
+            best_val_mae = val_mae
+            torch.save(model.state_dict(), best_model_path)
 
-# Llamar a estas funciones después de que finalice el entrenamiento
-def plot_and_save_loss(train_losses, val_losses, save_dir):
-    # Tu código para trazar y guardar las pérdidas va aquí
-    pass
+    # Evaluación en el conjunto de pruebas
+    model.load_state_dict(torch.load(best_model_path))
+    model.eval()
+    test_loss = 0.0
+    test_mae = 0.0
+    with torch.no_grad():
+        for inputs, age_dist, age_real, subject_ids in test_loader:
+            inputs = inputs.to(device)
+            outputs = model(inputs)
+            x = outputs[0].cpu().view(-1, 1, 40)
 
-def plot_and_save_mae(train_maes, val_maes, save_dir):
-    # Tu código para trazar y guardar el MAE va aquí
-    pass
+            preds = []
+            for i in range(inputs.size(0)):
+                x_sample = x[i].detach().numpy().reshape(-1)
+                prob = np.exp(x_sample)
+                pred = prob @ bin_center_list[i]
+                preds.append(pred)
+        
+            # Convertir a tensor y calcular el MAE
+            preds = torch.tensor(preds)
+            preds_rounded = torch.round(preds * 100) / 100  
+            mae = calculate_mae(preds_rounded, age_real)  
+            loss = my_KLDivLoss(x, age_dist)
+        
+            test_loss += loss.item()
+            test_mae += mae.item()
 
-print('Entrenamiento finalizado')
+    # Calculando el loss de prueba promedio
+    test_loss /= len(test_loader)
+    test_mae /= len(test_loader)
+    print(f'Test Loss: {test_loss}, Test MAE: {test_mae}')
+    wandb.log({'test_loss': test_loss, 'test_mae': test_mae})
 
-# Llamar a dist.launch() para ejecutar la función main() en paralelo
-dist.launch(main, args=(None,))
+    print('Entrenamiento finalizado')
+
+main()
+

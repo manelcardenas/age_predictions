@@ -81,12 +81,13 @@ age_dist_array = np.array(age_dist_list)
 # Dividir los datos
 keys_train_val, keys_test, age_dist_train_val, age_dist_test = train_test_split(keys, age_dist_array, test_size=0.2, random_state=42) # (train,val) / test      stratify=age_dist
 keys_train, keys_val, age_dist_train, age_dist_val = train_test_split(keys_train_val, age_dist_train_val, test_size=0.25, random_state=42)#,  train/val  stratify=age_dist_train
+
 #datasets
 dataset_train = MRIDataset(h5_path, keys_train, age_dist_train)
 dataset_val = MRIDataset(h5_path, keys_val, age_dist_val)
 dataset_test = MRIDataset(h5_path, keys_test, age_dist_test)
 
-
+'''
 #paralelization
 train_sampler = DDP(dataset_train)
 val_sampler = DDP(dataset_val)
@@ -102,7 +103,7 @@ test_loader = DataLoader(dataset_test, batch_size=8, sampler=test_sampler, num_w
 train_loader = DataLoader(dataset_train, batch_size=8, shuffle=True, num_workers=10, pin_memory=True) #DROP_LAST 
 val_loader = DataLoader(dataset_val, batch_size=8, shuffle=False, num_workers=10, pin_memory=True) #DROP_LAST 
 test_loader = DataLoader(dataset_test, batch_size=8, shuffle=False, num_workers=10, pin_memory=True) #DROP_LAST 
-'''
+
 model = CNNmodel()
 optimizer = torch.optim.SGD(model.parameters(), lr=0.01, momentum=0.9, weight_decay=0.001) 
 #optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
@@ -113,13 +114,13 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print("CUDA is available:", torch.cuda.is_available())  
 model = model.to(device)
 
-'''
+
 # Paralelización del modelo
 if torch.cuda.device_count() > 1:
     print("Using", torch.cuda.device_count(), "GPUs for model parallelization.")
     model = DataParallel(model)
-'''
 
+'''
 # use DataParallel if more than 1 GPU available >>> DistributedDataParallel is proven to be significantly faster than torch.nn.DataParallel for single-node multi-GPU data parallel training.
 if torch.cuda.device_count() > 1: # and not device.type == 'cpu':
         #model = nn.DataParallel(model)
@@ -127,7 +128,7 @@ if torch.cuda.device_count() > 1: # and not device.type == 'cpu':
             print(f'Using {torch.cuda.device_count()} GPUs for model parallelization.')
         print(f'Creating DDP model for rank {dist.get_local_rank()} GPU')
         model = DDP(model, device_ids=[dist.get_local_rank()], output_device=dist.get_local_rank())
-
+'''
 num_epochs = 100
 
 def calculate_mae(predictions, targets):
@@ -211,6 +212,8 @@ for epoch in range(num_epochs):
     
     # Fase de validación
     model.eval()
+    predictions_val = []
+    ages_val = []
     val_loss = 0.0
     val_mae = 0.0
     with torch.no_grad():
@@ -243,6 +246,40 @@ for epoch in range(num_epochs):
     print(f'Epoch {epoch + 1}, Val Loss: {val_loss}, Val MAE: {val_mae}')
     # Registrar métricas en Weights & Biases
     wandb.log({'val_loss': val_loss, 'val_mae': val_mae})
+
+# Evaluación en el conjunto de pruebas
+model.eval()
+predictions_test = []
+ages_test = []
+test_loss = 0.0
+test_mae = 0.0
+with torch.no_grad():
+    for inputs, age_dist, age_real, subject_ids in test_loader:
+        inputs = inputs.to(device)
+        outputs = model(inputs)
+        x = outputs[0].cpu().view(-1, 1, 40)
+
+        preds = []
+        for i in range(inputs.size(0)):
+            x_sample = x[i].detach().numpy().reshape(-1)
+            prob = np.exp(x_sample)
+            pred = prob @ bin_center_list[i]
+            preds.append(pred)
+        
+        # Convertir a tensor y calcular el MAE
+        preds = torch.tensor(preds)
+        preds_rounded = torch.round(preds * 100) / 100  
+        mae = calculate_mae(preds_rounded, age_real)  
+        loss = my_KLDivLoss(x, age_dist)
+        
+        test_loss += loss.item()
+        test_mae += mae.item()
+
+# Calculando el loss de prueba promedio
+test_loss /= len(test_loader)
+test_mae /= len(test_loader)
+print(f'Test Loss: {test_loss}, Test MAE: {test_mae}')
+wandb.log({'test_loss': test_loss, 'test_mae': test_mae})
 
 # Llamar a estas funciones después de que finalice el entrenamiento
 plot_and_save_loss(train_losses, val_losses, save_dir)

@@ -1,5 +1,15 @@
 import numpy as np
+import torch
+
 from scipy.stats import norm
+
+def calculate_mae(predictions, targets):
+        return torch.mean(torch.abs(predictions - targets))
+
+def adjust_learning_rate(optimizer, epoch):
+        lr = 0.01 * (0.3 ** (epoch // 30))  # Multiplicar por 0.3 cada 30 épocas
+        for param_group in optimizer.param_groups:
+            param_group['lr'] = lr
 
 def num2vect(x, age_range, age_step, sigma):
     """
