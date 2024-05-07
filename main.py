@@ -12,6 +12,7 @@ from torch.utils.data import DataLoader
 from torch.nn.parallel import DataParallel
 from torchsummary import summary
 from sklearn.model_selection import train_test_split
+from scipy.stats import pearsonr
 
 from m_utils.data_transform import *
 from m_utils.plots import *
@@ -75,7 +76,7 @@ def main():
         print("Using", torch.cuda.device_count(), "GPUs for model parallelization.")
         model = DataParallel(model)
     
-    num_epochs = 100
+    num_epochs = 130
     best_val_mae = float('inf')
     best_model_path = 'best_model.pth'
 
@@ -139,6 +140,7 @@ def main():
         model.eval()
         val_loss = 0.0
         val_mae = 0.0
+        val_pearson = 0.0
         with torch.no_grad():
             for inputs, age_dist, age_real, subject_ids in val_loader:
                 inputs = inputs.to(device)
@@ -158,15 +160,17 @@ def main():
                 mae = calculate_mae(preds_rounded, age_real)  
                 loss = my_KLDivLoss(x, age_dist)
                 
+                pearson_corr, _ = pearsonr(preds_rounded.numpy().flatten(), age_real.numpy().flatten())
+                val_pearson += pearson_corr
                 val_loss += loss.item()
                 val_mae += mae.item()
 
         # Calculando el loss de validación promedio por época
         val_loss /= len(val_loader)
         val_mae /= len(val_loader)
-        print(f'Epoch {epoch + 1}, Val Loss: {val_loss}, Val MAE: {val_mae}')
-        # Registrar métricas en Weights & Biases
-        wandb.log({'val_loss': val_loss, 'val_mae': val_mae})
+        print(f'Epoch {epoch + 1}, Val Loss: {val_loss}, Val MAE: {val_mae}, Val Pearson: {val_pearson}')
+        wandb.log({'val_loss': val_loss, 'val_mae': val_mae, 'val_pearson': val_pearson})
+        
         if val_mae < best_val_mae:
             best_val_mae = val_mae
             torch.save(model.state_dict(), best_model_path)
@@ -176,6 +180,7 @@ def main():
     model.eval()
     test_loss = 0.0
     test_mae = 0.0
+    test_pearson = 0.0
     with torch.no_grad():
         for inputs, age_dist, age_real, subject_ids in test_loader:
             inputs = inputs.to(device)
@@ -194,15 +199,17 @@ def main():
             preds_rounded = torch.round(preds * 100) / 100  
             mae = calculate_mae(preds_rounded, age_real)  
             loss = my_KLDivLoss(x, age_dist)
-        
+
+            pearson_corr, _ = pearsonr(preds_rounded.numpy().flatten(), age_real.numpy().flatten())
+            test_pearson += pearson_corr        
             test_loss += loss.item()
             test_mae += mae.item()
 
     # Calculando el loss de prueba promedio
     test_loss /= len(test_loader)
     test_mae /= len(test_loader)
-    print(f'Test Loss: {test_loss}, Test MAE: {test_mae}')
-    wandb.log({'test_loss': test_loss, 'test_mae': test_mae})
+    print(f'Test Loss: {test_loss}, Test MAE: {test_mae}, Test Pearson: {test_pearson}')
+    wandb.log({'test_loss': test_loss, 'test_mae': test_mae, 'test_pearson': test_pearson})
 
     print('Entrenamiento finalizado')
 
