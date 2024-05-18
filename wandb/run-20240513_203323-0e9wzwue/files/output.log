@@ -1,0 +1,42 @@
+
+Using 3 GPUs for model parallelization.
+Traceback (most recent call last):
+  File "/home/usuaris/imatge/joan.manel.cardenas/age_predictions/main.py", line 273, in <module>
+    main()
+  File "/home/usuaris/imatge/joan.manel.cardenas/age_predictions/main.py", line 139, in main
+    outputs = model(inputs)
+  File "/home/usuaris/imatge/joan.manel.cardenas/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/usuaris/imatge/joan.manel.cardenas/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/usuaris/imatge/joan.manel.cardenas/.local/lib/python3.10/site-packages/torch/nn/parallel/distributed.py", line 1523, in forward
+    else self._run_ddp_forward(*inputs, **kwargs)
+  File "/home/usuaris/imatge/joan.manel.cardenas/.local/lib/python3.10/site-packages/torch/nn/parallel/distributed.py", line 1359, in _run_ddp_forward
+    return self.module(*inputs, **kwargs)  # type: ignore[index]
+  File "/home/usuaris/imatge/joan.manel.cardenas/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/usuaris/imatge/joan.manel.cardenas/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/usuaris/imatge/joan.manel.cardenas/age_predictions/model/model.py", line 60, in forward
+    x_f = self.feature_extractor(x)
+  File "/home/usuaris/imatge/joan.manel.cardenas/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/usuaris/imatge/joan.manel.cardenas/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/usuaris/imatge/joan.manel.cardenas/.local/lib/python3.10/site-packages/torch/nn/modules/container.py", line 217, in forward
+    input = module(input)
+  File "/home/usuaris/imatge/joan.manel.cardenas/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/usuaris/imatge/joan.manel.cardenas/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/usuaris/imatge/joan.manel.cardenas/.local/lib/python3.10/site-packages/torch/nn/modules/container.py", line 217, in forward
+    input = module(input)
+  File "/home/usuaris/imatge/joan.manel.cardenas/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/usuaris/imatge/joan.manel.cardenas/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/usuaris/imatge/joan.manel.cardenas/.local/lib/python3.10/site-packages/torch/nn/modules/conv.py", line 610, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+  File "/home/usuaris/imatge/joan.manel.cardenas/.local/lib/python3.10/site-packages/torch/nn/modules/conv.py", line 605, in _conv_forward
+    return F.conv3d(
+RuntimeError: Input type (torch.cuda.FloatTensor) and weight type (torch.FloatTensor) should be the same

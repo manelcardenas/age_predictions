@@ -1,0 +1,212 @@
+{
+    "os": "Linux-5.15.0-60-generic-x86_64-with-glibc2.35",
+    "python": "3.10.14",
+    "heartbeatAt": "2024-05-13T09:30:07.575331",
+    "startedAt": "2024-05-13T09:30:06.862357",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "/home/usuaris/imatge/joan.manel.cardenas/age_predictions/main.py",
+    "codePathLocal": "main.py",
+    "codePath": "main.py",
+    "git": {
+        "remote": "git@github.com:manelcardenas/age_predictions.git",
+        "commit": "b6f5dbe1fd5d7c0f4ada50a7e70312fda620a62f"
+    },
+    "email": "joan.manel.cardenas@estudiantat.upc.edu",
+    "root": "/home/usuaris/imatge/joan.manel.cardenas/age_predictions",
+    "host": "gpic10",
+    "username": "joan.manel.cardenas",
+    "executable": "/home/usuaris/imatge/joan.manel.cardenas/.conda/envs/Brain_age2/bin/python3",
+    "cpu_count": 16,
+    "cpu_count_logical": 32,
+    "cpu_freq": {
+        "current": 1633.9969374999998,
+        "min": 800.0,
+        "max": 3000.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 1990.09,
+            "min": 800.0,
+            "max": 3000.0
+        },
+        {
+            "current": 2204.949,
+            "min": 800.0,
+            "max": 3000.0
+        },
+        {
+            "current": 2037.899,
+            "min": 800.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1523.953,
+            "min": 800.0,
+            "max": 3000.0
+        },
+        {
+            "current": 3000.0,
+            "min": 800.0,
+            "max": 3000.0
+        },
+        {
+            "current": 849.344,
+            "min": 800.0,
+            "max": 3000.0
+        },
+        {
+            "current": 800.0,
+            "min": 800.0,
+            "max": 3000.0
+        },
+        {
+            "current": 800.0,
+            "min": 800.0,
+            "max": 3000.0
+        },
+        {
+            "current": 900.0,
+            "min": 800.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1800.0,
+            "min": 800.0,
+            "max": 3000.0
+        },
+        {
+            "current": 2800.0,
+            "min": 800.0,
+            "max": 3000.0
+        },
+        {
+            "current": 3000.0,
+            "min": 800.0,
+            "max": 3000.0
+        },
+        {
+            "current": 800.0,
+            "min": 800.0,
+            "max": 3000.0
+        },
+        {
+            "current": 800.0,
+            "min": 800.0,
+            "max": 3000.0
+        },
+        {
+            "current": 800.0,
+            "min": 800.0,
+            "max": 3000.0
+        },
+        {
+            "current": 2592.163,
+            "min": 800.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1865.523,
+            "min": 800.0,
+            "max": 3000.0
+        },
+        {
+            "current": 2114.505,
+            "min": 800.0,
+            "max": 3000.0
+        },
+        {
+            "current": 3000.0,
+            "min": 800.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1564.043,
+            "min": 800.0,
+            "max": 3000.0
+        },
+        {
+            "current": 800.0,
+            "min": 800.0,
+            "max": 3000.0
+        },
+        {
+            "current": 800.0,
+            "min": 800.0,
+            "max": 3000.0
+        },
+        {
+            "current": 800.0,
+            "min": 800.0,
+            "max": 3000.0
+        },
+        {
+            "current": 800.0,
+            "min": 800.0,
+            "max": 3000.0
+        },
+        {
+            "current": 3000.0,
+            "min": 800.0,
+            "max": 3000.0
+        },
+        {
+            "current": 3000.0,
+            "min": 800.0,
+            "max": 3000.0
+        },
+        {
+            "current": 2424.256,
+            "min": 800.0,
+            "max": 3000.0
+        },
+        {
+            "current": 800.0,
+            "min": 800.0,
+            "max": 3000.0
+        },
+        {
+            "current": 800.0,
+            "min": 800.0,
+            "max": 3000.0
+        },
+        {
+            "current": 800.0,
+            "min": 800.0,
+            "max": 3000.0
+        },
+        {
+            "current": 2591.397,
+            "min": 800.0,
+            "max": 3000.0
+        },
+        {
+            "current": 800.0,
+            "min": 800.0,
+            "max": 3000.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 97.87200164794922,
+            "used": 24.959625244140625
+        }
+    },
+    "gpu": "NVIDIA GeForce RTX 2080 Ti",
+    "gpu_count": 2,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA GeForce RTX 2080 Ti",
+            "memory_total": 11811160064
+        },
+        {
+            "name": "NVIDIA GeForce RTX 2080 Ti",
+            "memory_total": 11811160064
+        }
+    ],
+    "memory": {
+        "total": 251.54247283935547
+    }
+}

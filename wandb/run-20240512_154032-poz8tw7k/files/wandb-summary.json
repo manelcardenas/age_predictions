@@ -1,0 +1,1 @@
+{"loss": 2.299499273300171, "mae": 9.163749465942383, "available_memory": 377799475200, "used_memory": 17850957824, "memory_percent": 6.6, "_timestamp": 1715521330.053341, "_runtime": 97.47699689865112, "_step": 0, "_wandb": {"runtime": 100}}

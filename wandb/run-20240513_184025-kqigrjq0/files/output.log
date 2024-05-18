@@ -1,0 +1,12 @@
+
+HOLAAAAA
+Traceback (most recent call last):
+  File "/home/usuaris/imatge/joan.manel.cardenas/age_predictions/main.py", line 265, in <module>
+    main()
+  File "/home/usuaris/imatge/joan.manel.cardenas/age_predictions/main.py", line 105, in main
+    model = DistributedDataParallel(model, device_ids=[0, 1, 2])
+  File "/home/usuaris/imatge/joan.manel.cardenas/.local/lib/python3.10/site-packages/torch/nn/parallel/distributed.py", line 678, in __init__
+    self._log_and_throw(
+  File "/home/usuaris/imatge/joan.manel.cardenas/.local/lib/python3.10/site-packages/torch/nn/parallel/distributed.py", line 1040, in _log_and_throw
+    raise err_type(err_msg)
+ValueError: device_ids can only be None or contain a single element.

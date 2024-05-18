@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/home/usuaris/imatge/joan.manel.cardenas/age_predictions/main.py", line 77, in <module>
+    torch.distributed.init_process_group(backend='nccl', init_method='env://')
+  File "/home/usuaris/imatge/joan.manel.cardenas/.local/lib/python3.10/site-packages/torch/distributed/c10d_logger.py", line 86, in wrapper
+    func_return = func(*args, **kwargs)
+  File "/home/usuaris/imatge/joan.manel.cardenas/.local/lib/python3.10/site-packages/torch/distributed/distributed_c10d.py", line 1177, in init_process_group
+    store, rank, world_size = next(rendezvous_iterator)
+  File "/home/usuaris/imatge/joan.manel.cardenas/.local/lib/python3.10/site-packages/torch/distributed/rendezvous.py", line 234, in _env_rendezvous_handler
+    rank = int(_get_env_or_raise("RANK"))
+  File "/home/usuaris/imatge/joan.manel.cardenas/.local/lib/python3.10/site-packages/torch/distributed/rendezvous.py", line 219, in _get_env_or_raise
+    raise _env_error(env_var)
+ValueError: Error initializing torch.distributed using env:// rendezvous: environment variable RANK expected, but not set

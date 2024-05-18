@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/home/usuaris/imatge/joan.manel.cardenas/age_predictions/main.py", line 265, in <module>
+    main()
+  File "/home/usuaris/imatge/joan.manel.cardenas/age_predictions/main.py", line 105, in main
+    model = DistributedDataParallel(model)
+  File "/home/usuaris/imatge/joan.manel.cardenas/.local/lib/python3.10/site-packages/torch/nn/parallel/distributed.py", line 798, in __init__
+    _verify_param_shape_across_processes(self.process_group, parameters)
+  File "/home/usuaris/imatge/joan.manel.cardenas/.local/lib/python3.10/site-packages/torch/distributed/utils.py", line 263, in _verify_param_shape_across_processes
+    return dist._verify_params_across_processes(process_group, tensors, logger)
+RuntimeError: No backend type associated with device type cpu

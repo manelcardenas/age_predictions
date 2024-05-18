@@ -14,7 +14,7 @@ import psutil
 
 from torch.utils.data import Dataset, DataLoader
 from torch.nn.parallel import DataParallel
-from torch.utils.data.distributed import DistributedSampler as DDP
+#from torch.utils.data.distributed import DistributedSampler as DDP
 from tensorfn import distributed as dist
 from torchsummary import summary
 from sklearn.model_selection import train_test_split
@@ -53,7 +53,7 @@ class MRIDataset(Dataset):
 
 # Ruta al archivo .h5 de mujeres
 #h5_path = '/home/usuaris/imatge/joan.manel.cardenas/MN_females_data.h5'
-h5_path = '/mnt/work/datasets/UKBiobank/MN_females_data.h5'
+h5_path = '/mnt/work/datasets/UKBiobank/MN_males_data.h5'
 
 save_dir = 'subjects_data'
 os.makedirs(save_dir, exist_ok=True)
@@ -79,8 +79,10 @@ age_dist_array = np.array(age_dist_list)
 
 
 # Dividir los datos
-keys_train_val, keys_test, age_dist_train_val, age_dist_test = train_test_split(keys, age_dist_array, test_size=0.2, random_state=42) # (train,val) / test      stratify=age_dist
-keys_train, keys_val, age_dist_train, age_dist_val = train_test_split(keys_train_val, age_dist_train_val, test_size=0.25, random_state=42)#,  train/val  stratify=age_dist_train
+#keys_train_val, keys_test, age_dist_train_val, age_dist_test = train_test_split(keys, age_dist_array, test_size=0.2, random_state=42) # (train,val) / test      stratify=age_dist
+#keys_train, keys_val, age_dist_train, age_dist_val = train_test_split(keys_train_val, age_dist_train_val, test_size=0.25, random_state=42)#,  train/val  stratify=age_dist_train
+keys_train_val, keys_test, age_dist_train_val, age_dist_test = train_test_split(keys, age_dist_array, test_size=0.2, random_state=42)
+keys_train, keys_val, age_dist_train, age_dist_val = train_test_split(keys_train_val, age_dist_train_val, test_size=0.125, random_state=42)
 
 #datasets
 dataset_train = MRIDataset(h5_path, keys_train, age_dist_train)
@@ -129,7 +131,9 @@ if torch.cuda.device_count() > 1: # and not device.type == 'cpu':
         print(f'Creating DDP model for rank {dist.get_local_rank()} GPU')
         model = DDP(model, device_ids=[dist.get_local_rank()], output_device=dist.get_local_rank())
 '''
-num_epochs = 100
+num_epochs = 110
+best_val_mae = float('inf')
+best_model_path = 'best_model.pth'
 
 def calculate_mae(predictions, targets):
     return torch.mean(torch.abs(predictions - targets))
@@ -138,11 +142,6 @@ def adjust_learning_rate(optimizer, epoch):
     lr = 0.01 * (0.3 ** (epoch // 30))  # Multiplicar por 0.3 cada 30 épocas
     for param_group in optimizer.param_groups:
         param_group['lr'] = lr
-
-train_losses = []
-val_losses = []
-train_maes = []
-val_maes = []
 
 # Ciclo de entrenamiento 
 for epoch in range(num_epochs):
@@ -187,10 +186,7 @@ for epoch in range(num_epochs):
         memory_percent = memory.percent
 
         # Registrar métricas en W&B
-        wandb.log({'loss': loss.item(), 'mae': mae.item(), 
-                   'cpu_percent': cpu_percent, 'cpu_count': cpu_count,
-                   'total_memory': total_memory, 'available_memory': available_memory,
-                   'used_memory': used_memory, 'memory_percent': memory_percent})
+        wandb.log({'available_memory': available_memory,'used_memory': used_memory, 'memory_percent': memory_percent})
 
         optimizer.step()
         running_loss += loss.item()
@@ -198,9 +194,7 @@ for epoch in range(num_epochs):
 
     # Calculando el loss de entrenamiento promedio por época
     train_loss = running_loss / len(train_loader)
-    train_losses.append(train_loss)
     train_mae = running_mae / len(train_loader)
-    train_maes.append(train_mae) 
 
     # Registrar métricas en Weights & Biases
     wandb.log({'train_loss': train_loss, 'train_mae': train_mae})
@@ -212,8 +206,6 @@ for epoch in range(num_epochs):
     
     # Fase de validación
     model.eval()
-    predictions_val = []
-    ages_val = []
     val_loss = 0.0
     val_mae = 0.0
     with torch.no_grad():
@@ -240,17 +232,18 @@ for epoch in range(num_epochs):
     
     # Calculando el loss de validación promedio por época
     val_loss /= len(val_loader)
-    val_losses.append(val_loss)
     val_mae /= len(val_loader)
-    val_maes.append(val_mae)
     print(f'Epoch {epoch + 1}, Val Loss: {val_loss}, Val MAE: {val_mae}')
     # Registrar métricas en Weights & Biases
     wandb.log({'val_loss': val_loss, 'val_mae': val_mae})
 
+    if val_mae < best_val_mae:
+            best_val_mae = val_mae
+            torch.save(model.state_dict(), best_model_path)
+
+'''
 # Evaluación en el conjunto de pruebas
 model.eval()
-predictions_test = []
-ages_test = []
 test_loss = 0.0
 test_mae = 0.0
 with torch.no_grad():
@@ -280,10 +273,6 @@ test_loss /= len(test_loader)
 test_mae /= len(test_loader)
 print(f'Test Loss: {test_loss}, Test MAE: {test_mae}')
 wandb.log({'test_loss': test_loss, 'test_mae': test_mae})
-
-# Llamar a estas funciones después de que finalice el entrenamiento
-plot_and_save_loss(train_losses, val_losses, save_dir)
-plot_and_save_mae(train_maes, val_maes, save_dir)
-
+'''
 print('Entrenamiento finalizado')
 

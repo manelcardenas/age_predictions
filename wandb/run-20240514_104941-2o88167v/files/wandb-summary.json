@@ -1,0 +1,1 @@
+{"loss": 1.9784531593322754, "mae": 5.096666107177733, "available_memory": 160045047808, "used_memory": 102942285824, "memory_percent": 40.7, "_timestamp": 1715702325.3840866, "_runtime": 25744.27541065216, "_step": 2147, "gpu_memory_usage": 3, "train_loss": 1.7634627939272327, "train_mae": 5.031411647155508, "val_loss": 1.9127441048622131, "val_mae": 6.255625116684857}
