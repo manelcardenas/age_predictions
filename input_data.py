@@ -133,7 +133,7 @@ if torch.cuda.device_count() > 1: # and not device.type == 'cpu':
 '''
 num_epochs = 110
 best_val_mae = float('inf')
-best_model_path = 'best_model.pth'
+best_model_path = 'best_model.p'
 
 def calculate_mae(predictions, targets):
     return torch.mean(torch.abs(predictions - targets))
@@ -176,11 +176,11 @@ for epoch in range(num_epochs):
 
         # Monitoreo de recursos del sistema
         # Obtener información sobre el uso de la CPU
-        cpu_percent = psutil.cpu_percent()
-        cpu_count = psutil.cpu_count()
+        #cpu_percent = psutil.cpu_percent()
+        #cpu_count = psutil.cpu_count()
         # Obtener información sobre el uso de la memoria
         memory = psutil.virtual_memory()
-        total_memory = memory.total
+        #total_memory = memory.total
         available_memory = memory.available
         used_memory = memory.used
         memory_percent = memory.percent

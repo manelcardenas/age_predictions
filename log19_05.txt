@@ -1,0 +1,372 @@
+srun: job 40272 queued and waiting for resources
+srun: job 40272 has been allocated resources
+=====================================================================
+ SLURM_JOB_ID        = 40272
+ SLURM_NODE          = gpic11
+ SLURM_JOB_PARTITION = gpi.compute
+ You can monitor your Job here: 
+ https://dash.tsc.upc.edu:3000/d/ediwvcrdqru9sf/slurm-job-details?orgId=1&var-partition=gpi&var-user=joan.manel.cardenas&var-slurmjobid_id=40272&from=now-24h&to=now
+=====================================================================
+wandb: Currently logged in as: manel-cardenas (manelcardenas). Use `wandb login --relogin` to force relogin
+wandb: Tracking run with wandb version 0.17.0
+wandb: Run data is saved locally in /home/usuaris/imatge/joan.manel.cardenas/age_predictions/wandb/run-20240518_182737-ennz0kl8
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run glamorous-shadow-131
+wandb: ⭐️ View project at https://wandb.ai/manelcardenas/Brain_age
+wandb: 🚀 View run at https://wandb.ai/manelcardenas/Brain_age/runs/ennz0kl8
+CUDA is available: True
+Using 5 GPUs for model parallelization.
+Epoch 1, Time: 213.93 seconds
+Epoch 1, Train Loss: 1.8926722367815376, Train MAE: 5.6103630968898335
+Epoch 1, Val Loss: 1.7708061392660495, Val MAE: 4.847554103121347
+Epoch 2, Time: 206.95 seconds
+Epoch 2, Train Loss: 1.8225813693013684, Train MAE: 5.332440348197674
+Epoch 2, Val Loss: 3.110214712443175, Val MAE: 7.899976948632132
+Epoch 3, Time: 191.61 seconds
+Epoch 3, Train Loss: 1.773957816295978, Train MAE: 5.05368303887345
+Epoch 3, Val Loss: 3.1058248546388416, Val MAE: 8.137746998704516
+Epoch 4, Time: 194.26 seconds
+Epoch 4, Train Loss: 1.7178507380839685, Train MAE: 4.726470850572662
+Epoch 4, Val Loss: 1.6292439180391807, Val MAE: 4.0784607182020025
+Epoch 5, Time: 198.39 seconds
+Epoch 5, Train Loss: 1.663196639293701, Train MAE: 4.419129993135162
+Epoch 5, Val Loss: 1.584584026424973, Val MAE: 3.9577084242267375
+Epoch 6, Time: 198.01 seconds
+Epoch 6, Train Loss: 1.6200367898460408, Train MAE: 4.222801411074741
+Epoch 6, Val Loss: 2.0424109200636544, Val MAE: 6.514178157735752
+Epoch 7, Time: 199.31 seconds
+Epoch 7, Train Loss: 1.5973967928785229, Train MAE: 4.108907189371735
+Epoch 7, Val Loss: 2.628486113415824, Val MAE: 7.006566468227054
+Epoch 8, Time: 198.32 seconds
+Epoch 8, Train Loss: 1.5526727491727874, Train MAE: 3.8693030808243885
+Epoch 8, Val Loss: 1.6660056776470609, Val MAE: 4.474513962710345
+Epoch 9, Time: 194.44 seconds
+Epoch 9, Train Loss: 1.5314224541029184, Train MAE: 3.8128733624324194
+Epoch 9, Val Loss: 1.5220230254862044, Val MAE: 3.756786294513279
+Epoch 10, Time: 199.56 seconds
+Epoch 10, Train Loss: 1.5170153896435503, Train MAE: 3.715607436941536
+Epoch 10, Val Loss: 1.4685760405328538, Val MAE: 3.453969981699814
+Epoch 11, Time: 195.41 seconds
+Epoch 11, Train Loss: 1.4772407641777625, Train MAE: 3.557861409083598
+Epoch 11, Val Loss: 1.4884051934436515, Val MAE: 3.462307138442993
+Epoch 12, Time: 191.89 seconds
+Epoch 12, Train Loss: 1.4736947668642202, Train MAE: 3.541569993087406
+Epoch 12, Val Loss: 1.745835464309763, Val MAE: 4.782662117216324
+Epoch 13, Time: 197.69 seconds
+Epoch 13, Train Loss: 1.444893596501186, Train MAE: 3.402382963241255
+Epoch 13, Val Loss: 1.511142032013999, Val MAE: 3.7748264362193917
+Epoch 14, Time: 199.72 seconds
+Epoch 14, Train Loss: 1.417218846572805, Train MAE: 3.307442000735662
+Epoch 14, Val Loss: 1.4771452645460765, Val MAE: 3.377430539072294
+Epoch 15, Time: 192.34 seconds
+Epoch 15, Train Loss: 1.3776739261036526, Train MAE: 3.148408517731279
+Epoch 15, Val Loss: 1.493198100063536, Val MAE: 3.7009453153021536
+Epoch 16, Time: 199.56 seconds
+Epoch 16, Train Loss: 1.370422156799377, Train MAE: 3.0970898696535203
+Epoch 16, Val Loss: 1.6044928707458355, Val MAE: 4.070436012950943
+Epoch 17, Time: 191.89 seconds
+Epoch 17, Train Loss: 1.3493087056144795, Train MAE: 3.0385699940840856
+Epoch 17, Val Loss: 1.3371616778550324, Val MAE: 2.9924806986914754
+Epoch 18, Time: 195.80 seconds
+Epoch 18, Train Loss: 1.3081305697362682, Train MAE: 2.885753015654787
+Epoch 18, Val Loss: 1.60916172961394, Val MAE: 3.9773843154200796
+Epoch 19, Time: 198.85 seconds
+Epoch 19, Train Loss: 1.2840813942233826, Train MAE: 2.7787924318743653
+Epoch 19, Val Loss: 1.3668736059356619, Val MAE: 3.03749228289098
+Epoch 20, Time: 201.13 seconds
+Epoch 20, Train Loss: 1.26907135739883, Train MAE: 2.735754326064011
+Epoch 20, Val Loss: 1.3259711552549291, Val MAE: 2.934293999848541
+Epoch 21, Time: 195.19 seconds
+Epoch 21, Train Loss: 1.244728678812715, Train MAE: 2.6535726457186026
+Epoch 21, Val Loss: 1.4223673536821648, Val MAE: 3.34405476004989
+Epoch 22, Time: 195.88 seconds
+Epoch 22, Train Loss: 1.2324999695747538, Train MAE: 2.6056555175680076
+Epoch 22, Val Loss: 1.7866999396571406, Val MAE: 4.900088661806081
+Epoch 23, Time: 202.09 seconds
+Epoch 23, Train Loss: 1.2123178268142973, Train MAE: 2.5405006719432417
+Epoch 23, Val Loss: 1.3162972893979814, Val MAE: 2.912912845493836
+Epoch 24, Time: 199.90 seconds
+Epoch 24, Train Loss: 1.2043190067263434, Train MAE: 2.53022018546451
+Epoch 24, Val Loss: 1.3367563486099243, Val MAE: 2.937199110572721
+Epoch 25, Time: 194.52 seconds
+Epoch 25, Train Loss: 1.177127393708621, Train MAE: 2.428789807200746
+Epoch 25, Val Loss: 1.2989132873438023, Val MAE: 2.8260340174922227
+Epoch 26, Time: 199.49 seconds
+Epoch 26, Train Loss: 1.1872462540153483, Train MAE: 2.4673136922294923
+Epoch 26, Val Loss: 1.3216960242501012, Val MAE: 2.8942824410803523
+Epoch 27, Time: 192.14 seconds
+Epoch 27, Train Loss: 1.1500112884715001, Train MAE: 2.3609204135813826
+Epoch 27, Val Loss: 1.398164873321851, Val MAE: 3.232511654606572
+Epoch 28, Time: 190.70 seconds
+Epoch 28, Train Loss: 1.1326932990108307, Train MAE: 2.2921064810360767
+Epoch 28, Val Loss: 1.299564395237852, Val MAE: 2.802681279241303
+Epoch 29, Time: 200.33 seconds
+Epoch 29, Train Loss: 1.1173538176703517, Train MAE: 2.246030518276306
+Epoch 29, Val Loss: 1.28520816343802, Val MAE: 2.7984066355669945
+Epoch 30, Time: 191.84 seconds
+Epoch 30, Train Loss: 1.1108927603425651, Train MAE: 2.2308136640897787
+Epoch 30, Val Loss: 1.2988213449716568, Val MAE: 2.8788965996400813
+Epoch 31, Time: 198.48 seconds
+Epoch 31, Train Loss: 1.0057733836793774, Train MAE: 1.9140165956785573
+Epoch 31, Val Loss: 1.4061864879396226, Val MAE: 3.085169822080636
+Epoch 32, Time: 197.63 seconds
+Epoch 32, Train Loss: 0.969068370463045, Train MAE: 1.8164659019793987
+Epoch 32, Val Loss: 1.270580910422184, Val MAE: 2.7363117119118034
+Epoch 33, Time: 201.26 seconds
+Epoch 33, Train Loss: 0.9475845097704971, Train MAE: 1.7653421752484486
+Epoch 33, Val Loss: 1.2696828146775563, Val MAE: 2.7701928776870535
+Epoch 34, Time: 192.57 seconds
+Epoch 34, Train Loss: 0.9299719996098182, Train MAE: 1.7176608681160206
+Epoch 34, Val Loss: 1.2780473855910477, Val MAE: 2.7945678985266045
+Epoch 35, Time: 192.24 seconds
+Epoch 35, Train Loss: 0.9149076322819889, Train MAE: 1.702005320242923
+Epoch 35, Val Loss: 1.2861592261879533, Val MAE: 2.8096913595552784
+Epoch 36, Time: 192.17 seconds
+Epoch 36, Train Loss: 0.9018225128359757, Train MAE: 1.664263305239081
+Epoch 36, Val Loss: 1.34057108230061, Val MAE: 2.9398920120427645
+Epoch 37, Time: 196.34 seconds
+Epoch 37, Train Loss: 0.9009930357060318, Train MAE: 1.6720023409137674
+Epoch 37, Val Loss: 1.273878316084544, Val MAE: 2.7520524982169814
+Epoch 38, Time: 195.08 seconds
+Epoch 38, Train Loss: 0.889643422330406, Train MAE: 1.6647211866960592
+Epoch 38, Val Loss: 1.31934498195295, Val MAE: 2.8397184293064073
+Epoch 39, Time: 192.81 seconds
+Epoch 39, Train Loss: 0.8917892422695058, Train MAE: 1.680249336379276
+Epoch 39, Val Loss: 1.4329091431917969, Val MAE: 2.995883505785906
+Epoch 40, Time: 194.56 seconds
+Epoch 40, Train Loss: 0.8872047257202057, Train MAE: 1.6682142150838413
+Epoch 40, Val Loss: 1.5641151346542217, Val MAE: 3.8583294223267366
+Epoch 41, Time: 198.02 seconds
+Epoch 41, Train Loss: 0.8731348043411417, Train MAE: 1.6420915328159895
+Epoch 41, Val Loss: 1.912207798273475, Val MAE: 3.5494444974263524
+Epoch 42, Time: 196.19 seconds
+Epoch 42, Train Loss: 0.888773480919375, Train MAE: 1.7014025630596774
+Epoch 42, Val Loss: 1.4149712732544653, Val MAE: 2.9767091032899455
+Epoch 43, Time: 190.79 seconds
+Epoch 43, Train Loss: 0.8762405822226477, Train MAE: 1.6724210843609881
+Epoch 43, Val Loss: 1.2932620622493602, Val MAE: 2.819830257274486
+Epoch 44, Time: 194.42 seconds
+Epoch 44, Train Loss: 0.862237569270779, Train MAE: 1.6209476143207093
+Epoch 44, Val Loss: 1.4170452428084832, Val MAE: 3.0125308982236882
+Epoch 45, Time: 195.47 seconds
+Epoch 45, Train Loss: 0.8631845207524237, Train MAE: 1.6471429453933266
+Epoch 45, Val Loss: 1.3405014442072973, Val MAE: 2.8312500566317707
+Epoch 46, Time: 192.71 seconds
+Epoch 46, Train Loss: 0.8595412806743652, Train MAE: 1.6367138613946208
+Epoch 46, Val Loss: 1.5409776562893833, Val MAE: 3.428904239513256
+Epoch 47, Time: 199.51 seconds
+Epoch 47, Train Loss: 0.8601843733686351, Train MAE: 1.6500218949760592
+Epoch 47, Val Loss: 1.340737866582694, Val MAE: 2.956763104332816
+Epoch 48, Time: 192.00 seconds
+Epoch 48, Train Loss: 0.8562331846285246, Train MAE: 1.6474595731386144
+Epoch 48, Val Loss: 1.3655279902396378, Val MAE: 3.0240585682715904
+Epoch 49, Time: 197.72 seconds
+Epoch 49, Train Loss: 0.8520173651786318, Train MAE: 1.6401329931365403
+Epoch 49, Val Loss: 1.3396776566902797, Val MAE: 2.796415961936668
+Epoch 50, Time: 195.68 seconds
+Epoch 50, Train Loss: 0.8480673761203371, Train MAE: 1.639211211809113
+Epoch 50, Val Loss: 1.647739577072638, Val MAE: 3.1416899039421575
+Epoch 51, Time: 189.84 seconds
+Epoch 51, Train Loss: 0.8372947735716872, Train MAE: 1.6027208755553872
+Epoch 51, Val Loss: 1.6237200807642054, Val MAE: 3.396863529770463
+Epoch 52, Time: 190.43 seconds
+Epoch 52, Train Loss: 0.8351165005635836, Train MAE: 1.6168050568527506
+Epoch 52, Val Loss: 1.554033401939604, Val MAE: 3.0614468293131147
+Epoch 53, Time: 195.45 seconds
+Epoch 53, Train Loss: 0.8299735159235229, Train MAE: 1.5958418936185546
+Epoch 53, Val Loss: 1.5640801114064675, Val MAE: 3.277430642916834
+Epoch 54, Time: 189.23 seconds
+Epoch 54, Train Loss: 0.8335882385782601, Train MAE: 1.6140637169997323
+Epoch 54, Val Loss: 1.381437471067464, Val MAE: 2.8441165417800716
+Epoch 55, Time: 195.65 seconds
+Epoch 55, Train Loss: 0.824016442033277, Train MAE: 1.5975911596535997
+Epoch 55, Val Loss: 1.3371481939598366, Val MAE: 2.893047900023283
+Epoch 56, Time: 189.79 seconds
+Epoch 56, Train Loss: 0.8096940730863921, Train MAE: 1.579284454173689
+Epoch 56, Val Loss: 1.5705273703292564, Val MAE: 2.9461034259089702
+Epoch 57, Time: 195.29 seconds
+Epoch 57, Train Loss: 0.8126662685795235, Train MAE: 1.5958544797669656
+Epoch 57, Val Loss: 1.7968065683488492, Val MAE: 3.5670486814004394
+Epoch 58, Time: 190.85 seconds
+Epoch 58, Train Loss: 0.8011575064545284, Train MAE: 1.5872108916629242
+Epoch 58, Val Loss: 1.3483149348585695, Val MAE: 2.7265741229351677
+Epoch 59, Time: 197.95 seconds
+Epoch 59, Train Loss: 0.7905177721847589, Train MAE: 1.5523527992258668
+Epoch 59, Val Loss: 1.6007131189107895, Val MAE: 3.1265471121705617
+Epoch 60, Time: 192.64 seconds
+Epoch 60, Train Loss: 0.7884624168000107, Train MAE: 1.5491256842980012
+Epoch 60, Val Loss: 1.4797132015228271, Val MAE: 3.1885686521176932
+Epoch 61, Time: 200.21 seconds
+Epoch 61, Train Loss: 0.7295269181937059, Train MAE: 1.4169811121386615
+Epoch 61, Val Loss: 1.3315347482760747, Val MAE: 2.676068716049193
+Epoch 62, Time: 191.19 seconds
+Epoch 62, Train Loss: 0.7006092045446289, Train MAE: 1.3541993027239345
+Epoch 62, Val Loss: 1.4037111202875774, Val MAE: 2.8072878394892182
+Epoch 63, Time: 191.25 seconds
+Epoch 63, Train Loss: 0.68171705254193, Train MAE: 1.3187470085437487
+Epoch 63, Val Loss: 1.3171165866984262, Val MAE: 2.7138426439261734
+Epoch 64, Time: 189.39 seconds
+Epoch 64, Train Loss: 0.664287516229665, Train MAE: 1.289080924992853
+Epoch 64, Val Loss: 1.4131545385828725, Val MAE: 2.8140972679044003
+Epoch 65, Time: 190.38 seconds
+Epoch 65, Train Loss: 0.6514571718970408, Train MAE: 1.2676127528385395
+Epoch 65, Val Loss: 1.3449173006746504, Val MAE: 2.7160224095097294
+Epoch 66, Time: 198.15 seconds
+Epoch 66, Train Loss: 0.6463075243825938, Train MAE: 1.254352818400538
+Epoch 66, Val Loss: 1.3451277757132496, Val MAE: 2.7142323054796385
+Epoch 67, Time: 190.15 seconds
+Epoch 67, Train Loss: 0.6442896330862526, Train MAE: 1.26336540228745
+Epoch 67, Val Loss: 1.3092638706719433, Val MAE: 2.743696019561202
+Epoch 68, Time: 191.64 seconds
+Epoch 68, Train Loss: 0.6334288288648944, Train MAE: 1.226099455765135
+Epoch 68, Val Loss: 1.4076721199132778, Val MAE: 2.727542490311612
+Epoch 69, Time: 189.25 seconds
+Epoch 69, Train Loss: 0.6292087341256104, Train MAE: 1.2428229474540728
+Epoch 69, Val Loss: 1.3501783940527174, Val MAE: 2.783375819406391
+Epoch 70, Time: 189.65 seconds
+Epoch 70, Train Loss: 0.6180631046032716, Train MAE: 1.2104559284888146
+Epoch 70, Val Loss: 1.4314369829716507, Val MAE: 2.7844599342346177
+Epoch 71, Time: 188.26 seconds
+Epoch 71, Train Loss: 0.6092605800306133, Train MAE: 1.2002400493571241
+Epoch 71, Val Loss: 1.3309831977994353, Val MAE: 2.71402774999171
+Epoch 72, Time: 189.83 seconds
+Epoch 72, Train Loss: 0.6106236186520807, Train MAE: 1.2171057931561051
+Epoch 72, Val Loss: 1.528776060099955, Val MAE: 2.843939074057119
+Epoch 73, Time: 188.71 seconds
+Epoch 73, Train Loss: 0.5983268520955382, Train MAE: 1.1886306370297552
+Epoch 73, Val Loss: 1.3915693384629708, Val MAE: 2.7923032581659033
+Epoch 74, Time: 191.49 seconds
+Epoch 74, Train Loss: 0.5978871680381127, Train MAE: 1.18844627725414
+Epoch 74, Val Loss: 1.3825523367634527, Val MAE: 2.785250835300963
+Epoch 75, Time: 194.52 seconds
+Epoch 75, Train Loss: 0.5910227827589455, Train MAE: 1.1750766139043098
+Epoch 75, Val Loss: 1.6338325606452093, Val MAE: 2.9849807735725675
+Epoch 76, Time: 191.42 seconds
+Epoch 76, Train Loss: 0.5816721098413518, Train MAE: 1.1714426431782374
+Epoch 76, Val Loss: 1.451490510393072, Val MAE: 2.7593017290845325
+Epoch 77, Time: 193.62 seconds
+Epoch 77, Train Loss: 0.5807627774280958, Train MAE: 1.1768710521020056
+Epoch 77, Val Loss: 1.3454937333310093, Val MAE: 2.694996166464723
+Epoch 78, Time: 192.16 seconds
+Epoch 78, Train Loss: 0.5724082669781754, Train MAE: 1.1485126197572086
+Epoch 78, Val Loss: 1.3355594023510262, Val MAE: 2.7175733651055234
+Epoch 79, Time: 187.90 seconds
+Epoch 79, Train Loss: 0.5665162438897302, Train MAE: 1.1492433857955735
+Epoch 79, Val Loss: 1.5294040938218434, Val MAE: 2.8740818248560402
+Epoch 80, Time: 189.62 seconds
+Epoch 80, Train Loss: 0.562312938806549, Train MAE: 1.1332675800880012
+Epoch 80, Val Loss: 1.339252128645226, Val MAE: 2.6849112987518304
+Epoch 81, Time: 188.55 seconds
+Epoch 81, Train Loss: 0.5582179889991998, Train MAE: 1.1456512175947036
+Epoch 81, Val Loss: 1.3822592977020476, Val MAE: 2.725046320785711
+Epoch 82, Time: 188.77 seconds
+Epoch 82, Train Loss: 0.5555201808796005, Train MAE: 1.140961241026456
+Epoch 82, Val Loss: 1.2884561215285901, Val MAE: 2.731199890654764
+Epoch 83, Time: 190.51 seconds
+Epoch 83, Train Loss: 0.5391104290909097, Train MAE: 1.1078607364725377
+Epoch 83, Val Loss: 1.4395569148990843, Val MAE: 2.7497377120123976
+Epoch 84, Time: 188.60 seconds
+Epoch 84, Train Loss: 0.5401313228221407, Train MAE: 1.126055383469761
+Epoch 84, Val Loss: 1.3188247288818713, Val MAE: 2.6769367497055607
+Epoch 85, Time: 192.59 seconds
+Epoch 85, Train Loss: 0.5351065641135688, Train MAE: 1.116776519745034
+Epoch 85, Val Loss: 1.5602534451970347, Val MAE: 2.951003123624824
+Epoch 86, Time: 190.13 seconds
+Epoch 86, Train Loss: 0.5318834657536261, Train MAE: 1.1182938053930467
+Epoch 86, Val Loss: 1.5489559289481905, Val MAE: 2.854591092945617
+Epoch 87, Time: 190.56 seconds
+Epoch 87, Train Loss: 0.5327743772881733, Train MAE: 1.1188043733743516
+Epoch 87, Val Loss: 1.357089477556723, Val MAE: 2.709834130840537
+Epoch 88, Time: 190.70 seconds
+Epoch 88, Train Loss: 0.5308366351877031, Train MAE: 1.1183859654434152
+Epoch 88, Val Loss: 1.3138631725752796, Val MAE: 2.6753279421064597
+Epoch 89, Time: 191.99 seconds
+Epoch 89, Train Loss: 0.5134041090779975, Train MAE: 1.0956163793255225
+Epoch 89, Val Loss: 1.4499362640910678, Val MAE: 2.817777857015163
+Epoch 90, Time: 192.21 seconds
+Epoch 90, Train Loss: 0.513653715109003, Train MAE: 1.1036223579528166
+Epoch 90, Val Loss: 1.3828098486970972, Val MAE: 2.687804857889811
+Epoch 91, Time: 191.27 seconds
+Epoch 91, Train Loss: 0.4854962624194451, Train MAE: 1.0657151771919797
+Epoch 91, Val Loss: 1.4629039206990488, Val MAE: 2.76766981360353
+Epoch 92, Time: 192.26 seconds
+Epoch 92, Train Loss: 0.468430617088032, Train MAE: 1.0197181926292205
+Epoch 92, Val Loss: 1.4422934143631547, Val MAE: 2.777237685874656
+Epoch 93, Time: 192.18 seconds
+Epoch 93, Train Loss: 0.4641698402419331, Train MAE: 1.0116117280813357
+Epoch 93, Val Loss: 1.5174573599188417, Val MAE: 2.8687654767213053
+Epoch 94, Time: 194.20 seconds
+Epoch 94, Train Loss: 0.45757306894826005, Train MAE: 1.0111800611834951
+Epoch 94, Val Loss: 1.4522159938459043, Val MAE: 2.846196042166816
+Epoch 95, Time: 193.55 seconds
+Epoch 95, Train Loss: 0.45312232897673743, Train MAE: 0.9923885877138748
+Epoch 95, Val Loss: 1.543299976322386, Val MAE: 2.92817905590858
+Epoch 96, Time: 191.53 seconds
+Epoch 96, Train Loss: 0.44589220659328077, Train MAE: 0.9834121141459018
+Epoch 96, Val Loss: 1.4107602724322565, Val MAE: 2.7214005040533746
+Epoch 97, Time: 191.77 seconds
+Epoch 97, Train Loss: 0.44279667891226016, Train MAE: 0.9919522935275374
+Epoch 97, Val Loss: 1.3998509893814723, Val MAE: 2.6789197726308553
+Epoch 98, Time: 189.65 seconds
+Epoch 98, Train Loss: 0.43379072171070215, Train MAE: 0.9688564516669557
+Epoch 98, Val Loss: 1.5280540695896856, Val MAE: 2.940111926278951
+Epoch 99, Time: 190.44 seconds
+Epoch 99, Train Loss: 0.43296172335467226, Train MAE: 0.9724413273252284
+Epoch 99, Val Loss: 1.4950777811032754, Val MAE: 2.7890779763680915
+Epoch 100, Time: 188.78 seconds
+Epoch 100, Train Loss: 0.4317577759727875, Train MAE: 0.9805603837486279
+Epoch 100, Val Loss: 1.3493200755781598, Val MAE: 2.6821374012511456
+Epoch 101, Time: 189.36 seconds
+Epoch 101, Train Loss: 0.427075404703459, Train MAE: 0.960144576692454
+Epoch 101, Val Loss: 1.3988203163500186, Val MAE: 2.797789382345881
+Epoch 102, Time: 189.16 seconds
+Epoch 102, Train Loss: 0.42671607901152, Train MAE: 0.959213860347353
+Epoch 102, Val Loss: 1.4368388570017285, Val MAE: 2.759070259259072
+Epoch 103, Time: 190.59 seconds
+Epoch 103, Train Loss: 0.4238778749772345, Train MAE: 0.9752874801342295
+Epoch 103, Val Loss: 1.4844299753506978, Val MAE: 2.7566705735524497
+Epoch 104, Time: 194.33 seconds
+Epoch 104, Train Loss: 0.4178795802063588, Train MAE: 0.9560570222060298
+Epoch 104, Val Loss: 1.5224121102580317, Val MAE: 2.7950039139500364
+Epoch 105, Time: 190.12 seconds
+Epoch 105, Train Loss: 0.41710821369203394, Train MAE: 0.9517745600935636
+Epoch 105, Val Loss: 1.426270044512219, Val MAE: 2.754193716049195
+Epoch 106, Time: 190.14 seconds
+Epoch 106, Train Loss: 0.4104598923845696, Train MAE: 0.9529370251966726
+Epoch 106, Val Loss: 1.3587648250438549, Val MAE: 2.750625018838011
+Epoch 107, Time: 190.88 seconds
+Epoch 107, Train Loss: 0.4136977790995681, Train MAE: 0.9520262058571736
+Epoch 107, Val Loss: 1.4300662510924869, Val MAE: 2.7450270391393565
+Epoch 108, Time: 205.15 seconds
+Epoch 108, Train Loss: 0.41031933643062174, Train MAE: 0.955045109923385
+Epoch 108, Val Loss: 1.3740537729528215, Val MAE: 2.7728125259022667
+Epoch 109, Time: 188.57 seconds
+Epoch 109, Train Loss: 0.4077665490599779, Train MAE: 0.9567940811946487
+Epoch 109, Val Loss: 1.397498596045706, Val MAE: 2.69420142326826
+Epoch 110, Time: 187.33 seconds
+Epoch 110, Train Loss: 0.4042801873595392, Train MAE: 0.9469536071190466
+Epoch 110, Val Loss: 1.4316773221448615, Val MAE: 2.7889468144781797
+Entrenamiento finalizado
+wandb: - 0.006 MB of 0.006 MB uploadedwandb: \ 0.006 MB of 0.006 MB uploadedwandb: | 0.006 MB of 0.006 MB uploadedwandb: / 0.010 MB of 0.018 MB uploaded (0.003 MB deduped)wandb: - 0.036 MB of 0.036 MB uploaded (0.003 MB deduped)wandb: 
+wandb: Run history:
+wandb: available_memory ▃▃▃▃▄▄▄▄▄▅▄▄▄▃▄▅▅▅█▇▆▆▆▆▅████████▂▁▁▂▁▁▁
+wandb:   memory_percent ▆▆▆▆▆▅▅▅▅▄▅▅▅▆▅▄▄▅▁▂▃▃▃▃▄▁▁▁▁▁▁▁▁▇██▇███
+wandb:       train_loss █▇▇▆▆▆▅▅▅▅▄▄▃▃▃▃▃▃▃▃▃▃▂▂▂▂▂▂▂▂▂▂▂▁▁▁▁▁▁▁
+wandb:        train_mae █▇▆▅▅▅▄▄▃▃▃▂▂▂▂▂▂▂▂▂▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:      used_memory ███▇▇▇▆▆▆▆▆▆▆▇▆▆▅▅▁▂▄▄▄▄▄▁▁▁▁▁▂▁▂▇▇▇▇█▇█
+wandb:         val_loss ▃█▄▂▃▂▁▁▁▁▁▂▁▁▂▂▁▁▂▁▂▂▁▁▂▂▁▂▂▁▁▁▁▂▂▂▁▂▂▂
+wandb:          val_mae ▄█▆▂▄▂▁▁▁▁▁▂▁▁▃▁▁▁▂▁▁▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb: 
+wandb: Run summary:
+wandb: available_memory 373494272000
+wandb:   memory_percent 7.6
+wandb:       train_loss 0.40428
+wandb:        train_mae 0.94695
+wandb:      used_memory 18576244736
+wandb:         val_loss 1.43168
+wandb:          val_mae 2.78895
+wandb: 
+wandb: 🚀 View run glamorous-shadow-131 at: https://wandb.ai/manelcardenas/Brain_age/runs/ennz0kl8
+wandb: ⭐️ View project at: https://wandb.ai/manelcardenas/Brain_age
+wandb: Synced 6 W&B file(s), 0 media file(s), 2 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20240518_182737-ennz0kl8/logs
