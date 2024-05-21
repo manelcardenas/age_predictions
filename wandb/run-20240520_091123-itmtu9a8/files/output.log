@@ -1,0 +1,10 @@
+CUDA is available: True
+Using 5 GPUs for model parallelization.
+Traceback (most recent call last):
+  File "/home/usuaris/imatge/joan.manel.cardenas/age_predictions/input_data.py", line 82, in <module>
+    RandomCrop((2, 2, 2), padding=None, pad_if_needed=True),  # Desplazamiento aleatorio
+  File "/home/usuaris/imatge/joan.manel.cardenas/.local/lib/python3.10/site-packages/torchvision/transforms/transforms.py", line 653, in __init__
+    self.size = tuple(_setup_size(size, error_msg="Please provide only two dimensions (h, w) for size."))
+  File "/home/usuaris/imatge/joan.manel.cardenas/.local/lib/python3.10/site-packages/torchvision/transforms/transforms.py", line 1827, in _setup_size
+    raise ValueError(error_msg)
+ValueError: Please provide only two dimensions (h, w) for size.

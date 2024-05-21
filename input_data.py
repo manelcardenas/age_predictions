@@ -1,7 +1,8 @@
-from m_utils.data_transform import num2vect
+from m_utils.data_transform import *
 from m_utils.plots import *
 from model.loss import my_KLDivLoss
 from model.model import CNNmodel
+from model.mri_dataset import MRIDataset
 
 import h5py
 import numpy as np
@@ -12,95 +13,70 @@ import torch
 import wandb
 import psutil
 
-from torch.utils.data import Dataset, DataLoader
+from torch.utils.data import DataLoader
 from torch.nn.parallel import DataParallel
 #from torch.utils.data.distributed import DistributedSampler as DDP
 from tensorfn import distributed as dist
 from torchsummary import summary
 from sklearn.model_selection import train_test_split
+from torchvision.transforms import RandomHorizontalFlip, RandomVerticalFlip, RandomCrop, Compose
 
 
 wandb.init(project='Brain_age', entity='manelcardenas')
 
-class MRIDataset(Dataset):
-    def __init__(self, h5_path, keys, age_dist):
-        self.h5_path = h5_path
-        self.keys = keys
-        self.age_dist = age_dist
-        self.length = len(keys)
-
-    def __len__(self):
-        return self.length
-
-    def __getitem__(self, idx):
-        with h5py.File(self.h5_path, 'r') as file:
-            subject_id = self.keys[idx]
-            subject_group = file[subject_id]
-            mri_data = subject_group['MRI'][:]
-            
-            # Normalización Z de los datos MRI
-            mri_data = (mri_data - np.mean(mri_data)) / np.std(mri_data)
-            
-            # Convertir los datos a tensores de PyTorch
-            mri_data_tensor = torch.from_numpy(mri_data).float().unsqueeze(0)  # [C, D, H, W]
-            age_dist_tensor = torch.from_numpy(self.age_dist[idx]).float()
-
-            # Obtener la edad real del sujeto del archivo HDF5
-            age = subject_group.attrs['Age']
-            age_tensor = torch.tensor(age).float()  # Convertir a tensor
-            
-        return mri_data_tensor, age_dist_tensor, age_tensor, subject_id
-
 # Ruta al archivo .h5 de mujeres
 #h5_path = '/home/usuaris/imatge/joan.manel.cardenas/MN_females_data.h5'
-h5_path = '/mnt/work/datasets/UKBiobank/MN_males_data.h5'
+h5_path = '/mnt/work/datasets/UKBiobank/MN_females_data.h5'
 
 save_dir = 'subjects_data'
 os.makedirs(save_dir, exist_ok=True)
 
-with h5py.File(h5_path, 'r') as h5_file:
-    keys = list(h5_file.keys())
-    ages = [h5_file[subject_id].attrs['Age'] for subject_id in keys]
+import numpy as np
+import torch
 
-age_range = [42,82]
-age_step = 1  # Paso de edad
-sigma = 1
-age_dist_list = []
-bin_center_list = []
+import numpy as np
+import torch
 
-for age in ages:
-    age_array = np.array([age,])
-    age_dist, bc = num2vect(age_array, age_range, age_step, sigma)
-    age_dist_list.append(age_dist)
-    bin_center_list.append(bc)
+class RandomShift:
+    def __init__(self, max_shift=2):
+        self.max_shift = max_shift
 
-# Convertir la lista de distribuciones a un arreglo de numpy para facilitar el manejo posterior
-age_dist_array = np.array(age_dist_list)    
+    def __call__(self, mri_data_tensor):
+        shift = np.random.randint(-self.max_shift, self.max_shift + 1, size=3)
+        mri_data_tensor = np.roll(mri_data_tensor, shift, axis=(1, 2, 3))
+        return torch.from_numpy(mri_data_tensor).float()
 
+import random
+import torch
+
+class RandomMirror:
+    def __call__(self, mri_data_tensor):
+        if random.random() > 0.5:
+            mri_data_tensor = torch.flip(mri_data_tensor, dims=[3])  # Flip along the width axis
+        return mri_data_tensor
+
+
+   
+age_dist_array, keys, bin_center_list = get_age_distribution(h5_path)
+
+
+from torchvision.transforms import Compose
+
+train_transform = Compose([
+    RandomShift(max_shift=2),
+    RandomMirror()
+])
 
 # Dividir los datos
-#keys_train_val, keys_test, age_dist_train_val, age_dist_test = train_test_split(keys, age_dist_array, test_size=0.2, random_state=42) # (train,val) / test      stratify=age_dist
-#keys_train, keys_val, age_dist_train, age_dist_val = train_test_split(keys_train_val, age_dist_train_val, test_size=0.25, random_state=42)#,  train/val  stratify=age_dist_train
-keys_train_val, keys_test, age_dist_train_val, age_dist_test = train_test_split(keys, age_dist_array, test_size=0.2, random_state=42)
+keys_train_val, keys_test, age_dist_train_val, age_dist_test = train_test_split(keys, age_dist_array, test_size=0.2, random_state=42)    #stratify=age_dist_train
 keys_train, keys_val, age_dist_train, age_dist_val = train_test_split(keys_train_val, age_dist_train_val, test_size=0.125, random_state=42)
 
-#datasets
-dataset_train = MRIDataset(h5_path, keys_train, age_dist_train)
+
+# Crear los datasets
+dataset_train = MRIDataset(h5_path, keys_train, age_dist_train, transform=train_transform)
 dataset_val = MRIDataset(h5_path, keys_val, age_dist_val)
 dataset_test = MRIDataset(h5_path, keys_test, age_dist_test)
 
-'''
-#paralelization
-train_sampler = DDP(dataset_train)
-val_sampler = DDP(dataset_val)
-test_sampler = DDP(dataset_test)
-
-#dataloader
-train_loader = DataLoader(dataset_train, batch_size=8, sampler=train_sampler, num_workers=10, pin_memory=True) #DROP_LAST
-val_loader = DataLoader(dataset_val, batch_size=8, sampler=val_sampler, num_workers=10, pin_memory=True)
-test_loader = DataLoader(dataset_test, batch_size=8, sampler=test_sampler, num_workers=10, pin_memory=True)
-
-'''
 #dataloader
 train_loader = DataLoader(dataset_train, batch_size=8, shuffle=True, num_workers=10, pin_memory=True) #DROP_LAST 
 val_loader = DataLoader(dataset_val, batch_size=8, shuffle=False, num_workers=10, pin_memory=True) #DROP_LAST 
@@ -108,8 +84,6 @@ test_loader = DataLoader(dataset_test, batch_size=8, shuffle=False, num_workers=
 
 model = CNNmodel()
 optimizer = torch.optim.SGD(model.parameters(), lr=0.01, momentum=0.9, weight_decay=0.001) 
-#optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
-#summary(model, input_size=(1, 160, 192, 160))
 
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -122,15 +96,7 @@ if torch.cuda.device_count() > 1:
     print("Using", torch.cuda.device_count(), "GPUs for model parallelization.")
     model = DataParallel(model)
 
-'''
-# use DataParallel if more than 1 GPU available >>> DistributedDataParallel is proven to be significantly faster than torch.nn.DataParallel for single-node multi-GPU data parallel training.
-if torch.cuda.device_count() > 1: # and not device.type == 'cpu':
-        #model = nn.DataParallel(model)
-        if dist.is_primary():
-            print(f'Using {torch.cuda.device_count()} GPUs for model parallelization.')
-        print(f'Creating DDP model for rank {dist.get_local_rank()} GPU')
-        model = DDP(model, device_ids=[dist.get_local_rank()], output_device=dist.get_local_rank())
-'''
+
 num_epochs = 110
 best_val_mae = float('inf')
 best_model_path = 'best_model.p'
@@ -143,6 +109,9 @@ def adjust_learning_rate(optimizer, epoch):
     for param_group in optimizer.param_groups:
         param_group['lr'] = lr
 
+num_subjects_processed = 0
+
+
 # Ciclo de entrenamiento 
 for epoch in range(num_epochs):
     start_epoch = time.time()
@@ -150,14 +119,14 @@ for epoch in range(num_epochs):
     adjust_learning_rate(optimizer, epoch)
     running_loss = 0.0
     running_mae = 0.0
+    num_subjects_epoch = 0
+
     for inputs, age_dist, age_real, subject_ids in train_loader:
         optimizer.zero_grad()
         inputs = inputs.to(device)
         outputs = model(inputs)
         x = outputs[0].cpu().view(-1, 1, 40)
-        #print(f'Input train data shape: {inputs.shape}')
-        #print(f'ages: {ages.shape}')  #torch.Size([8, 1, 40]).
-        #print(f'outputs: {x.shape}')  #torch.Size([8, 1, 40]).
+
 
         preds = []
         for i in range(inputs.size(0)):
@@ -165,7 +134,7 @@ for epoch in range(num_epochs):
             prob = np.exp(x_sample)
             pred = prob @ bin_center_list[i]
             preds.append(pred)
-            #print(f'Predicción ajustada para el sujeto {subject_ids[i]}: {pred}')
+            
         
         # Convertir a tensor y calcular el MAE
         preds = torch.tensor(preds)
@@ -191,7 +160,9 @@ for epoch in range(num_epochs):
         optimizer.step()
         running_loss += loss.item()
         running_mae += mae.item()
+        num_subjects_epoch += inputs.size(0)
 
+    num_subjects_processed += num_subjects_epoch
     # Calculando el loss de entrenamiento promedio por época
     train_loss = running_loss / len(train_loader)
     train_mae = running_mae / len(train_loader)
@@ -203,7 +174,8 @@ for epoch in range(num_epochs):
     epoch_time = end_epoch - start_epoch  
     print(f'Epoch {epoch + 1}, Time: {epoch_time:.2f} seconds')
     print(f'Epoch {epoch + 1}, Train Loss: {train_loss}, Train MAE: {train_mae}')
-    
+    print(f'Epoch {epoch + 1}, Subjects processed this epoch: {num_subjects_epoch}')
+
     # Fase de validación
     model.eval()
     val_loss = 0.0
@@ -234,45 +206,13 @@ for epoch in range(num_epochs):
     val_loss /= len(val_loader)
     val_mae /= len(val_loader)
     print(f'Epoch {epoch + 1}, Val Loss: {val_loss}, Val MAE: {val_mae}')
+    print(f'Epoch {epoch + 1}, Total subjects processed so far: {num_subjects_processed}')
     # Registrar métricas en Weights & Biases
     wandb.log({'val_loss': val_loss, 'val_mae': val_mae})
 
     if val_mae < best_val_mae:
             best_val_mae = val_mae
             torch.save(model.state_dict(), best_model_path)
-
-'''
-# Evaluación en el conjunto de pruebas
-model.eval()
-test_loss = 0.0
-test_mae = 0.0
-with torch.no_grad():
-    for inputs, age_dist, age_real, subject_ids in test_loader:
-        inputs = inputs.to(device)
-        outputs = model(inputs)
-        x = outputs[0].cpu().view(-1, 1, 40)
-
-        preds = []
-        for i in range(inputs.size(0)):
-            x_sample = x[i].detach().numpy().reshape(-1)
-            prob = np.exp(x_sample)
-            pred = prob @ bin_center_list[i]
-            preds.append(pred)
-        
-        # Convertir a tensor y calcular el MAE
-        preds = torch.tensor(preds)
-        preds_rounded = torch.round(preds * 100) / 100  
-        mae = calculate_mae(preds_rounded, age_real)  
-        loss = my_KLDivLoss(x, age_dist)
-        
-        test_loss += loss.item()
-        test_mae += mae.item()
-
-# Calculando el loss de prueba promedio
-test_loss /= len(test_loader)
-test_mae /= len(test_loader)
-print(f'Test Loss: {test_loss}, Test MAE: {test_mae}')
-wandb.log({'test_loss': test_loss, 'test_mae': test_mae})
-'''
+            print('Modelo guardado en', best_model_path)
 print('Entrenamiento finalizado')
 

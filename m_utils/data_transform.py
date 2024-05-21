@@ -1,5 +1,8 @@
 import numpy as np
 import torch
+import h5py
+import random
+
 
 from scipy.stats import norm
 
@@ -54,3 +57,24 @@ def num2vect(x, age_range, age_step, sigma):
                     v[j, i] = cdfs[1] - cdfs[0]
             return v, bin_centers
         
+
+def get_age_distribution(h5_path, age_range=[42, 82], age_step=1, sigma=1):
+    with h5py.File(h5_path, 'r') as h5_file:
+        keys = list(h5_file.keys())
+        ages = [h5_file[subject_id].attrs['Age'] for subject_id in keys]
+
+    age_dist_list = []
+    bin_center_list = []
+
+    for age in ages:
+        age_array = np.array([age])
+        age_dist, bc = num2vect(age_array, age_range, age_step, sigma)
+        age_dist_list.append(age_dist)
+        bin_center_list.append(bc)
+
+    # Convertir la lista de distribuciones a un arreglo de numpy para facilitar el manejo posterior
+    age_dist_array = np.array(age_dist_list)
+
+    return age_dist_array, keys, bin_center_list
+
+
