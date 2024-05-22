@@ -1,0 +1,576 @@
+CUDA is available: True
+Using 5 GPUs for model parallelization.
+Epoch 1, Time: 208.18 seconds
+Epoch 1, Train Loss: 1.9092401994950576, Train MAE: 5.705984775740527
+Epoch 1, Subjects processed this epoch: 6029
+Epoch 1, Val Loss: 2.5843018856313495, Val MAE: 7.887299482322033
+Epoch 1, Total subjects processed so far: 6029
+Modelo guardado en best_model.p
+Epoch 2, Time: 191.76 seconds
+Epoch 2, Train Loss: 1.828494719864519, Train MAE: 5.371790469900686
+Epoch 2, Subjects processed this epoch: 6029
+Epoch 2, Val Loss: 1.6913782347131658, Val MAE: 4.551211520183234
+Epoch 2, Total subjects processed so far: 12058
+Modelo guardado en best_model.p
+Epoch 3, Time: 191.43 seconds
+Epoch 3, Train Loss: 1.804116361969662, Train MAE: 5.248789155550276
+Epoch 3, Subjects processed this epoch: 6029
+Epoch 3, Val Loss: 2.9663786733591997, Val MAE: 7.986944547229344
+Epoch 3, Total subjects processed so far: 18087
+Epoch 4, Time: 193.64 seconds
+Epoch 4, Train Loss: 1.7730538813441754, Train MAE: 5.08650964239611
+Epoch 4, Subjects processed this epoch: 6029
+Epoch 4, Val Loss: 2.321717905777472, Val MAE: 7.414741410973631
+Epoch 4, Total subjects processed so far: 24116
+Epoch 5, Time: 194.92 seconds
+Epoch 5, Train Loss: 1.7445932998265132, Train MAE: 4.933426075153703
+Epoch 5, Subjects processed this epoch: 6029
+Epoch 5, Val Loss: 2.3711750198293617, Val MAE: 7.754236039408927
+Epoch 5, Total subjects processed so far: 30145
+Epoch 6, Time: 193.22 seconds
+Epoch 6, Train Loss: 1.7217762868663677, Train MAE: 4.77804314075035
+Epoch 6, Subjects processed this epoch: 6029
+Epoch 6, Val Loss: 1.817134647457688, Val MAE: 5.033973853382064
+Epoch 6, Total subjects processed so far: 36174
+Epoch 7, Time: 192.28 seconds
+Epoch 7, Train Loss: 1.7013723330093, Train MAE: 4.669629325279819
+Epoch 7, Subjects processed this epoch: 6029
+Epoch 7, Val Loss: 1.6415848632653554, Val MAE: 4.277079573972726
+Epoch 7, Total subjects processed so far: 42203
+Modelo guardado en best_model.p
+Epoch 8, Time: 192.50 seconds
+Epoch 8, Train Loss: 1.6772745378137583, Train MAE: 4.540882976744469
+Epoch 8, Subjects processed this epoch: 6029
+Epoch 8, Val Loss: 1.616930706633462, Val MAE: 4.175775581289221
+Epoch 8, Total subjects processed so far: 48232
+Modelo guardado en best_model.p
+Epoch 9, Time: 194.70 seconds
+Epoch 9, Train Loss: 1.6544423041672542, Train MAE: 4.422048094913884
+Epoch 9, Subjects processed this epoch: 6029
+Epoch 9, Val Loss: 2.101812014977137, Val MAE: 6.245640392538943
+Epoch 9, Total subjects processed so far: 54261
+Epoch 10, Time: 192.61 seconds
+Epoch 10, Train Loss: 1.6292263478119746, Train MAE: 4.278934694441946
+Epoch 10, Subjects processed this epoch: 6029
+Epoch 10, Val Loss: 1.6416965557469263, Val MAE: 4.344220771554077
+Epoch 10, Total subjects processed so far: 60290
+Epoch 11, Time: 191.41 seconds
+Epoch 11, Train Loss: 1.6151207536854226, Train MAE: 4.178370371846371
+Epoch 11, Subjects processed this epoch: 6029
+Epoch 11, Val Loss: 2.1356019090723106, Val MAE: 6.673753797272109
+Epoch 11, Total subjects processed so far: 66319
+Epoch 12, Time: 192.35 seconds
+Epoch 12, Train Loss: 1.5925870057126255, Train MAE: 4.0887235023791915
+Epoch 12, Subjects processed this epoch: 6029
+Epoch 12, Val Loss: 1.6076712222011, Val MAE: 4.139440611262382
+Epoch 12, Total subjects processed so far: 72348
+Modelo guardado en best_model.p
+Epoch 13, Time: 191.81 seconds
+Epoch 13, Train Loss: 1.5869528641751338, Train MAE: 4.093922766111261
+Epoch 13, Subjects processed this epoch: 6029
+Epoch 13, Val Loss: 1.8097853031423357, Val MAE: 5.09885797665443
+Epoch 13, Total subjects processed so far: 78377
+Epoch 14, Time: 192.48 seconds
+Epoch 14, Train Loss: 1.5702482645328228, Train MAE: 3.9953093819959715
+Epoch 14, Subjects processed this epoch: 6029
+Epoch 14, Val Loss: 2.9459640516175165, Val MAE: 7.797268641436539
+Epoch 14, Total subjects processed so far: 84406
+Epoch 15, Time: 190.90 seconds
+Epoch 15, Train Loss: 1.5760166226078407, Train MAE: 4.032971194983162
+Epoch 15, Subjects processed this epoch: 6029
+Epoch 15, Val Loss: 1.6509110850316506, Val MAE: 4.311076368873502
+Epoch 15, Total subjects processed so far: 90435
+Epoch 16, Time: 192.00 seconds
+Epoch 16, Train Loss: 1.5590601198236886, Train MAE: 3.9637487087957988
+Epoch 16, Subjects processed this epoch: 6029
+Epoch 16, Val Loss: 1.5146672747753285, Val MAE: 3.714691471170496
+Epoch 16, Total subjects processed so far: 96464
+Modelo guardado en best_model.p
+Epoch 17, Time: 191.66 seconds
+Epoch 17, Train Loss: 1.5524312679900414, Train MAE: 3.934704588953314
+Epoch 17, Subjects processed this epoch: 6029
+Epoch 17, Val Loss: 1.5819244506182495, Val MAE: 3.9373727022571323
+Epoch 17, Total subjects processed so far: 102493
+Epoch 18, Time: 191.77 seconds
+Epoch 18, Train Loss: 1.5416474505191773, Train MAE: 3.8770557268431074
+Epoch 18, Subjects processed this epoch: 6029
+Epoch 18, Val Loss: 1.980087364161456, Val MAE: 5.724702892892155
+Epoch 18, Total subjects processed so far: 108522
+Epoch 19, Time: 190.88 seconds
+Epoch 19, Train Loss: 1.544402817516175, Train MAE: 3.8830623283942725
+Epoch 19, Subjects processed this epoch: 6029
+Epoch 19, Val Loss: 1.483546057233104, Val MAE: 3.5590317206912574
+Epoch 19, Total subjects processed so far: 114551
+Modelo guardado en best_model.p
+Epoch 20, Time: 190.80 seconds
+Epoch 20, Train Loss: 1.5251245726324836, Train MAE: 3.7695454747177237
+Epoch 20, Subjects processed this epoch: 6029
+Epoch 20, Val Loss: 1.9087409642007616, Val MAE: 5.535370307145295
+Epoch 20, Total subjects processed so far: 120580
+Epoch 21, Time: 192.39 seconds
+Epoch 21, Train Loss: 1.5214724049011656, Train MAE: 3.753997375579348
+Epoch 21, Subjects processed this epoch: 6029
+Epoch 21, Val Loss: 1.6813612514071994, Val MAE: 4.451801789719384
+Epoch 21, Total subjects processed so far: 126609
+Epoch 22, Time: 190.68 seconds
+Epoch 22, Train Loss: 1.5114005440426126, Train MAE: 3.7004346976394067
+Epoch 22, Subjects processed this epoch: 6029
+Epoch 22, Val Loss: 1.4802545695393174, Val MAE: 3.531608907676037
+Epoch 22, Total subjects processed so far: 132638
+Modelo guardado en best_model.p
+Epoch 23, Time: 189.36 seconds
+Epoch 23, Train Loss: 1.5132548834347914, Train MAE: 3.70833525461354
+Epoch 23, Subjects processed this epoch: 6029
+Epoch 23, Val Loss: 1.4606521869147266, Val MAE: 3.499432902983678
+Epoch 23, Total subjects processed so far: 138667
+Modelo guardado en best_model.p
+Epoch 24, Time: 192.35 seconds
+Epoch 24, Train Loss: 1.5056406194714715, Train MAE: 3.684020886909425
+Epoch 24, Subjects processed this epoch: 6029
+Epoch 24, Val Loss: 1.4662793742285833, Val MAE: 3.4944097573080177
+Epoch 24, Total subjects processed so far: 144696
+Modelo guardado en best_model.p
+Epoch 25, Time: 190.16 seconds
+Epoch 25, Train Loss: 1.4955679187724065, Train MAE: 3.653593858885826
+Epoch 25, Subjects processed this epoch: 6029
+Epoch 25, Val Loss: 1.7930227628460638, Val MAE: 5.192090979446601
+Epoch 25, Total subjects processed so far: 150725
+Epoch 26, Time: 222.29 seconds
+Epoch 26, Train Loss: 1.4930912896555995, Train MAE: 3.6253806567609472
+Epoch 26, Subjects processed this epoch: 6029
+Epoch 26, Val Loss: 1.499092216844912, Val MAE: 3.7067284018905062
+Epoch 26, Total subjects processed so far: 156754
+Epoch 27, Time: 263.56 seconds
+Epoch 27, Train Loss: 1.4857719542177033, Train MAE: 3.611600812385822
+Epoch 27, Subjects processed this epoch: 6029
+Epoch 27, Val Loss: 2.0138057978064925, Val MAE: 5.677662017610337
+Epoch 27, Total subjects processed so far: 162783
+Epoch 28, Time: 262.66 seconds
+Epoch 28, Train Loss: 1.4811720459151332, Train MAE: 3.586403212494182
+Epoch 28, Subjects processed this epoch: 6029
+Epoch 28, Val Loss: 2.5782462413664216, Val MAE: 6.1994600068787
+Epoch 28, Total subjects processed so far: 168812
+Epoch 29, Time: 261.97 seconds
+Epoch 29, Train Loss: 1.4706109493417512, Train MAE: 3.5327602695090707
+Epoch 29, Subjects processed this epoch: 6029
+Epoch 29, Val Loss: 1.4487110166637986, Val MAE: 3.352673696706326
+Epoch 29, Total subjects processed so far: 174841
+Modelo guardado en best_model.p
+Epoch 30, Time: 262.33 seconds
+Epoch 30, Train Loss: 1.4825493924181405, Train MAE: 3.5946432619423683
+Epoch 30, Subjects processed this epoch: 6029
+Epoch 30, Val Loss: 1.742961730118151, Val MAE: 4.994236083678259
+Epoch 30, Total subjects processed so far: 180870
+Epoch 31, Time: 263.67 seconds
+Epoch 31, Train Loss: 1.3993508685330813, Train MAE: 3.266652841542691
+Epoch 31, Subjects processed this epoch: 6029
+Epoch 31, Val Loss: 1.3612054453955755, Val MAE: 3.1637346672717435
+Epoch 31, Total subjects processed so far: 186899
+Modelo guardado en best_model.p
+Epoch 32, Time: 262.11 seconds
+Epoch 32, Train Loss: 1.3865211664523622, Train MAE: 3.221959901151986
+Epoch 32, Subjects processed this epoch: 6029
+Epoch 32, Val Loss: 1.511114235277529, Val MAE: 3.86818672215497
+Epoch 32, Total subjects processed so far: 192928
+Epoch 33, Time: 263.66 seconds
+Epoch 33, Train Loss: 1.3730938399027766, Train MAE: 3.1780112848307165
+Epoch 33, Subjects processed this epoch: 6029
+Epoch 33, Val Loss: 1.349273873700036, Val MAE: 3.1243171629493616
+Epoch 33, Total subjects processed so far: 198957
+Modelo guardado en best_model.p
+Epoch 34, Time: 262.51 seconds
+Epoch 34, Train Loss: 1.36765240247433, Train MAE: 3.174102146001958
+Epoch 34, Subjects processed this epoch: 6029
+Epoch 34, Val Loss: 1.4248259089611195, Val MAE: 3.1989467364181707
+Epoch 34, Total subjects processed so far: 204986
+Epoch 35, Time: 261.52 seconds
+Epoch 35, Train Loss: 1.3609544677506706, Train MAE: 3.1194426561350475
+Epoch 35, Subjects processed this epoch: 6029
+Epoch 35, Val Loss: 1.3192437235955838, Val MAE: 2.9821528782079243
+Epoch 35, Total subjects processed so far: 211015
+Modelo guardado en best_model.p
+Epoch 36, Time: 261.64 seconds
+Epoch 36, Train Loss: 1.3501300414930288, Train MAE: 3.09058689728087
+Epoch 36, Subjects processed this epoch: 6029
+Epoch 36, Val Loss: 1.4355466465155284, Val MAE: 3.3904590464227007
+Epoch 36, Total subjects processed so far: 217044
+Epoch 37, Time: 261.16 seconds
+Epoch 37, Train Loss: 1.3395270028544357, Train MAE: 3.0439134707969417
+Epoch 37, Subjects processed this epoch: 6029
+Epoch 37, Val Loss: 1.3255053008044209, Val MAE: 2.9745101237591403
+Epoch 37, Total subjects processed so far: 223073
+Modelo guardado en best_model.p
+Epoch 38, Time: 262.26 seconds
+Epoch 38, Train Loss: 1.3395317351786464, Train MAE: 3.0466068048097714
+Epoch 38, Subjects processed this epoch: 6029
+Epoch 38, Val Loss: 1.3392793828690495, Val MAE: 2.9535647824369846
+Epoch 38, Total subjects processed so far: 229102
+Modelo guardado en best_model.p
+Epoch 39, Time: 261.99 seconds
+Epoch 39, Train Loss: 1.334761649528296, Train MAE: 3.053188010557258
+Epoch 39, Subjects processed this epoch: 6029
+Epoch 39, Val Loss: 1.4050080820366189, Val MAE: 3.3562383910756037
+Epoch 39, Total subjects processed so far: 235131
+Epoch 40, Time: 260.07 seconds
+Epoch 40, Train Loss: 1.3309274243106892, Train MAE: 3.0259105013232634
+Epoch 40, Subjects processed this epoch: 6029
+Epoch 40, Val Loss: 1.3106569289057344, Val MAE: 2.871280914000524
+Epoch 40, Total subjects processed so far: 241160
+Modelo guardado en best_model.p
+Epoch 41, Time: 260.78 seconds
+Epoch 41, Train Loss: 1.3238609590486128, Train MAE: 3.000098813782953
+Epoch 41, Subjects processed this epoch: 6029
+Epoch 41, Val Loss: 1.3811059737647022, Val MAE: 3.0996219790423347
+Epoch 41, Total subjects processed so far: 247189
+Epoch 42, Time: 260.12 seconds
+Epoch 42, Train Loss: 1.3172451970747991, Train MAE: 2.9541747449981117
+Epoch 42, Subjects processed this epoch: 6029
+Epoch 42, Val Loss: 1.4366346498330433, Val MAE: 3.4082599596329666
+Epoch 42, Total subjects processed so far: 253218
+Epoch 43, Time: 260.49 seconds
+Epoch 43, Train Loss: 1.308248539660274, Train MAE: 2.920982118530681
+Epoch 43, Subjects processed this epoch: 6029
+Epoch 43, Val Loss: 1.461755430256879, Val MAE: 3.5326582878018598
+Epoch 43, Total subjects processed so far: 259247
+Epoch 44, Time: 262.43 seconds
+Epoch 44, Train Loss: 1.3170810680174385, Train MAE: 2.96107892712358
+Epoch 44, Subjects processed this epoch: 6029
+Epoch 44, Val Loss: 1.3735385675121237, Val MAE: 3.2474267078917722
+Epoch 44, Total subjects processed so far: 265276
+Epoch 45, Time: 259.62 seconds
+Epoch 45, Train Loss: 1.2998810691922034, Train MAE: 2.905238060210048
+Epoch 45, Subjects processed this epoch: 6029
+Epoch 45, Val Loss: 1.3645282100748133, Val MAE: 3.15603793827104
+Epoch 45, Total subjects processed so far: 271305
+Epoch 46, Time: 260.64 seconds
+Epoch 46, Train Loss: 1.2978388327976753, Train MAE: 2.915074279056617
+Epoch 46, Subjects processed this epoch: 6029
+Epoch 46, Val Loss: 1.2931946201456919, Val MAE: 2.773040127106653
+Epoch 46, Total subjects processed so far: 277334
+Modelo guardado en best_model.p
+Epoch 47, Time: 261.92 seconds
+Epoch 47, Train Loss: 1.2882921837210972, Train MAE: 2.863247357254635
+Epoch 47, Subjects processed this epoch: 6029
+Epoch 47, Val Loss: 1.3189927880410794, Val MAE: 2.9734606595686945
+Epoch 47, Total subjects processed so far: 283363
+Epoch 48, Time: 260.87 seconds
+Epoch 48, Train Loss: 1.280680171690822, Train MAE: 2.8264250662775843
+Epoch 48, Subjects processed this epoch: 6029
+Epoch 48, Val Loss: 1.2753209339247809, Val MAE: 2.836061045917463
+Epoch 48, Total subjects processed so far: 289392
+Epoch 49, Time: 241.82 seconds
+Epoch 49, Train Loss: 1.2846216439252192, Train MAE: 2.8558982322804187
+Epoch 49, Subjects processed this epoch: 6029
+Epoch 49, Val Loss: 1.3469072845247057, Val MAE: 3.1358217297071302
+Epoch 49, Total subjects processed so far: 295421
+Epoch 50, Time: 191.77 seconds
+Epoch 50, Train Loss: 1.270134845210007, Train MAE: 2.802371045246678
+Epoch 50, Subjects processed this epoch: 6029
+Epoch 50, Val Loss: 1.344456528072004, Val MAE: 3.10727625646709
+Epoch 50, Total subjects processed so far: 301450
+Epoch 51, Time: 189.95 seconds
+Epoch 51, Train Loss: 1.2678313267167747, Train MAE: 2.795699298322358
+Epoch 51, Subjects processed this epoch: 6029
+Epoch 51, Val Loss: 2.0896415335160716, Val MAE: 5.358819347310951
+Epoch 51, Total subjects processed so far: 307479
+Epoch 52, Time: 189.53 seconds
+Epoch 52, Train Loss: 1.2619102972730085, Train MAE: 2.777273549922263
+Epoch 52, Subjects processed this epoch: 6029
+Epoch 52, Val Loss: 1.5410276618268755, Val MAE: 3.9620755717195104
+Epoch 52, Total subjects processed so far: 313508
+Epoch 53, Time: 189.21 seconds
+Epoch 53, Train Loss: 1.2574482611541091, Train MAE: 2.7659313934538643
+Epoch 53, Subjects processed this epoch: 6029
+Epoch 53, Val Loss: 1.5409524330386408, Val MAE: 3.8196953135360907
+Epoch 53, Total subjects processed so far: 319537
+Epoch 54, Time: 190.62 seconds
+Epoch 54, Train Loss: 1.2620509064482124, Train MAE: 2.7755938369993784
+Epoch 54, Subjects processed this epoch: 6029
+Epoch 54, Val Loss: 1.3098185338355877, Val MAE: 2.9652971177042273
+Epoch 54, Total subjects processed so far: 325566
+Epoch 55, Time: 190.52 seconds
+Epoch 55, Train Loss: 1.2518352114395375, Train MAE: 2.7473117143292005
+Epoch 55, Subjects processed this epoch: 6029
+Epoch 55, Val Loss: 1.3523438578402553, Val MAE: 3.1786690024387676
+Epoch 55, Total subjects processed so far: 331595
+Epoch 56, Time: 191.17 seconds
+Epoch 56, Train Loss: 1.2455625851843655, Train MAE: 2.7313170029010307
+Epoch 56, Subjects processed this epoch: 6029
+Epoch 56, Val Loss: 1.302877426147461, Val MAE: 2.858128893345963
+Epoch 56, Total subjects processed so far: 337624
+Epoch 57, Time: 189.76 seconds
+Epoch 57, Train Loss: 1.238949750794656, Train MAE: 2.689764938253308
+Epoch 57, Subjects processed this epoch: 6029
+Epoch 57, Val Loss: 1.27471551961369, Val MAE: 2.8097376904664197
+Epoch 57, Total subjects processed so far: 343653
+Epoch 58, Time: 190.23 seconds
+Epoch 58, Train Loss: 1.220467733135274, Train MAE: 2.6465093085291533
+Epoch 58, Subjects processed this epoch: 6029
+Epoch 58, Val Loss: 2.1601467253985227, Val MAE: 6.238977744608748
+Epoch 58, Total subjects processed so far: 349682
+Epoch 59, Time: 190.32 seconds
+Epoch 59, Train Loss: 1.2217483740270296, Train MAE: 2.651853793470548
+Epoch 59, Subjects processed this epoch: 6029
+Epoch 59, Val Loss: 1.3051740063561335, Val MAE: 2.905887292461631
+Epoch 59, Total subjects processed so far: 355711
+Epoch 60, Time: 191.37 seconds
+Epoch 60, Train Loss: 1.2133648269846837, Train MAE: 2.6198355665839297
+Epoch 60, Subjects processed this epoch: 6029
+Epoch 60, Val Loss: 1.319188940304297, Val MAE: 3.0263849737614765
+Epoch 60, Total subjects processed so far: 361740
+Epoch 61, Time: 190.86 seconds
+Epoch 61, Train Loss: 1.135449954938509, Train MAE: 2.3691591552157623
+Epoch 61, Subjects processed this epoch: 6029
+Epoch 61, Val Loss: 1.20766270381433, Val MAE: 2.5765394094255245
+Epoch 61, Total subjects processed so far: 367769
+Modelo guardado en best_model.p
+Epoch 62, Time: 191.58 seconds
+Epoch 62, Train Loss: 1.1160983078043405, Train MAE: 2.3207059215778387
+Epoch 62, Subjects processed this epoch: 6029
+Epoch 62, Val Loss: 1.2498904389363747, Val MAE: 2.765030946142878
+Epoch 62, Total subjects processed so far: 373798
+Epoch 63, Time: 189.79 seconds
+Epoch 63, Train Loss: 1.1025252152501115, Train MAE: 2.234283173492795
+Epoch 63, Subjects processed this epoch: 6029
+Epoch 63, Val Loss: 1.1642155255432483, Val MAE: 2.486122731573787
+Epoch 63, Total subjects processed so far: 379827
+Modelo guardado en best_model.p
+Epoch 64, Time: 191.90 seconds
+Epoch 64, Train Loss: 1.1035016216238867, Train MAE: 2.259089168280441
+Epoch 64, Subjects processed this epoch: 6029
+Epoch 64, Val Loss: 1.2283426760523408, Val MAE: 2.711747697312154
+Epoch 64, Total subjects processed so far: 385856
+Epoch 65, Time: 190.75 seconds
+Epoch 65, Train Loss: 1.0949216967236142, Train MAE: 2.2540428035999143
+Epoch 65, Subjects processed this epoch: 6029
+Epoch 65, Val Loss: 1.2121716439723969, Val MAE: 2.6065895662190006
+Epoch 65, Total subjects processed so far: 391885
+Epoch 66, Time: 190.22 seconds
+Epoch 66, Train Loss: 1.08116726233409, Train MAE: 2.1998859801962762
+Epoch 66, Subjects processed this epoch: 6029
+Epoch 66, Val Loss: 1.2350496213745188, Val MAE: 2.693653621791322
+Epoch 66, Total subjects processed so far: 397914
+Epoch 67, Time: 190.54 seconds
+Epoch 67, Train Loss: 1.0806142587402454, Train MAE: 2.2074065190221615
+Epoch 67, Subjects processed this epoch: 6029
+Epoch 67, Val Loss: 1.1847980210074671, Val MAE: 2.5378472322299155
+Epoch 67, Total subjects processed so far: 403943
+Epoch 68, Time: 189.44 seconds
+Epoch 68, Train Loss: 1.0681164176932065, Train MAE: 2.177238747493023
+Epoch 68, Subjects processed this epoch: 6029
+Epoch 68, Val Loss: 1.2407352924346924, Val MAE: 2.6945177716384703
+Epoch 68, Total subjects processed so far: 409972
+Epoch 69, Time: 192.09 seconds
+Epoch 69, Train Loss: 1.0593895295570637, Train MAE: 2.140576612032377
+Epoch 69, Subjects processed this epoch: 6029
+Epoch 69, Val Loss: 1.2008860033971291, Val MAE: 2.622469161704734
+Epoch 69, Total subjects processed so far: 416001
+Epoch 70, Time: 191.04 seconds
+Epoch 70, Train Loss: 1.053620522945566, Train MAE: 2.141259295223249
+Epoch 70, Subjects processed this epoch: 6029
+Epoch 70, Val Loss: 1.2575717104805841, Val MAE: 2.7719831267698316
+Epoch 70, Total subjects processed so far: 422030
+Epoch 71, Time: 189.59 seconds
+Epoch 71, Train Loss: 1.0543727364084765, Train MAE: 2.15814788279546
+Epoch 71, Subjects processed this epoch: 6029
+Epoch 71, Val Loss: 1.2161633830379557, Val MAE: 2.6198225737206724
+Epoch 71, Total subjects processed so far: 428059
+Epoch 72, Time: 190.75 seconds
+Epoch 72, Train Loss: 1.045509268655701, Train MAE: 2.129967204647922
+Epoch 72, Subjects processed this epoch: 6029
+Epoch 72, Val Loss: 1.1968207839462492, Val MAE: 2.56195600344811
+Epoch 72, Total subjects processed so far: 434088
+Epoch 73, Time: 190.23 seconds
+Epoch 73, Train Loss: 1.039542873595058, Train MAE: 2.091722502913337
+Epoch 73, Subjects processed this epoch: 6029
+Epoch 73, Val Loss: 1.2191473808553484, Val MAE: 2.613919712113745
+Epoch 73, Total subjects processed so far: 440117
+Epoch 74, Time: 190.19 seconds
+Epoch 74, Train Loss: 1.0338413441845213, Train MAE: 2.0784449767307516
+Epoch 74, Subjects processed this epoch: 6029
+Epoch 74, Val Loss: 1.177062326559314, Val MAE: 2.525030899283326
+Epoch 74, Total subjects processed so far: 446146
+Epoch 75, Time: 190.59 seconds
+Epoch 75, Train Loss: 1.0276374033496614, Train MAE: 2.0578073418209986
+Epoch 75, Subjects processed this epoch: 6029
+Epoch 75, Val Loss: 1.2009189355152625, Val MAE: 2.6118827387727332
+Epoch 75, Total subjects processed so far: 452175
+Epoch 76, Time: 190.84 seconds
+Epoch 76, Train Loss: 1.0273389671620388, Train MAE: 2.0784708374741845
+Epoch 76, Subjects processed this epoch: 6029
+Epoch 76, Val Loss: 1.2683060356864222, Val MAE: 2.8032485397951095
+Epoch 76, Total subjects processed so far: 458204
+Epoch 77, Time: 191.07 seconds
+Epoch 77, Train Loss: 1.026173648609723, Train MAE: 2.0677894824607295
+Epoch 77, Subjects processed this epoch: 6029
+Epoch 77, Val Loss: 1.1837228310328942, Val MAE: 2.521381202509374
+Epoch 77, Total subjects processed so far: 464233
+Epoch 78, Time: 189.12 seconds
+Epoch 78, Train Loss: 1.0107411633119658, Train MAE: 2.0170258787241147
+Epoch 78, Subjects processed this epoch: 6029
+Epoch 78, Val Loss: 1.2309311242015273, Val MAE: 2.685625048036928
+Epoch 78, Total subjects processed so far: 470262
+Epoch 79, Time: 189.41 seconds
+Epoch 79, Train Loss: 1.014451185967625, Train MAE: 2.0388246165055492
+Epoch 79, Subjects processed this epoch: 6029
+Epoch 79, Val Loss: 1.2059914375896807, Val MAE: 2.6014699300130215
+Epoch 79, Total subjects processed so far: 476291
+Epoch 80, Time: 191.54 seconds
+Epoch 80, Train Loss: 1.018822622789312, Train MAE: 2.062153204546051
+Epoch 80, Subjects processed this epoch: 6029
+Epoch 80, Val Loss: 1.1884613721459, Val MAE: 2.5091744209807594
+Epoch 80, Total subjects processed so far: 482320
+Epoch 81, Time: 191.81 seconds
+Epoch 81, Train Loss: 1.0140392924967747, Train MAE: 2.054802738245349
+Epoch 81, Subjects processed this epoch: 6029
+Epoch 81, Val Loss: 1.1995612057270828, Val MAE: 2.526813274548377
+Epoch 81, Total subjects processed so far: 488349
+Epoch 82, Time: 190.06 seconds
+Epoch 82, Train Loss: 1.0112717742945219, Train MAE: 2.0351976146647415
+Epoch 82, Subjects processed this epoch: 6029
+Epoch 82, Val Loss: 1.2019007045913626, Val MAE: 2.522870324217243
+Epoch 82, Total subjects processed so far: 494378
+Epoch 83, Time: 190.88 seconds
+Epoch 83, Train Loss: 1.0031144796853357, Train MAE: 2.0305149329258856
+Epoch 83, Subjects processed this epoch: 6029
+Epoch 83, Val Loss: 1.2043284288159124, Val MAE: 2.617932110774664
+Epoch 83, Total subjects processed so far: 500407
+Epoch 84, Time: 189.90 seconds
+Epoch 84, Train Loss: 0.9880927711013774, Train MAE: 1.9840036676037514
+Epoch 84, Subjects processed this epoch: 6029
+Epoch 84, Val Loss: 1.2109966813414186, Val MAE: 2.6429243849530626
+Epoch 84, Total subjects processed so far: 506436
+Epoch 85, Time: 189.66 seconds
+Epoch 85, Train Loss: 0.9960743121664467, Train MAE: 1.9915461265199683
+Epoch 85, Subjects processed this epoch: 6029
+Epoch 85, Val Loss: 1.1906557397709951, Val MAE: 2.553869640444531
+Epoch 85, Total subjects processed so far: 512465
+Epoch 86, Time: 189.36 seconds
+Epoch 86, Train Loss: 0.9733489106757571, Train MAE: 1.943650540738904
+Epoch 86, Subjects processed this epoch: 6029
+Epoch 86, Val Loss: 1.240627212656869, Val MAE: 2.6787346579704745
+Epoch 86, Total subjects processed so far: 518494
+Epoch 87, Time: 190.38 seconds
+Epoch 87, Train Loss: 0.980226796406966, Train MAE: 1.9556210530025577
+Epoch 87, Subjects processed this epoch: 6029
+Epoch 87, Val Loss: 1.2732505627252437, Val MAE: 2.8350655083597434
+Epoch 87, Total subjects processed so far: 524523
+Epoch 88, Time: 190.12 seconds
+Epoch 88, Train Loss: 0.9799911058866061, Train MAE: 1.9651670902312925
+Epoch 88, Subjects processed this epoch: 6029
+Epoch 88, Val Loss: 1.2435374596604594, Val MAE: 2.767392030880775
+Epoch 88, Total subjects processed so far: 530552
+Epoch 89, Time: 189.06 seconds
+Epoch 89, Train Loss: 0.9771909425998556, Train MAE: 1.9611104503702437
+Epoch 89, Subjects processed this epoch: 6029
+Epoch 89, Val Loss: 1.223329986135165, Val MAE: 2.6508912642208147
+Epoch 89, Total subjects processed so far: 536581
+Epoch 90, Time: 190.85 seconds
+Epoch 90, Train Loss: 0.9723277608975175, Train MAE: 1.9446770947807963
+Epoch 90, Subjects processed this epoch: 6029
+Epoch 90, Val Loss: 1.2133185675850622, Val MAE: 2.6376891358693433
+Epoch 90, Total subjects processed so far: 542610
+Epoch 91, Time: 189.45 seconds
+Epoch 91, Train Loss: 0.9083979613584928, Train MAE: 1.763824275555597
+Epoch 91, Subjects processed this epoch: 6029
+Epoch 91, Val Loss: 1.1624054307187046, Val MAE: 2.481589512648406
+Epoch 91, Total subjects processed so far: 548639
+Modelo guardado en best_model.p
+Epoch 92, Time: 191.22 seconds
+Epoch 92, Train Loss: 0.894738338195993, Train MAE: 1.7224791246054985
+Epoch 92, Subjects processed this epoch: 6029
+Epoch 92, Val Loss: 1.158677300369298, Val MAE: 2.4619058780905623
+Epoch 92, Total subjects processed so far: 554668
+Modelo guardado en best_model.p
+Epoch 93, Time: 190.65 seconds
+Epoch 93, Train Loss: 0.8902679963200415, Train MAE: 1.714439006926846
+Epoch 93, Subjects processed this epoch: 6029
+Epoch 93, Val Loss: 1.1910811955178227, Val MAE: 2.590632679786211
+Epoch 93, Total subjects processed so far: 560697
+Epoch 94, Time: 191.36 seconds
+Epoch 94, Train Loss: 0.8846166990005685, Train MAE: 1.7003544685707792
+Epoch 94, Subjects processed this epoch: 6029
+Epoch 94, Val Loss: 1.1782415625121858, Val MAE: 2.5513233403806335
+Epoch 94, Total subjects processed so far: 566726
+Epoch 95, Time: 189.14 seconds
+Epoch 95, Train Loss: 0.8758458129923287, Train MAE: 1.6755769286067164
+Epoch 95, Subjects processed this epoch: 6029
+Epoch 95, Val Loss: 1.1620387848880556, Val MAE: 2.4727392174285137
+Epoch 95, Total subjects processed so far: 572755
+Epoch 96, Time: 191.47 seconds
+Epoch 96, Train Loss: 0.8733313555584662, Train MAE: 1.6665507228659073
+Epoch 96, Subjects processed this epoch: 6029
+Epoch 96, Val Loss: 1.214016866904718, Val MAE: 2.6546836367948563
+Epoch 96, Total subjects processed so far: 578784
+Epoch 97, Time: 189.76 seconds
+Epoch 97, Train Loss: 0.8670025324789852, Train MAE: 1.6585136123222126
+Epoch 97, Subjects processed this epoch: 6029
+Epoch 97, Val Loss: 1.1655403761952012, Val MAE: 2.489672064840058
+Epoch 97, Total subjects processed so far: 584813
+Epoch 98, Time: 191.02 seconds
+Epoch 98, Train Loss: 0.8722309701796868, Train MAE: 1.6747888341443267
+Epoch 98, Subjects processed this epoch: 6029
+Epoch 98, Val Loss: 1.1732284255601741, Val MAE: 2.5182947599151984
+Epoch 98, Total subjects processed so far: 590842
+Epoch 99, Time: 191.46 seconds
+Epoch 99, Train Loss: 0.854271615610831, Train MAE: 1.6283969167512033
+Epoch 99, Subjects processed this epoch: 6029
+Epoch 99, Val Loss: 1.1962868184955031, Val MAE: 2.6096797741783977
+Epoch 99, Total subjects processed so far: 596871
+Epoch 100, Time: 191.64 seconds
+Epoch 100, Train Loss: 0.8561696569072157, Train MAE: 1.637553406586381
+Epoch 100, Subjects processed this epoch: 6029
+Epoch 100, Val Loss: 1.17290014801202, Val MAE: 2.524988415447283
+Epoch 100, Total subjects processed so far: 602900
+Epoch 101, Time: 189.50 seconds
+Epoch 101, Train Loss: 0.8508041044128984, Train MAE: 1.6325245577662952
+Epoch 101, Subjects processed this epoch: 6029
+Epoch 101, Val Loss: 1.1496692465411291, Val MAE: 2.4259297561645505
+Epoch 101, Total subjects processed so far: 608929
+Modelo guardado en best_model.p
+Epoch 102, Time: 191.65 seconds
+Epoch 102, Train Loss: 0.8476057027315904, Train MAE: 1.610940632104241
+Epoch 102, Subjects processed this epoch: 6029
+Epoch 102, Val Loss: 1.1772887618453414, Val MAE: 2.4924228858947743
+Epoch 102, Total subjects processed so far: 614958
+Epoch 103, Time: 189.43 seconds
+Epoch 103, Train Loss: 0.8423016925073112, Train MAE: 1.6006336397277265
+Epoch 103, Subjects processed this epoch: 6029
+Epoch 103, Val Loss: 1.2750546231313988, Val MAE: 2.707511630941321
+Epoch 103, Total subjects processed so far: 620987
+Epoch 104, Time: 191.16 seconds
+Epoch 104, Train Loss: 0.8410449759239227, Train MAE: 1.6072980581177319
+Epoch 104, Subjects processed this epoch: 6029
+Epoch 104, Val Loss: 1.187013657004745, Val MAE: 2.5493326183601672
+Epoch 104, Total subjects processed so far: 627016
+Epoch 105, Time: 191.41 seconds
+Epoch 105, Train Loss: 0.8332908600964027, Train MAE: 1.5855334952680764
+Epoch 105, Subjects processed this epoch: 6029
+Epoch 105, Val Loss: 1.397185551347556, Val MAE: 3.110092579288247
+Epoch 105, Total subjects processed so far: 633045
+Epoch 106, Time: 191.43 seconds
+Epoch 106, Train Loss: 0.8351269750917621, Train MAE: 1.5832427378839131
+Epoch 106, Subjects processed this epoch: 6029
+Epoch 106, Val Loss: 1.1569001503564693, Val MAE: 2.459949900897933
+Epoch 106, Total subjects processed so far: 639074
+Epoch 107, Time: 191.59 seconds
+Epoch 107, Train Loss: 0.8357825305322754, Train MAE: 1.590933704694954
+Epoch 107, Subjects processed this epoch: 6029
+Epoch 107, Val Loss: 1.1820318748553593, Val MAE: 2.5229051495775767
+Epoch 107, Total subjects processed so far: 645103
+Epoch 108, Time: 190.69 seconds
+Epoch 108, Train Loss: 0.8246619931424645, Train MAE: 1.576816003030429
+Epoch 108, Subjects processed this epoch: 6029
+Epoch 108, Val Loss: 1.20808865737032, Val MAE: 2.6241088679984763
+Epoch 108, Total subjects processed so far: 651132
+Epoch 109, Time: 192.99 seconds
+Epoch 109, Train Loss: 0.8256417861509703, Train MAE: 1.573229123457038
+Epoch 109, Subjects processed this epoch: 6029
+Epoch 109, Val Loss: 1.1626943714088864, Val MAE: 2.473634301409309
+Epoch 109, Total subjects processed so far: 657161
+Epoch 110, Time: 190.28 seconds
+Epoch 110, Train Loss: 0.8266151708696502, Train MAE: 1.573578941704426
+Epoch 110, Subjects processed this epoch: 6029
+Epoch 110, Val Loss: 1.1578992494830378, Val MAE: 2.4562500435629
+Epoch 110, Total subjects processed so far: 663190
+Entrenamiento finalizado
