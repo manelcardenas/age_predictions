@@ -104,6 +104,10 @@ best_model_path = 'best_model.p'
 def calculate_mae(predictions, targets):
     return torch.mean(torch.abs(predictions - targets))
 
+import torch.nn as nn
+
+mae_loss = nn.L1Loss()
+
 def adjust_learning_rate(optimizer, epoch):
     lr = 0.01 * (0.3 ** (epoch // 30))  # Multiplicar por 0.3 cada 30 épocas
     for param_group in optimizer.param_groups:
@@ -140,6 +144,7 @@ for epoch in range(num_epochs):
         preds = torch.tensor(preds)
         preds_rounded = torch.round(preds * 100) / 100  
         mae = calculate_mae(preds_rounded, age_real)
+        #mae = mae_loss(preds_rounded, age_real)
         loss = my_KLDivLoss(x, age_dist)
         loss.backward()
 
@@ -197,6 +202,7 @@ for epoch in range(num_epochs):
             preds = torch.tensor(preds)
             preds_rounded = torch.round(preds * 100) / 100  # Redondear a dos decimales
             mae = calculate_mae(preds_rounded, age_real)  
+            #mae = mae_loss(preds_rounded, age_real)
             loss = my_KLDivLoss(x, age_dist)
             
             val_loss += loss.item()
