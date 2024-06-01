@@ -1,0 +1,1 @@
+{"available_memory": 369846587392, "used_memory": 25127317504, "memory_percent": 8.5, "_timestamp": 1717170495.4424589, "_runtime": 26555.011945962906, "_step": 83159, "train_loss": 0.7037887497352985, "train_mae": 1.3966528709067594, "val_loss": 1.143846090193148, "val_mae": 2.4216357602013487, "_wandb": {"runtime": 26554}}

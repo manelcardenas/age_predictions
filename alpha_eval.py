@@ -35,7 +35,7 @@ for _, row in participants.iterrows():
     sex = row['Sexo']
     age = row['Edad_CI']
 
-    if sex == 2.0: #man=1, woman=2
+    if sex == 1.0: #man=1, woman=2
         continue  # Saltar si el sexo es 1
 
     # Find the folder corresponding to the participant
@@ -81,7 +81,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model = CNNmodel().to(device)   
 
 # Cargar el state_dict guardado
-state_dict = torch.load('best_models/best_model_man.p')
+state_dict = torch.load('best_models/best_model_female_DA_2.p')
 
 # Crear un nuevo state_dict en el que las claves no tienen el prefijo "module."
 new_state_dict = OrderedDict()
@@ -104,7 +104,8 @@ for i, subject_info in enumerate(cropped_images[:168]):
     data = subject_info['data']
     age = subject_info['Edad_CI']
 
-    data = data / data.mean()
+     # Normalización Z de los datos MRI
+    data = (data - np.mean(data)) / np.std(data)
     data = data[np.newaxis, np.newaxis, ...]
     input_data = torch.tensor(data, dtype=torch.float32).to(device)
 

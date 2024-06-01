@@ -77,4 +77,26 @@ def get_age_distribution(h5_path, age_range=[42, 82], age_step=1, sigma=1):
 
     return age_dist_array, keys, bin_center_list
 
+class RandomShift:
+    def __init__(self, max_shift=2 , p=0.5):
+        self.max_shift = max_shift
+        self.p = p
+
+    def __call__(self, mri_data_tensor):
+        if random.random() < self.p:
+            shift = np.random.randint(-self.max_shift, self.max_shift + 1, size=3)
+            mri_data_tensor = np.roll(mri_data_tensor.numpy(), shift, axis=(1, 2, 3))
+            mri_data_tensor = torch.from_numpy(mri_data_tensor).float()
+        return mri_data_tensor
+
+
+
+class RandomMirror:
+    def __init__(self, p=0.5):
+        self.p = p
+    def __call__(self, mri_data_tensor):
+        if random.random() < self.p:
+            mri_data_tensor = torch.flip(mri_data_tensor, dims=[1])  # Flip along the sagittal plane
+        return mri_data_tensor
+
 

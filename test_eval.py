@@ -11,7 +11,7 @@ from model.model import CNNmodel
 from m_utils.data_transform import num2vect
 from model.mri_dataset import MRIDataset
 
-h5_path = '/mnt/work/datasets/UKBiobank/MN_females_data.h5'
+h5_path = '/mnt/work/datasets/UKBiobank/MN_males_data.h5'
 
 save_dir = 'subjects_data'
 os.makedirs(save_dir, exist_ok=True)
@@ -49,7 +49,7 @@ print(f'Number of samples in the test set: {len(dataset_test)}')
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model = CNNmodel()
 # Cargar el state_dict guardado
-state_dict = torch.load('best_models/best_model_woman.p')
+state_dict = torch.load('best_models/best_model_male_DA.p')
 
 # Crear un nuevo state_dict en el que las claves no tienen el prefijo "module."
 from collections import OrderedDict

@@ -1,17 +1,27 @@
+srun: job 47640 queued and waiting for resources
+srun: job 47640 has been allocated resources
 =====================================================================
- SLURM_JOB_ID        = 43663
- SLURM_NODE          = gpic12
+ SLURM_JOB_ID        = 47640
+ SLURM_NODE          = gpic09
  SLURM_JOB_PARTITION = gpi.compute
  You can monitor your Job here: 
- https://dash.tsc.upc.edu:3000/d/ediwvcrdqru9sf/slurm-job-details?orgId=1&var-partition=gpi&var-user=joan.manel.cardenas&var-slurmjobid_id=43663&from=now-24h&to=now
+ https://dash.tsc.upc.edu:3000/d/ediwvcrdqru9sf/slurm-job-details?orgId=1&var-partition=gpi&var-user=joan.manel.cardenas&var-slurmjobid_id=47640&from=now-24h&to=now
 =====================================================================
 Number of samples in the test set: 1723
-/home/usuaris/imatge/joan.manel.cardenas/.local/lib/python3.10/site-packages/torch/nn/modules/module.py:1352: UserWarning: Using a non-full backward hook when the forward contains multiple autograd Nodes is deprecated and will be removed in future versions. This hook will be missing some grad_input. Please use register_full_backward_hook to get the documented behavior.
-  warnings.warn("Using a non-full backward hook when the forward contains multiple autograd Nodes "
-Traceback (most recent call last):
-  File "/home/usuaris/imatge/joan.manel.cardenas/age_predictions/interpret.py", line 141, in <module>
-    heatmap = grad_cam(input_sample)
-  File "/home/usuaris/imatge/joan.manel.cardenas/age_predictions/interpret.py", line 92, in __call__
-    activations = self.activations.squeeze().cpu().numpy()
-RuntimeError: Can't call numpy() on Tensor that requires grad. Use tensor.detach().numpy() instead.
-srun: error: gpic12: task 0: Exited with exit code 1
+Test Loss: 1.088739541783557, Test MAE: 2.2639059949488494
+Shape of heatmap for subject 1831530: (5, 192, 160)
+Shape of inputs: torch.Size([1, 1, 160, 192, 160])
+Range of values in mid_slice before normalization: 0.07329767942428589 to 0.7065069675445557
+Shape of heatmap for subject 4438173: (5, 192, 160)
+Shape of inputs: torch.Size([1, 1, 160, 192, 160])
+Range of values in mid_slice before normalization: 0.0 to 0.7508498430252075
+Shape of heatmap for subject 4011719: (5, 192, 160)
+Shape of inputs: torch.Size([1, 1, 160, 192, 160])
+Range of values in mid_slice before normalization: 0.0 to 0.6834824085235596
+Shape of heatmap for subject 2822113: (5, 192, 160)
+Shape of inputs: torch.Size([1, 1, 160, 192, 160])
+Range of values in mid_slice before normalization: 0.0 to 0.8074355721473694
+Shape of heatmap for subject 3344485: (5, 192, 160)
+Shape of inputs: torch.Size([1, 1, 160, 192, 160])
+Range of values in mid_slice before normalization: 0.0 to 0.8251631855964661
+GradCam results for the first 5 subjects are saved in the 'subjects_data' directory.

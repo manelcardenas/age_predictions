@@ -1,0 +1,14 @@
+
+CUDA is available: True
+Using 5 GPUs for model parallelization.
+Epoch 1, Time: 2003.23 seconds
+Epoch 1, Train Loss: 1.8969282798805034, Train MAE: 5.650065019071258
+Epoch 1, Subjects processed this epoch: 6029
+Epoch 1, Val Loss: 3.131410002708435, Val MAE: 8.547002408062971
+Epoch 1, Total subjects processed so far: 6029
+Modelo guardado en best_model.p
+Epoch 2, Time: 1983.27 seconds
+Epoch 2, Train Loss: 1.8190790025878016, Train MAE: 5.3082739175143825
+Epoch 2, Subjects processed this epoch: 6029
+Epoch 2, Val Loss: 3.2649063203069897, Val MAE: 8.448692239831992
+Epoch 2, Total subjects processed so far: 12058

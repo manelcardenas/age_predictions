@@ -26,34 +26,10 @@ wandb.init(project='Brain_age', entity='manelcardenas')
 
 # Ruta al archivo .h5 de mujeres
 #h5_path = '/home/usuaris/imatge/joan.manel.cardenas/MN_females_data.h5'
-h5_path = '/mnt/work/datasets/UKBiobank/MN_females_data.h5'
+h5_path = '/mnt/work/datasets/UKBiobank/MN_males_data.h5'
 
 save_dir = 'subjects_data'
 os.makedirs(save_dir, exist_ok=True)
-
-import numpy as np
-import torch
-
-import numpy as np
-import torch
-
-class RandomShift:
-    def __init__(self, max_shift=2):
-        self.max_shift = max_shift
-
-    def __call__(self, mri_data_tensor):
-        shift = np.random.randint(-self.max_shift, self.max_shift + 1, size=3)
-        mri_data_tensor = np.roll(mri_data_tensor, shift, axis=(1, 2, 3))
-        return torch.from_numpy(mri_data_tensor).float()
-
-import random
-import torch
-
-class RandomMirror:
-    def __call__(self, mri_data_tensor):
-        if random.random() > 0.5:
-            mri_data_tensor = torch.flip(mri_data_tensor, dims=[3])  # Flip along the width axis
-        return mri_data_tensor
 
 
    
@@ -63,8 +39,8 @@ age_dist_array, keys, bin_center_list = get_age_distribution(h5_path)
 from torchvision.transforms import Compose
 
 train_transform = Compose([
-    RandomShift(max_shift=2),
-    RandomMirror()
+    RandomShift(max_shift=2, p=0.5),
+    RandomMirror(p=0.5) 
 ])
 
 # Dividir los datos

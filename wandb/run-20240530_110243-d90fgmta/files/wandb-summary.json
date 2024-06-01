@@ -1,0 +1,1 @@
+{"available_memory": 377561391104, "used_memory": 17329868800, "memory_percent": 6.6, "_timestamp": 1717064766.5382266, "_runtime": 5002.8141396045685, "_step": 1651, "train_loss": 1.8190790025878016, "train_mae": 5.3082739175143825, "val_loss": 3.2649063203069897, "val_mae": 8.448692239831992}
