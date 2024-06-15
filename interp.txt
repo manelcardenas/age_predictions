@@ -1,27 +1,17 @@
-srun: job 47640 queued and waiting for resources
-srun: job 47640 has been allocated resources
 =====================================================================
- SLURM_JOB_ID        = 47640
+ SLURM_JOB_ID        = 54197
  SLURM_NODE          = gpic09
  SLURM_JOB_PARTITION = gpi.compute
  You can monitor your Job here: 
- https://dash.tsc.upc.edu:3000/d/ediwvcrdqru9sf/slurm-job-details?orgId=1&var-partition=gpi&var-user=joan.manel.cardenas&var-slurmjobid_id=47640&from=now-24h&to=now
+ https://dash.tsc.upc.edu:3000/d/ediwvcrdqru9sf/slurm-job-details?orgId=1&var-partition=gpi&var-user=joan.manel.cardenas&var-slurmjobid_id=54197&from=now-24h&to=now
 =====================================================================
-Number of samples in the test set: 1723
-Test Loss: 1.088739541783557, Test MAE: 2.2639059949488494
-Shape of heatmap for subject 1831530: (5, 192, 160)
-Shape of inputs: torch.Size([1, 1, 160, 192, 160])
-Range of values in mid_slice before normalization: 0.07329767942428589 to 0.7065069675445557
-Shape of heatmap for subject 4438173: (5, 192, 160)
-Shape of inputs: torch.Size([1, 1, 160, 192, 160])
-Range of values in mid_slice before normalization: 0.0 to 0.7508498430252075
-Shape of heatmap for subject 4011719: (5, 192, 160)
-Shape of inputs: torch.Size([1, 1, 160, 192, 160])
-Range of values in mid_slice before normalization: 0.0 to 0.6834824085235596
-Shape of heatmap for subject 2822113: (5, 192, 160)
-Shape of inputs: torch.Size([1, 1, 160, 192, 160])
-Range of values in mid_slice before normalization: 0.0 to 0.8074355721473694
-Shape of heatmap for subject 3344485: (5, 192, 160)
-Shape of inputs: torch.Size([1, 1, 160, 192, 160])
-Range of values in mid_slice before normalization: 0.0 to 0.8251631855964661
-GradCam results for the first 5 subjects are saved in the 'subjects_data' directory.
+Número de muestras en el conjunto de prueba: 1632
+/home/usuaris/imatge/joan.manel.cardenas/.local/lib/python3.10/site-packages/captum/attr/_core/guided_backprop_deconvnet.py:64: UserWarning: Setting backward hooks on ReLU activations.The hooks will be removed after the attribution is finished
+  warnings.warn(
+Traceback (most recent call last):
+  File "/home/usuaris/imatge/joan.manel.cardenas/age_predictions/interpret.py", line 130, in <module>
+    visualize_guided_grad_cam(inputs, model, layer_name='conv_5')
+  File "/home/usuaris/imatge/joan.manel.cardenas/age_predictions/interpret.py", line 97, in visualize_guided_grad_cam
+    guided_gradcam = guided_grads * attention_map
+ValueError: operands could not be broadcast together with shapes (160,192,160) (5,6,5) 
+srun: error: gpic09: task 0: Exited with exit code 1

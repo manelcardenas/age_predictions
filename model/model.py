@@ -127,4 +127,5 @@ class CNNmodel(nn.Module):
         x_f = self.feature_extractor(x)
         x = self.classifier(x_f)
         x = F.log_softmax(x, dim=1)
-        return x, x_f
+        #return x, x_f
+        return x
