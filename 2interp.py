@@ -85,7 +85,7 @@ input_data.requires_grad = True  # Ensure the input tensor requires gradients
 model = CNNmodel()
 
 # 2. Load the pretrained model weights
-state_dict = torch.load('best_models/best_model_female_DA_2.p')
+state_dict = torch.load('best_models/best_model_female_DA_1.p')
 # Create a new state_dict without the 'module.' prefix
 new_state_dict = OrderedDict()
 for k, v in state_dict.items():
@@ -94,7 +94,7 @@ for k, v in state_dict.items():
 model.load_state_dict(new_state_dict)
 
 # 3. Create an instance of LayerGradCam
-layer_grad_cam = LayerGradCam(model, model.feature_extractor.conv_1)  # Using conv_1 as an example
+layer_grad_cam = LayerGradCam(model, model.feature_extractor.conv_5)  # Using conv_1 as an example
 
 # 4. Create an instance of GuidedBackprop
 guided_bp = GuidedBackprop(model)
@@ -117,7 +117,7 @@ for i in range(10):  # Visualize attention maps for the first 10 subjects
     guided_grads = guided_bp.attribute(input_data, target=1).squeeze().detach().numpy()
 
     # Combine Grad-CAM with Guided Backpropagation to get Guided Grad-CAM
-    guided_gradcam = guided_grads * attention_map_resized
+    guided_gradcam = guided_grads #* attention_map_resized
 
     # Select a central slice of the volume to display
     central_slice_z = input_data.squeeze().detach().numpy()[80, :, :]  # Central slice in the Z dimension

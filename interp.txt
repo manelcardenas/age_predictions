@@ -1,41 +1,523 @@
 =====================================================================
- SLURM_JOB_ID        = 54224
- SLURM_NODE          = gpic10
+ SLURM_JOB_ID        = 54504
+ SLURM_NODE          = gpic09
  SLURM_JOB_PARTITION = gpi.compute
  You can monitor your Job here: 
- https://dash.tsc.upc.edu:3000/d/ediwvcrdqru9sf/slurm-job-details?orgId=1&var-partition=gpi&var-user=joan.manel.cardenas&var-slurmjobid_id=54224&from=now-24h&to=now
+ https://dash.tsc.upc.edu:3000/d/ediwvcrdqru9sf/slurm-job-details?orgId=1&var-partition=gpi&var-user=joan.manel.cardenas&var-slurmjobid_id=54504&from=now-24h&to=now
 =====================================================================
-/home/usuaris/imatge/joan.manel.cardenas/.local/lib/python3.10/site-packages/captum/attr/_core/guided_backprop_deconvnet.py:64: UserWarning: Setting backward hooks on ReLU activations.The hooks will be removed after the attribution is finished
-  warnings.warn(
-Número de imágenes recortadas: 256
+Número de imágenes recortadas: 168
 Número de participantes: 450
-Info del participante 1: {'IdParticipante': '10026', 'Sexo': 2.0, 'Edad_CI': 70.95}
-Info del participante 2: {'IdParticipante': '10032', 'Sexo': 2.0, 'Edad_CI': 59.75}
-Info del participante 3: {'IdParticipante': '10034', 'Sexo': 2.0, 'Edad_CI': 52.44}
-Info del participante 4: {'IdParticipante': '10036', 'Sexo': 2.0, 'Edad_CI': 53.97}
-Info del participante 5: {'IdParticipante': '10040', 'Sexo': 2.0, 'Edad_CI': 57.92}
-Info del participante 6: {'IdParticipante': '10044', 'Sexo': 2.0, 'Edad_CI': 54.5}
-Info del participante 7: {'IdParticipante': '10057', 'Sexo': 2.0, 'Edad_CI': 69.22}
-Info del participante 8: {'IdParticipante': '10071', 'Sexo': 2.0, 'Edad_CI': 53.26}
-Info del participante 9: {'IdParticipante': '10079', 'Sexo': 2.0, 'Edad_CI': 56.22}
-Info del participante 10: {'IdParticipante': '10108', 'Sexo': 2.0, 'Edad_CI': 60.84}
-Dimensiones antes de squeeze: torch.Size([1, 1, 40, 48, 40])
-Dimensiones después de squeeze: (40, 48, 40)
-Dimensiones antes de squeeze: torch.Size([1, 1, 40, 48, 40])
-Dimensiones después de squeeze: (40, 48, 40)
-Dimensiones antes de squeeze: torch.Size([1, 1, 40, 48, 40])
-Dimensiones después de squeeze: (40, 48, 40)
-Dimensiones antes de squeeze: torch.Size([1, 1, 40, 48, 40])
-Dimensiones después de squeeze: (40, 48, 40)
-Dimensiones antes de squeeze: torch.Size([1, 1, 40, 48, 40])
-Dimensiones después de squeeze: (40, 48, 40)
-Dimensiones antes de squeeze: torch.Size([1, 1, 40, 48, 40])
-Dimensiones después de squeeze: (40, 48, 40)
-Dimensiones antes de squeeze: torch.Size([1, 1, 40, 48, 40])
-Dimensiones después de squeeze: (40, 48, 40)
-Dimensiones antes de squeeze: torch.Size([1, 1, 40, 48, 40])
-Dimensiones después de squeeze: (40, 48, 40)
-Dimensiones antes de squeeze: torch.Size([1, 1, 40, 48, 40])
-Dimensiones después de squeeze: (40, 48, 40)
-Dimensiones antes de squeeze: torch.Size([1, 1, 40, 48, 40])
-Dimensiones después de squeeze: (40, 48, 40)
+Info del participante 1: {'IdParticipante': '10065', 'Sexo': 1.0, 'Edad_CI': 49.97}
+Info del participante 2: {'IdParticipante': '10066', 'Sexo': 1.0, 'Edad_CI': 56.02}
+Info del participante 3: {'IdParticipante': '10130', 'Sexo': 1.0, 'Edad_CI': 57.99}
+Info del participante 4: {'IdParticipante': '10145', 'Sexo': 1.0, 'Edad_CI': 59.33}
+Info del participante 5: {'IdParticipante': '10162', 'Sexo': 1.0, 'Edad_CI': 67.34}
+Info del participante 6: {'IdParticipante': '10176', 'Sexo': 1.0, 'Edad_CI': 70.33}
+Info del participante 7: {'IdParticipante': '10183', 'Sexo': 1.0, 'Edad_CI': 67.46}
+Info del participante 8: {'IdParticipante': '10200', 'Sexo': 1.0, 'Edad_CI': 64.51}
+Info del participante 9: {'IdParticipante': '10222', 'Sexo': 1.0, 'Edad_CI': 59.26}
+Info del participante 10: {'IdParticipante': '10316', 'Sexo': 1.0, 'Edad_CI': 61.63}
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 1: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 2: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 3: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 4: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 5: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 6: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 7: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 8: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 9: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 10: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 11: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 12: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 13: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 14: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 15: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 16: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 17: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 18: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 19: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 20: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 21: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 22: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 23: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 24: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 25: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 26: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 27: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 28: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 29: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 30: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 31: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 32: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 33: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 34: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 35: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 36: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 37: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 38: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 39: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 40: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 41: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 42: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 43: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 44: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 45: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 46: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 47: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 48: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 49: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 50: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 51: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 52: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 53: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 54: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 55: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 56: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 57: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 58: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 59: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 60: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 61: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 62: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 63: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 64: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 65: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 66: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 67: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 68: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 69: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 70: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 71: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 72: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 73: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 74: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 75: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 76: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 77: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 78: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 79: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 80: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 81: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 82: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 83: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 84: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 85: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 86: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 87: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 88: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 89: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 90: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 91: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 92: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 93: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 94: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 95: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 96: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 97: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 98: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 99: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 100: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 101: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 102: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 103: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 104: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 105: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 106: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 107: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 108: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 109: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 110: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 111: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 112: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 113: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 114: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 115: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 116: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 117: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 118: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 119: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 120: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 121: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 122: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 123: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 124: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 125: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 126: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 127: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 128: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 129: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 130: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 131: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 132: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 133: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 134: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 135: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 136: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 137: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 138: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 139: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 140: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 141: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 142: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 143: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 144: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 145: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 146: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 147: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 148: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 149: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 150: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 151: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 152: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 153: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 154: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 155: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 156: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 157: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 158: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 159: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 160: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 161: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 162: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 163: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 164: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 165: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 166: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 167: 1
+Dimensiones después de squeeze: (5, 6, 5)
+Dimensiones antes de squeeze: torch.Size([1, 1, 5, 6, 5])
+Predicted class for subject 168: 1
+Dimensiones después de squeeze: (5, 6, 5)
