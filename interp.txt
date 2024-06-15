@@ -1,17 +1,41 @@
 =====================================================================
- SLURM_JOB_ID        = 54197
- SLURM_NODE          = gpic09
+ SLURM_JOB_ID        = 54224
+ SLURM_NODE          = gpic10
  SLURM_JOB_PARTITION = gpi.compute
  You can monitor your Job here: 
- https://dash.tsc.upc.edu:3000/d/ediwvcrdqru9sf/slurm-job-details?orgId=1&var-partition=gpi&var-user=joan.manel.cardenas&var-slurmjobid_id=54197&from=now-24h&to=now
+ https://dash.tsc.upc.edu:3000/d/ediwvcrdqru9sf/slurm-job-details?orgId=1&var-partition=gpi&var-user=joan.manel.cardenas&var-slurmjobid_id=54224&from=now-24h&to=now
 =====================================================================
-Número de muestras en el conjunto de prueba: 1632
 /home/usuaris/imatge/joan.manel.cardenas/.local/lib/python3.10/site-packages/captum/attr/_core/guided_backprop_deconvnet.py:64: UserWarning: Setting backward hooks on ReLU activations.The hooks will be removed after the attribution is finished
   warnings.warn(
-Traceback (most recent call last):
-  File "/home/usuaris/imatge/joan.manel.cardenas/age_predictions/interpret.py", line 130, in <module>
-    visualize_guided_grad_cam(inputs, model, layer_name='conv_5')
-  File "/home/usuaris/imatge/joan.manel.cardenas/age_predictions/interpret.py", line 97, in visualize_guided_grad_cam
-    guided_gradcam = guided_grads * attention_map
-ValueError: operands could not be broadcast together with shapes (160,192,160) (5,6,5) 
-srun: error: gpic09: task 0: Exited with exit code 1
+Número de imágenes recortadas: 256
+Número de participantes: 450
+Info del participante 1: {'IdParticipante': '10026', 'Sexo': 2.0, 'Edad_CI': 70.95}
+Info del participante 2: {'IdParticipante': '10032', 'Sexo': 2.0, 'Edad_CI': 59.75}
+Info del participante 3: {'IdParticipante': '10034', 'Sexo': 2.0, 'Edad_CI': 52.44}
+Info del participante 4: {'IdParticipante': '10036', 'Sexo': 2.0, 'Edad_CI': 53.97}
+Info del participante 5: {'IdParticipante': '10040', 'Sexo': 2.0, 'Edad_CI': 57.92}
+Info del participante 6: {'IdParticipante': '10044', 'Sexo': 2.0, 'Edad_CI': 54.5}
+Info del participante 7: {'IdParticipante': '10057', 'Sexo': 2.0, 'Edad_CI': 69.22}
+Info del participante 8: {'IdParticipante': '10071', 'Sexo': 2.0, 'Edad_CI': 53.26}
+Info del participante 9: {'IdParticipante': '10079', 'Sexo': 2.0, 'Edad_CI': 56.22}
+Info del participante 10: {'IdParticipante': '10108', 'Sexo': 2.0, 'Edad_CI': 60.84}
+Dimensiones antes de squeeze: torch.Size([1, 1, 40, 48, 40])
+Dimensiones después de squeeze: (40, 48, 40)
+Dimensiones antes de squeeze: torch.Size([1, 1, 40, 48, 40])
+Dimensiones después de squeeze: (40, 48, 40)
+Dimensiones antes de squeeze: torch.Size([1, 1, 40, 48, 40])
+Dimensiones después de squeeze: (40, 48, 40)
+Dimensiones antes de squeeze: torch.Size([1, 1, 40, 48, 40])
+Dimensiones después de squeeze: (40, 48, 40)
+Dimensiones antes de squeeze: torch.Size([1, 1, 40, 48, 40])
+Dimensiones después de squeeze: (40, 48, 40)
+Dimensiones antes de squeeze: torch.Size([1, 1, 40, 48, 40])
+Dimensiones después de squeeze: (40, 48, 40)
+Dimensiones antes de squeeze: torch.Size([1, 1, 40, 48, 40])
+Dimensiones después de squeeze: (40, 48, 40)
+Dimensiones antes de squeeze: torch.Size([1, 1, 40, 48, 40])
+Dimensiones después de squeeze: (40, 48, 40)
+Dimensiones antes de squeeze: torch.Size([1, 1, 40, 48, 40])
+Dimensiones después de squeeze: (40, 48, 40)
+Dimensiones antes de squeeze: torch.Size([1, 1, 40, 48, 40])
+Dimensiones después de squeeze: (40, 48, 40)
