@@ -1,9 +1,9 @@
 =====================================================================
- SLURM_JOB_ID        = 54258
- SLURM_NODE          = gpic10
+ SLURM_JOB_ID        = 54691
+ SLURM_NODE          = gpic09
  SLURM_JOB_PARTITION = gpi.compute
  You can monitor your Job here: 
- https://dash.tsc.upc.edu:3000/d/ediwvcrdqru9sf/slurm-job-details?orgId=1&var-partition=gpi&var-user=joan.manel.cardenas&var-slurmjobid_id=54258&from=now-24h&to=now
+ https://dash.tsc.upc.edu:3000/d/ediwvcrdqru9sf/slurm-job-details?orgId=1&var-partition=gpi&var-user=joan.manel.cardenas&var-slurmjobid_id=54691&from=now-24h&to=now
 =====================================================================
 /home/usuaris/imatge/joan.manel.cardenas/age_predictions/alpha_eval.py:133: RuntimeWarning: More than 20 figures have been opened. Figures created through the pyplot interface (`matplotlib.pyplot.figure`) are retained until explicitly closed and may consume too much memory. (To control this warning, see the rcParam `figure.max_open_warning`). Consider using `matplotlib.pyplot.close()`.
   plt.figure()
@@ -19,508 +19,172 @@ Info of participant 7: {'IdParticipante': '10057', 'Sexo': 2.0, 'Edad_CI': 69.22
 Info of participant 8: {'IdParticipante': '10071', 'Sexo': 2.0, 'Edad_CI': 53.26}
 Info of participant 9: {'IdParticipante': '10079', 'Sexo': 2.0, 'Edad_CI': 56.22}
 Info of participant 10: {'IdParticipante': '10108', 'Sexo': 2.0, 'Edad_CI': 60.84}
-Participant 1 - Predicted Age: 62.53
-Participant 1 - Real Age: 70.95
-Participant 1 - Loss: 2.8589935302734375
-Participant 2 - Predicted Age: 55.42
-Participant 2 - Real Age: 59.75
-Participant 2 - Loss: 1.6036676168441772
-Participant 3 - Predicted Age: 55.35
-Participant 3 - Real Age: 52.44
-Participant 3 - Loss: 1.1504569053649902
-Participant 4 - Predicted Age: 55.98
-Participant 4 - Real Age: 53.97
-Participant 4 - Loss: 1.1151131391525269
-Participant 5 - Predicted Age: 53.42
-Participant 5 - Real Age: 57.92
-Participant 5 - Loss: 1.67801833152771
-Participant 6 - Predicted Age: 53.89
-Participant 6 - Real Age: 54.5
-Participant 6 - Loss: 0.9543138146400452
-Participant 7 - Predicted Age: 57.99
-Participant 7 - Real Age: 69.22
-Participant 7 - Loss: 4.228728294372559
-Participant 8 - Predicted Age: 53.57
-Participant 8 - Real Age: 53.26
-Participant 8 - Loss: 0.847299337387085
-Participant 9 - Predicted Age: 52.38
-Participant 9 - Real Age: 56.22
-Participant 9 - Loss: 1.6345406770706177
-Participant 10 - Predicted Age: 55.25
-Participant 10 - Real Age: 60.84
-Participant 10 - Loss: 1.888261079788208
-Participant 11 - Predicted Age: 52.15
-Participant 11 - Real Age: 52.59
-Participant 11 - Loss: 0.6705541014671326
-Participant 12 - Predicted Age: 52.45
-Participant 12 - Real Age: 51.89
-Participant 12 - Loss: 0.6070184707641602
-Participant 13 - Predicted Age: 64.68
-Participant 13 - Real Age: 65.23
-Participant 13 - Loss: 0.8484653830528259
-Participant 14 - Predicted Age: 67.96
-Participant 14 - Real Age: 66.89
-Participant 14 - Loss: 1.4852573871612549
-Participant 15 - Predicted Age: 54.21
-Participant 15 - Real Age: 56.06
-Participant 15 - Loss: 0.9880176782608032
-Participant 16 - Predicted Age: 65.45
-Participant 16 - Real Age: 67.56
-Participant 16 - Loss: 1.1880524158477783
-Participant 17 - Predicted Age: 53.65
-Participant 17 - Real Age: 57.41
-Participant 17 - Loss: 1.4221060276031494
-Participant 18 - Predicted Age: 61.65
-Participant 18 - Real Age: 64.25
-Participant 18 - Loss: 1.2259407043457031
-Participant 19 - Predicted Age: 54.11
-Participant 19 - Real Age: 63.73
-Participant 19 - Loss: 3.6120526790618896
-Participant 20 - Predicted Age: 53.19
-Participant 20 - Real Age: 58.14
-Participant 20 - Loss: 1.8231499195098877
-Participant 21 - Predicted Age: 55.65
-Participant 21 - Real Age: 60.1
-Participant 21 - Loss: 1.5652061700820923
-Participant 22 - Predicted Age: 64.00
-Participant 22 - Real Age: 65.38
-Participant 22 - Loss: 1.0780130624771118
-Participant 23 - Predicted Age: 57.25
-Participant 23 - Real Age: 62.89
-Participant 23 - Loss: 1.8266699314117432
-Participant 24 - Predicted Age: 53.08
-Participant 24 - Real Age: 52.93
-Participant 24 - Loss: 0.7796655297279358
-Participant 25 - Predicted Age: 58.98
-Participant 25 - Real Age: 60.29
-Participant 25 - Loss: 1.1912165880203247
-Participant 26 - Predicted Age: 59.06
-Participant 26 - Real Age: 63.67
-Participant 26 - Loss: 1.5706851482391357
-Participant 27 - Predicted Age: 53.44
-Participant 27 - Real Age: 59.94
-Participant 27 - Loss: 2.376216411590576
-Participant 28 - Predicted Age: 54.58
-Participant 28 - Real Age: 60.49
-Participant 28 - Loss: 2.0366125106811523
-Participant 29 - Predicted Age: 65.59
-Participant 29 - Real Age: 63.94
-Participant 29 - Loss: 1.0880988836288452
-Participant 30 - Predicted Age: 53.60
-Participant 30 - Real Age: 58.08
-Participant 30 - Loss: 1.6236768960952759
-Participant 31 - Predicted Age: 56.24
-Participant 31 - Real Age: 61.08
-Participant 31 - Loss: 1.6570546627044678
-Participant 32 - Predicted Age: 53.01
-Participant 32 - Real Age: 50.93
-Participant 32 - Loss: 0.781262218952179
-Participant 33 - Predicted Age: 54.57
-Participant 33 - Real Age: 59.09
-Participant 33 - Loss: 1.5754671096801758
-Participant 34 - Predicted Age: 59.49
-Participant 34 - Real Age: 65.9
-Participant 34 - Loss: 2.0919060707092285
-Participant 35 - Predicted Age: 55.00
-Participant 35 - Real Age: 54.86
-Participant 35 - Loss: 0.955949068069458
-Participant 36 - Predicted Age: 56.17
-Participant 36 - Real Age: 60.5
-Participant 36 - Loss: 1.513144612312317
-Participant 37 - Predicted Age: 53.19
-Participant 37 - Real Age: 56.95
-Participant 37 - Loss: 1.4213902950286865
-Participant 38 - Predicted Age: 61.43
-Participant 38 - Real Age: 65.85
-Participant 38 - Loss: 1.510990858078003
-Participant 39 - Predicted Age: 54.29
-Participant 39 - Real Age: 59.39
-Participant 39 - Loss: 1.7832531929016113
-Participant 40 - Predicted Age: 57.83
-Participant 40 - Real Age: 63.02
-Participant 40 - Loss: 1.694545865058899
-Participant 41 - Predicted Age: 63.33
-Participant 41 - Real Age: 69.64
-Participant 41 - Loss: 2.11548113822937
-Participant 42 - Predicted Age: 54.25
-Participant 42 - Real Age: 51.74
-Participant 42 - Loss: 0.9686523079872131
-Participant 43 - Predicted Age: 54.34
-Participant 43 - Real Age: 60.05
-Participant 43 - Loss: 2.0058999061584473
-Participant 44 - Predicted Age: 59.45
-Participant 44 - Real Age: 65.12
-Participant 44 - Loss: 1.8598122596740723
-Participant 45 - Predicted Age: 52.67
-Participant 45 - Real Age: 54.93
-Participant 45 - Loss: 1.0868780612945557
-Participant 46 - Predicted Age: 54.32
-Participant 46 - Real Age: 59.25
-Participant 46 - Loss: 1.7283717393875122
-Participant 47 - Predicted Age: 54.18
-Participant 47 - Real Age: 62.41
-Participant 47 - Loss: 3.03249192237854
-Participant 48 - Predicted Age: 52.95
-Participant 48 - Real Age: 53.78
-Participant 48 - Loss: 0.8616724014282227
-Participant 49 - Predicted Age: 53.20
-Participant 49 - Real Age: 54.31
-Participant 49 - Loss: 0.9224469661712646
-Participant 50 - Predicted Age: 61.09
-Participant 50 - Real Age: 64.92
-Participant 50 - Loss: 1.3769294023513794
-Participant 51 - Predicted Age: 54.82
-Participant 51 - Real Age: 60.81
-Participant 51 - Loss: 2.0509791374206543
-Participant 52 - Predicted Age: 55.50
-Participant 52 - Real Age: 55.36
-Participant 52 - Loss: 1.0300668478012085
-Participant 53 - Predicted Age: 61.70
-Participant 53 - Real Age: 67.98
-Participant 53 - Loss: 2.0244810581207275
-Participant 54 - Predicted Age: 57.40
-Participant 54 - Real Age: 65.29
-Participant 54 - Loss: 2.381077527999878
-Participant 55 - Predicted Age: 52.41
-Participant 55 - Real Age: 56.48
-Participant 55 - Loss: 1.656778335571289
-Participant 56 - Predicted Age: 61.57
-Participant 56 - Real Age: 66.89
-Participant 56 - Loss: 1.8006409406661987
-Participant 57 - Predicted Age: 59.80
-Participant 57 - Real Age: 64.47
-Participant 57 - Loss: 1.5801162719726562
-Participant 58 - Predicted Age: 56.70
-Participant 58 - Real Age: 55.44
-Participant 58 - Loss: 1.0530461072921753
-Participant 59 - Predicted Age: 55.25
-Participant 59 - Real Age: 61.65
-Participant 59 - Loss: 2.1514527797698975
-Participant 60 - Predicted Age: 60.13
-Participant 60 - Real Age: 62.26
-Participant 60 - Loss: 1.2085601091384888
-Participant 61 - Predicted Age: 57.83
-Participant 61 - Real Age: 66.61
-Participant 61 - Loss: 2.995609760284424
-Participant 62 - Predicted Age: 53.33
-Participant 62 - Real Age: 56.11
-Participant 62 - Loss: 1.281335711479187
-Participant 63 - Predicted Age: 56.66
-Participant 63 - Real Age: 58.48
-Participant 63 - Loss: 1.0883467197418213
-Participant 64 - Predicted Age: 52.61
-Participant 64 - Real Age: 58.59
-Participant 64 - Loss: 2.342550039291382
-Participant 65 - Predicted Age: 63.23
-Participant 65 - Real Age: 64.36
-Participant 65 - Loss: 0.9897667169570923
-Participant 66 - Predicted Age: 55.07
-Participant 66 - Real Age: 56.73
-Participant 66 - Loss: 1.103667974472046
-Participant 67 - Predicted Age: 53.04
-Participant 67 - Real Age: 58.26
-Participant 67 - Loss: 1.9565626382827759
-Participant 68 - Predicted Age: 57.17
-Participant 68 - Real Age: 63.87
-Participant 68 - Loss: 2.1375555992126465
-Participant 69 - Predicted Age: 58.67
-Participant 69 - Real Age: 66.9
-Participant 69 - Loss: 2.672727584838867
-Participant 70 - Predicted Age: 53.57
-Participant 70 - Real Age: 53.88
-Participant 70 - Loss: 0.8923783302307129
-Participant 71 - Predicted Age: 53.29
-Participant 71 - Real Age: 53.11
-Participant 71 - Loss: 0.8439052700996399
-Participant 72 - Predicted Age: 57.17
-Participant 72 - Real Age: 59.33
-Participant 72 - Loss: 1.1280630826950073
-Participant 73 - Predicted Age: 53.53
-Participant 73 - Real Age: 55.29
-Participant 73 - Loss: 1.0099291801452637
-Participant 74 - Predicted Age: 55.68
-Participant 74 - Real Age: 58.37
-Participant 74 - Loss: 1.1463143825531006
-Participant 75 - Predicted Age: 55.00
-Participant 75 - Real Age: 57.28
-Participant 75 - Loss: 1.2008771896362305
-Participant 76 - Predicted Age: 66.55
-Participant 76 - Real Age: 66.41
-Participant 76 - Loss: 0.8872765898704529
-Participant 77 - Predicted Age: 52.01
-Participant 77 - Real Age: 52.48
-Participant 77 - Loss: 0.6112335920333862
-Participant 78 - Predicted Age: 56.61
-Participant 78 - Real Age: 63.33
-Participant 78 - Loss: 2.159543991088867
-Participant 79 - Predicted Age: 56.28
-Participant 79 - Real Age: 59.75
-Participant 79 - Loss: 1.295870065689087
-Participant 80 - Predicted Age: 54.55
-Participant 80 - Real Age: 62.01
-Participant 80 - Loss: 2.6751675605773926
-Participant 81 - Predicted Age: 59.30
-Participant 81 - Real Age: 63.93
-Participant 81 - Loss: 1.5821199417114258
-Participant 82 - Predicted Age: 55.75
-Participant 82 - Real Age: 59.47
-Participant 82 - Loss: 1.3514647483825684
-Participant 83 - Predicted Age: 52.69
-Participant 83 - Real Age: 56.27
-Participant 83 - Loss: 1.465519666671753
-Participant 84 - Predicted Age: 59.36
-Participant 84 - Real Age: 63.24
-Participant 84 - Loss: 1.4327532052993774
-Participant 85 - Predicted Age: 52.01
-Participant 85 - Real Age: 56.37
-Participant 85 - Loss: 1.8386160135269165
-Participant 86 - Predicted Age: 52.38
-Participant 86 - Real Age: 55.84
-Participant 86 - Loss: 1.445703387260437
-Participant 87 - Predicted Age: 55.47
-Participant 87 - Real Age: 63.41
-Participant 87 - Loss: 2.6820805072784424
-Participant 88 - Predicted Age: 53.93
-Participant 88 - Real Age: 62.95
-Participant 88 - Loss: 3.4284586906433105
-Participant 89 - Predicted Age: 53.14
-Participant 89 - Real Age: 56.38
-Participant 89 - Loss: 1.3211420774459839
-Participant 90 - Predicted Age: 58.59
-Participant 90 - Real Age: 60.05
-Participant 90 - Loss: 1.0350244045257568
-Participant 91 - Predicted Age: 55.64
-Participant 91 - Real Age: 54.09
-Participant 91 - Loss: 1.0769457817077637
-Participant 92 - Predicted Age: 53.94
-Participant 92 - Real Age: 57.52
-Participant 92 - Loss: 1.4235279560089111
-Participant 93 - Predicted Age: 57.88
-Participant 93 - Real Age: 59.71
-Participant 93 - Loss: 1.2420018911361694
-Participant 94 - Predicted Age: 51.90
-Participant 94 - Real Age: 54.49
-Participant 94 - Loss: 1.2084983587265015
-Participant 95 - Predicted Age: 56.83
-Participant 95 - Real Age: 62.99
-Participant 95 - Loss: 1.9638088941574097
-Participant 96 - Predicted Age: 53.45
-Participant 96 - Real Age: 53.44
-Participant 96 - Loss: 0.8239315152168274
-Participant 97 - Predicted Age: 60.48
-Participant 97 - Real Age: 63.25
-Participant 97 - Loss: 1.2341543436050415
-Participant 98 - Predicted Age: 53.32
-Participant 98 - Real Age: 58.52
-Participant 98 - Loss: 1.9194259643554688
-Participant 99 - Predicted Age: 54.46
-Participant 99 - Real Age: 62.59
-Participant 99 - Loss: 3.010911464691162
-Participant 100 - Predicted Age: 53.80
-Participant 100 - Real Age: 58.29
-Participant 100 - Loss: 1.608299970626831
-Participant 101 - Predicted Age: 53.06
-Participant 101 - Real Age: 57.12
-Participant 101 - Loss: 1.5563217401504517
-Participant 102 - Predicted Age: 52.24
-Participant 102 - Real Age: 48.48
-Participant 102 - Loss: 1.2758519649505615
-Participant 103 - Predicted Age: 59.11
-Participant 103 - Real Age: 62.78
-Participant 103 - Loss: 1.334903597831726
-Participant 104 - Predicted Age: 55.41
-Participant 104 - Real Age: 56.02
-Participant 104 - Loss: 0.915739119052887
-Participant 105 - Predicted Age: 53.62
-Participant 105 - Real Age: 59.95
-Participant 105 - Loss: 2.283325433731079
-Participant 106 - Predicted Age: 60.28
-Participant 106 - Real Age: 68.14
-Participant 106 - Loss: 2.7862894535064697
-Participant 107 - Predicted Age: 52.15
-Participant 107 - Real Age: 53.8
-Participant 107 - Loss: 0.9214425086975098
-Participant 108 - Predicted Age: 54.08
-Participant 108 - Real Age: 55.14
-Participant 108 - Loss: 1.0210623741149902
-Participant 109 - Predicted Age: 59.28
-Participant 109 - Real Age: 64.38
-Participant 109 - Loss: 1.6743041276931763
-Participant 110 - Predicted Age: 53.08
-Participant 110 - Real Age: 54.58
-Participant 110 - Loss: 0.9570724368095398
-Participant 111 - Predicted Age: 53.09
-Participant 111 - Real Age: 58.26
-Participant 111 - Loss: 1.919400930404663
-Participant 112 - Predicted Age: 56.93
-Participant 112 - Real Age: 58.03
-Participant 112 - Loss: 0.9826234579086304
-Participant 113 - Predicted Age: 53.97
-Participant 113 - Real Age: 57.72
-Participant 113 - Loss: 1.370743751525879
-Participant 114 - Predicted Age: 53.03
-Participant 114 - Real Age: 59.94
-Participant 114 - Loss: 2.645512104034424
-Participant 115 - Predicted Age: 56.86
-Participant 115 - Real Age: 59.93
-Participant 115 - Loss: 1.3060005903244019
-Participant 116 - Predicted Age: 55.34
-Participant 116 - Real Age: 62.5
-Participant 116 - Loss: 2.406499147415161
-Participant 117 - Predicted Age: 57.25
-Participant 117 - Real Age: 59.49
-Participant 117 - Loss: 1.1297287940979004
-Participant 118 - Predicted Age: 54.03
-Participant 118 - Real Age: 57.0
-Participant 118 - Loss: 1.2024961709976196
-Participant 119 - Predicted Age: 54.81
-Participant 119 - Real Age: 60.93
-Participant 119 - Loss: 2.0807011127471924
-Participant 120 - Predicted Age: 52.73
-Participant 120 - Real Age: 52.78
-Participant 120 - Loss: 0.7217602729797363
-Participant 121 - Predicted Age: 52.49
-Participant 121 - Real Age: 49.25
-Participant 121 - Loss: 0.9757193326950073
-Participant 122 - Predicted Age: 54.97
-Participant 122 - Real Age: 55.5
-Participant 122 - Loss: 0.9934383034706116
-Participant 123 - Predicted Age: 54.55
-Participant 123 - Real Age: 63.67
-Participant 123 - Loss: 3.3110246658325195
-Participant 124 - Predicted Age: 58.56
-Participant 124 - Real Age: 67.13
-Participant 124 - Loss: 2.9765520095825195
-Participant 125 - Predicted Age: 63.19
-Participant 125 - Real Age: 66.27
-Participant 125 - Loss: 1.3473761081695557
-Participant 126 - Predicted Age: 52.58
-Participant 126 - Real Age: 58.48
-Participant 126 - Loss: 2.3141028881073
-Participant 127 - Predicted Age: 56.20
-Participant 127 - Real Age: 64.02
-Participant 127 - Loss: 2.6046535968780518
-Participant 128 - Predicted Age: 52.84
-Participant 128 - Real Age: 54.06
-Participant 128 - Loss: 0.9332343339920044
-Participant 129 - Predicted Age: 58.47
-Participant 129 - Real Age: 63.39
-Participant 129 - Loss: 1.6293035745620728
-Participant 130 - Predicted Age: 52.63
-Participant 130 - Real Age: 53.3
-Participant 130 - Loss: 0.8031023144721985
-Participant 131 - Predicted Age: 56.05
-Participant 131 - Real Age: 59.15
-Participant 131 - Loss: 1.1990537643432617
-Participant 132 - Predicted Age: 52.36
-Participant 132 - Real Age: 49.61
-Participant 132 - Loss: 0.874704897403717
-Participant 133 - Predicted Age: 55.45
-Participant 133 - Real Age: 59.62
-Participant 133 - Loss: 1.4458117485046387
-Participant 134 - Predicted Age: 59.70
-Participant 134 - Real Age: 64.0
-Participant 134 - Loss: 1.4493632316589355
-Participant 135 - Predicted Age: 52.98
-Participant 135 - Real Age: 57.62
-Participant 135 - Loss: 1.775071620941162
-Participant 136 - Predicted Age: 52.90
-Participant 136 - Real Age: 57.56
-Participant 136 - Loss: 1.7583177089691162
-Participant 137 - Predicted Age: 56.54
-Participant 137 - Real Age: 64.19
-Participant 137 - Loss: 2.4927024841308594
-Participant 138 - Predicted Age: 59.58
-Participant 138 - Real Age: 64.81
-Participant 138 - Loss: 1.6906298398971558
-Participant 139 - Predicted Age: 60.94
-Participant 139 - Real Age: 65.46
-Participant 139 - Loss: 1.5251727104187012
-Participant 140 - Predicted Age: 58.04
-Participant 140 - Real Age: 68.39
-Participant 140 - Loss: 3.6250815391540527
-Participant 141 - Predicted Age: 59.99
-Participant 141 - Real Age: 64.78
-Participant 141 - Loss: 1.5852036476135254
-Participant 142 - Predicted Age: 52.60
-Participant 142 - Real Age: 49.74
-Participant 142 - Loss: 0.894460916519165
-Participant 143 - Predicted Age: 61.58
-Participant 143 - Real Age: 62.81
-Participant 143 - Loss: 0.9965072870254517
-Participant 144 - Predicted Age: 55.24
-Participant 144 - Real Age: 54.31
-Participant 144 - Loss: 1.0059442520141602
-Participant 145 - Predicted Age: 56.35
-Participant 145 - Real Age: 62.48
-Participant 145 - Loss: 2.00578236579895
-Participant 146 - Predicted Age: 53.08
-Participant 146 - Real Age: 58.31
-Participant 146 - Loss: 1.9402754306793213
-Participant 147 - Predicted Age: 64.49
-Participant 147 - Real Age: 70.04
-Participant 147 - Loss: 1.7364290952682495
-Participant 148 - Predicted Age: 54.81
-Participant 148 - Real Age: 53.98
-Participant 148 - Loss: 0.9645083546638489
-Participant 149 - Predicted Age: 60.75
-Participant 149 - Real Age: 63.44
-Participant 149 - Loss: 1.2867176532745361
-Participant 150 - Predicted Age: 53.18
-Participant 150 - Real Age: 57.61
-Participant 150 - Loss: 1.7206555604934692
-Participant 151 - Predicted Age: 53.26
-Participant 151 - Real Age: 56.44
-Participant 151 - Loss: 1.3310915231704712
-Participant 152 - Predicted Age: 52.68
-Participant 152 - Real Age: 55.16
-Participant 152 - Loss: 1.1451295614242554
-Participant 153 - Predicted Age: 53.00
-Participant 153 - Real Age: 59.55
-Participant 153 - Loss: 2.4885942935943604
-Participant 154 - Predicted Age: 57.21
-Participant 154 - Real Age: 64.53
-Participant 154 - Loss: 2.2180001735687256
-Participant 155 - Predicted Age: 56.08
-Participant 155 - Real Age: 62.78
-Participant 155 - Loss: 2.1801295280456543
-Participant 156 - Predicted Age: 63.06
-Participant 156 - Real Age: 64.13
-Participant 156 - Loss: 1.0491777658462524
-Participant 157 - Predicted Age: 64.04
-Participant 157 - Real Age: 66.04
-Participant 157 - Loss: 0.9868550300598145
-Participant 158 - Predicted Age: 61.11
-Participant 158 - Real Age: 68.48
-Participant 158 - Loss: 2.1822941303253174
-Participant 159 - Predicted Age: 56.72
-Participant 159 - Real Age: 60.38
-Participant 159 - Loss: 1.3943827152252197
-Participant 160 - Predicted Age: 53.67
-Participant 160 - Real Age: 59.1
-Participant 160 - Loss: 1.9335845708847046
-Participant 161 - Predicted Age: 59.83
-Participant 161 - Real Age: 59.49
-Participant 161 - Loss: 1.1208219528198242
-Participant 162 - Predicted Age: 54.22
-Participant 162 - Real Age: 59.31
-Participant 162 - Loss: 1.7820847034454346
-Participant 163 - Predicted Age: 61.58
-Participant 163 - Real Age: 63.5
-Participant 163 - Loss: 1.0767595767974854
-Participant 164 - Predicted Age: 55.74
-Participant 164 - Real Age: 60.41
-Participant 164 - Loss: 1.6620866060256958
-Participant 165 - Predicted Age: 55.35
-Participant 165 - Real Age: 62.75
-Participant 165 - Loss: 2.641892671585083
-Participant 166 - Predicted Age: 60.25
-Participant 166 - Real Age: 58.7
-Participant 166 - Loss: 0.9417459964752197
-Participant 167 - Predicted Age: 55.74
-Participant 167 - Real Age: 62.63
-Participant 167 - Loss: 2.2121596336364746
-Participant 168 - Predicted Age: 62.11
-Participant 168 - Real Age: 68.45
-Participant 168 - Loss: 2.0455384254455566
+Real Age: 70.95, Predicted Age: 62.53456606029067
+Real Age: 59.75, Predicted Age: 55.42103918705834
+Real Age: 52.44, Predicted Age: 55.34718429144414
+Real Age: 53.97, Predicted Age: 55.978971487260424
+Real Age: 57.92, Predicted Age: 53.42119220492896
+Real Age: 54.5, Predicted Age: 53.89020696433727
+Real Age: 69.22, Predicted Age: 57.98987582429254
+Real Age: 53.26, Predicted Age: 53.572997777780984
+Real Age: 56.22, Predicted Age: 52.38121367144049
+Real Age: 60.84, Predicted Age: 55.25410508720961
+Real Age: 52.59, Predicted Age: 52.1546425423021
+Real Age: 51.89, Predicted Age: 52.445787868118714
+Real Age: 65.23, Predicted Age: 64.68111427660915
+Real Age: 66.89, Predicted Age: 67.95814553461969
+Real Age: 56.06, Predicted Age: 54.21268480745675
+Real Age: 67.56, Predicted Age: 65.45183325558901
+Real Age: 57.41, Predicted Age: 53.64518994208447
+Real Age: 64.25, Predicted Age: 61.65041996561922
+Real Age: 63.73, Predicted Age: 54.11001255285373
+Real Age: 58.14, Predicted Age: 53.192063855036395
+Real Age: 60.1, Predicted Age: 55.64724049267534
+Real Age: 65.38, Predicted Age: 63.99648217705544
+Real Age: 62.89, Predicted Age: 57.246772488666466
+Real Age: 52.93, Predicted Age: 53.07853168192378
+Real Age: 60.29, Predicted Age: 58.9804120833287
+Real Age: 63.67, Predicted Age: 59.060119360365206
+Real Age: 59.94, Predicted Age: 53.44176377569238
+Real Age: 60.49, Predicted Age: 54.579180539309164
+Real Age: 63.94, Predicted Age: 65.58879719398101
+Real Age: 58.08, Predicted Age: 53.59620279658702
+Real Age: 61.08, Predicted Age: 56.24095131539798
+Real Age: 50.93, Predicted Age: 53.01366408875765
+Real Age: 59.09, Predicted Age: 54.569377930860355
+Real Age: 65.9, Predicted Age: 59.48992686555721
+Real Age: 54.86, Predicted Age: 55.001773737232725
+Real Age: 60.5, Predicted Age: 56.17401851066097
+Real Age: 56.95, Predicted Age: 53.187722535314606
+Real Age: 65.85, Predicted Age: 61.428473920415854
+Real Age: 59.39, Predicted Age: 54.28829293180752
+Real Age: 63.02, Predicted Age: 57.82925275780144
+Real Age: 69.64, Predicted Age: 63.32854676208808
+Real Age: 51.74, Predicted Age: 54.247887083896785
+Real Age: 60.05, Predicted Age: 54.3411328997463
+Real Age: 65.12, Predicted Age: 59.45480359738576
+Real Age: 54.93, Predicted Age: 52.66576652505864
+Real Age: 59.25, Predicted Age: 54.321439373263274
+Real Age: 62.41, Predicted Age: 54.1843108932444
+Real Age: 53.78, Predicted Age: 52.94891898120113
+Real Age: 54.31, Predicted Age: 53.199871154267385
+Real Age: 64.92, Predicted Age: 61.09051893319702
+Real Age: 60.81, Predicted Age: 54.822119144624594
+Real Age: 55.36, Predicted Age: 55.4989604979055
+Real Age: 67.98, Predicted Age: 61.700088848068845
+Real Age: 65.29, Predicted Age: 57.39776195673039
+Real Age: 56.48, Predicted Age: 52.40524107481542
+Real Age: 66.89, Predicted Age: 61.57385329800309
+Real Age: 64.47, Predicted Age: 59.79871986148646
+Real Age: 55.44, Predicted Age: 56.700162030989304
+Real Age: 61.65, Predicted Age: 55.24765874811419
+Real Age: 62.26, Predicted Age: 60.12693218275672
+Real Age: 66.61, Predicted Age: 57.82775530619256
+Real Age: 56.11, Predicted Age: 53.33444618154317
+Real Age: 58.48, Predicted Age: 56.661272187076975
+Real Age: 58.59, Predicted Age: 52.6108613726783
+Real Age: 64.36, Predicted Age: 63.231773840787355
+Real Age: 56.73, Predicted Age: 55.06816502651782
+Real Age: 58.26, Predicted Age: 53.04275930689619
+Real Age: 63.87, Predicted Age: 57.171257487061666
+Real Age: 66.9, Predicted Age: 58.67166176115279
+Real Age: 53.88, Predicted Age: 53.56866988022739
+Real Age: 53.11, Predicted Age: 53.29432396864286
+Real Age: 59.33, Predicted Age: 57.16824407482636
+Real Age: 55.29, Predicted Age: 53.53148339240943
+Real Age: 58.37, Predicted Age: 55.67771445440303
+Real Age: 57.28, Predicted Age: 54.998906899563735
+Real Age: 66.41, Predicted Age: 66.5527710999304
+Real Age: 52.48, Predicted Age: 52.011354207714476
+Real Age: 63.33, Predicted Age: 56.61253206507536
+Real Age: 59.75, Predicted Age: 56.28108730508393
+Real Age: 62.01, Predicted Age: 54.5450942887619
+Real Age: 63.93, Predicted Age: 59.30350525025278
+Real Age: 59.47, Predicted Age: 55.7532958319498
+Real Age: 56.27, Predicted Age: 52.68865791797725
+Real Age: 63.24, Predicted Age: 59.35798011301085
+Real Age: 56.37, Predicted Age: 52.0069635441414
+Real Age: 55.84, Predicted Age: 52.37660291563407
+Real Age: 63.41, Predicted Age: 55.46563191250607
+Real Age: 62.95, Predicted Age: 53.92972815892608
+Real Age: 56.38, Predicted Age: 53.14014352154118
+Real Age: 60.05, Predicted Age: 58.59090794963413
+Real Age: 54.09, Predicted Age: 55.644619774771854
+Real Age: 57.52, Predicted Age: 53.93943557699822
+Real Age: 59.71, Predicted Age: 57.88378205464687
+Real Age: 54.49, Predicted Age: 51.90130265975131
+Real Age: 62.99, Predicted Age: 56.830088207905646
+Real Age: 53.44, Predicted Age: 53.44969243899868
+Real Age: 63.25, Predicted Age: 60.48360622435575
+Real Age: 58.52, Predicted Age: 53.31949040375912
+Real Age: 62.59, Predicted Age: 54.46006898863379
+Real Age: 58.29, Predicted Age: 53.79823752004813
+Real Age: 57.12, Predicted Age: 53.063851855504254
+Real Age: 48.48, Predicted Age: 52.243264528548025
+Real Age: 62.78, Predicted Age: 59.10979873125325
+Real Age: 56.02, Predicted Age: 55.41206669161329
+Real Age: 59.95, Predicted Age: 53.623209213759765
+Real Age: 68.14, Predicted Age: 60.278850577771664
+Real Age: 53.8, Predicted Age: 52.14834035538615
+Real Age: 55.14, Predicted Age: 54.082032778678695
+Real Age: 64.38, Predicted Age: 59.27912455343176
+Real Age: 54.58, Predicted Age: 53.08378867477313
+Real Age: 58.26, Predicted Age: 53.08798171314993
+Real Age: 58.03, Predicted Age: 56.92914745779126
+Real Age: 57.72, Predicted Age: 53.96855807827342
+Real Age: 59.94, Predicted Age: 53.02676525253264
+Real Age: 59.93, Predicted Age: 56.86302255911869
+Real Age: 62.5, Predicted Age: 55.33633653703146
+Real Age: 59.49, Predicted Age: 57.24596465246577
+Real Age: 57.0, Predicted Age: 54.02565660547043
+Real Age: 60.93, Predicted Age: 54.813980490325775
+Real Age: 52.78, Predicted Age: 52.7309554495605
+Real Age: 49.25, Predicted Age: 52.488520294406044
+Real Age: 55.5, Predicted Age: 54.96660617851012
+Real Age: 63.67, Predicted Age: 54.547774764887436
+Real Age: 67.13, Predicted Age: 58.56167698003992
+Real Age: 66.27, Predicted Age: 63.19270068476908
+Real Age: 58.48, Predicted Age: 52.58268160231273
+Real Age: 64.02, Predicted Age: 56.19582547205209
+Real Age: 54.06, Predicted Age: 52.841303759149014
+Real Age: 63.39, Predicted Age: 58.47377049141505
+Real Age: 53.3, Predicted Age: 52.63155890688904
+Real Age: 59.15, Predicted Age: 56.05112994276715
+Real Age: 49.61, Predicted Age: 52.359172578607286
+Real Age: 59.62, Predicted Age: 55.447102741120034
+Real Age: 64.0, Predicted Age: 59.70064789580647
+Real Age: 57.62, Predicted Age: 52.975877837143344
+Real Age: 57.56, Predicted Age: 52.90199551970727
+Real Age: 64.19, Predicted Age: 56.54314661996614
+Real Age: 64.81, Predicted Age: 59.5796155417338
+Real Age: 65.46, Predicted Age: 60.93745968095027
+Real Age: 68.39, Predicted Age: 58.0361607845407
+Real Age: 64.78, Predicted Age: 59.98798410122981
+Real Age: 49.74, Predicted Age: 52.60251960498135
+Real Age: 62.81, Predicted Age: 61.58323696919251
+Real Age: 54.31, Predicted Age: 55.24451758318173
+Real Age: 62.48, Predicted Age: 56.34746103134239
+Real Age: 58.31, Predicted Age: 53.08190407236725
+Real Age: 70.04, Predicted Age: 64.48787503794301
+Real Age: 53.98, Predicted Age: 54.811924444002216
+Real Age: 63.44, Predicted Age: 60.750671746674925
+Real Age: 57.61, Predicted Age: 53.177444398730586
+Real Age: 56.44, Predicted Age: 53.26183266535372
+Real Age: 55.16, Predicted Age: 52.68289748471034
+Real Age: 59.55, Predicted Age: 52.99808792833028
+Real Age: 64.53, Predicted Age: 57.20957276446279
+Real Age: 62.78, Predicted Age: 56.07545131941151
+Real Age: 64.13, Predicted Age: 63.06152411364019
+Real Age: 66.04, Predicted Age: 64.0379281337373
+Real Age: 68.48, Predicted Age: 61.11444751441013
+Real Age: 60.38, Predicted Age: 56.71586538598058
+Real Age: 59.1, Predicted Age: 53.67474955034777
+Real Age: 59.49, Predicted Age: 59.83298498467775
+Real Age: 59.31, Predicted Age: 54.21982689453216
+Real Age: 63.5, Predicted Age: 61.5764196421369
+Real Age: 60.41, Predicted Age: 55.73803549495642
+Real Age: 62.75, Predicted Age: 55.346421415737495
+Real Age: 58.7, Predicted Age: 60.246587956964504
+Real Age: 62.63, Predicted Age: 55.74231068714289
+Real Age: 68.45, Predicted Age: 62.111985672672745
 MAE: 3.99

@@ -5,10 +5,11 @@ import numpy as np
 
 from sklearn.model_selection import train_test_split
 from torch.utils.data import DataLoader
+from torchvision.transforms import Compose
 
 from model.loss import my_KLDivLoss
 from model.model import CNNmodel
-from m_utils.data_transform import num2vect
+from m_utils.data_transform import *
 from model.mri_dataset import MRIDataset
 
 h5_path = '/mnt/work/datasets/UKBiobank/MN_males_data.h5'
@@ -35,21 +36,29 @@ for age in ages:
 # Convertir la lista de distribuciones a un arreglo de numpy para facilitar el manejo posterior
 age_dist_array = np.array(age_dist_list)    
 
+train_transform = Compose([
+    RandomShift(max_shift=2, p=0.5),
+    RandomMirror(p=0.5) 
+])
 
 # Dividir los datos
-keys_train_val, keys_test, age_dist_train_val, age_dist_test = train_test_split(keys, age_dist_array, test_size=0.2, random_state=42)
+keys_train_val, keys_test, age_dist_train_val, age_dist_test = train_test_split(keys, age_dist_array, test_size=0.2, random_state=42)    #stratify=age_dist_train
+keys_train, keys_val, age_dist_train, age_dist_val = train_test_split(keys_train_val, age_dist_train_val, test_size=0.125, random_state=42)
 
-
+dataset_train = MRIDataset(h5_path, keys_train, age_dist_train, transform=train_transform)
+dataset_val = MRIDataset(h5_path, keys_val, age_dist_val)
 dataset_test = MRIDataset(h5_path, keys_test, age_dist_test)
 
 #dataloader
-test_loader = DataLoader(dataset_test, batch_size=8, shuffle=False, num_workers=2, pin_memory=True) #DROP_LAST 
+train_loader = DataLoader(dataset_train, batch_size=8, shuffle=True, num_workers=10, pin_memory=True) #DROP_LAST 
+val_loader = DataLoader(dataset_val, batch_size=8, shuffle=False, num_workers=10, pin_memory=True) #DROP_LAST 
+test_loader = DataLoader(dataset_test, batch_size=8, shuffle=False, num_workers=10, pin_memory=True) #DROP_LAST  
 
-print(f'Number of samples in the test set: {len(dataset_test)}')
+print(f'Number of samples in the test set: {len(dataset_val)}')
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model = CNNmodel()
 # Cargar el state_dict guardado
-state_dict = torch.load('best_models/best_model_male_DA.p')
+state_dict = torch.load('best_models/best_model_male_DA_1.p')
 
 # Crear un nuevo state_dict en el que las claves no tienen el prefijo "module."
 from collections import OrderedDict
@@ -73,7 +82,7 @@ test_mae = 0.0
 all_predictions = []
 all_real_ages = []
 with torch.no_grad():
-    for inputs, age_dist, age_real, subject_ids in test_loader:
+    for inputs, age_dist, age_real, subject_ids in val_loader:
         inputs = inputs.to(device)
         outputs = model(inputs)
         x = outputs[0].cpu().view(-1, 1, 40)
@@ -98,8 +107,8 @@ with torch.no_grad():
         all_real_ages.extend(age_real.tolist())
 
 # Calculando el loss de prueba promedio
-test_loss /= len(test_loader)
-test_mae /= len(test_loader)
+test_loss /= len(val_loader)
+test_mae /= len(val_loader)
 print(f'Test Loss: {test_loss}, Test MAE: {test_mae}')
 
 # Imprimir la edad real y la predicción para cada sujeto
