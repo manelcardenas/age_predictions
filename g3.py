@@ -11,6 +11,8 @@ from model.model import CNNmodel  # Ensure this import is correct
 import torch.nn.functional as F
 from scipy.ndimage import rotate
 
+from m_utils.data_transform import *
+
 # Define the center_crop function
 def center_crop(data, target_shape=(160, 192, 160)):
     current_shape = data.shape
@@ -45,7 +47,7 @@ for index, row in reorder_demogs.iterrows():
         continue  # Skip if sex is 1
 
     # Limitar la ejecución para fines de prueba
-    if int(subject_id) >= 1051000:
+    if int(subject_id) >= 1031000:
         break
 
     zip_filename = f"{subject_id}_20252_2_0.zip"
@@ -102,13 +104,27 @@ os.makedirs(output_dir, exist_ok=True)
 
 mean_attention_map_sum = np.zeros((160, 192, 160), dtype=np.float64)
 
-for i in range(len(cropped_images)):  # Visualize attention maps for the first 10 subjects
-    input_data = torch.tensor(cropped_images[i]['data']).unsqueeze(0).unsqueeze(0)  # Add batch and channel dimensions
+for i in range(10):  # Visualize attention maps for the first 10 subjects
+    input_data = cropped_images[i]['data']  # Add batch and channel dimensions
+    age = cropped_images[i]['Edad_CI']
+
+    input_data = (input_data - input_data.mean()) / input_data.std()  # Normalize the input tensor
+    input_data = input_data[np.newaxis, np.newaxis, ...]  # Add batch and channel dimensions
+    input_data = torch.tensor(input_data, dtype=torch.float32)  # Convert to a PyTorch tensor
     input_data.requires_grad = True  # Ensure the input tensor requires gradients
+
+    bin_range = [42, 82]
+    bin_step = 1
+    sigma = 1
+
+    # Transformar la edad a etiqueta suave (distribución de probabilidad)
+    label = np.array([age])  # La edad real del sujeto
+    y, bc = num2vect(label, bin_range, bin_step, sigma)
+    y = torch.tensor(y, dtype=torch.float32).cpu()
 
     predicted_class = 1  
     # Obtain attention maps using Grad-CAM
-    attributions = guided_grad_cam.attribute(input_data, target=predicted_class)
+    attributions = guided_grad_cam.attribute(input_data)
     print(f"Dimensiones antes de squeeze: {attributions.size()}")  # Tensor before removing dimensions
     print(f"Predicted class for subject {i+1}: {predicted_class}")
     # Convert attributions to numpy for visualization
@@ -120,7 +136,7 @@ for i in range(len(cropped_images)):  # Visualize attention maps for the first 1
 
     mean_attention_map_sum += attention_map_resized
 
-    '''
+    
     attention_map_nii = nib.Nifti1Image(attention_map_resized, affine=np.eye(4))
     nib.save(attention_map_nii, os.path.join(output_dir, f'guided_gradcam_subject_{i+1}_class_{predicted_class}.nii'))
 
@@ -176,7 +192,7 @@ for i in range(len(cropped_images)):  # Visualize attention maps for the first 1
 
     plt.savefig(f'input_data_volume_overlay_subject_{i+1}.png')
     plt.show()
-    '''
+    
 
 mean_attention_map = mean_attention_map_sum / len(cropped_images)
 
