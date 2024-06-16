@@ -81,7 +81,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model = CNNmodel().to(device)   
 
 # Cargar el state_dict guardado
-state_dict = torch.load('best_models/best_model_female_DA_2.p')
+state_dict = torch.load('best_models/best_model_female_DA.p')
 
 # Crear un nuevo state_dict en el que las claves no tienen el prefijo "module."
 new_state_dict = OrderedDict()
@@ -133,7 +133,8 @@ for i, subject_info in enumerate(cropped_images[:168]):
     plt.figure()
     plt.bar(bc, prob)
     plt.title(f'Participant {i+1} - Prediction: age={pred:.2f}\nloss={loss}')
-    plt.show()
+    plt.savefig(f'res_female_val_DA_2_{i+1}.png') # Guardar la figura como un archivo .png
+    plt.close()  # Cerrar la figura actual para liberar memoria
 
     #print(f'Participant {i+1} - Predicted Age: {pred:.2f}')
     #print(f'Participant {i+1} - Real Age: {age}')
