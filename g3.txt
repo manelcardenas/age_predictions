@@ -1,11 +1,13 @@
 =====================================================================
- SLURM_JOB_ID        = 54872
+ SLURM_JOB_ID        = 55016
  SLURM_NODE          = gpic09
  SLURM_JOB_PARTITION = gpi.compute
  You can monitor your Job here: 
- https://dash.tsc.upc.edu:3000/d/ediwvcrdqru9sf/slurm-job-details?orgId=1&var-partition=gpi&var-user=joan.manel.cardenas&var-slurmjobid_id=54872&from=now-24h&to=now
+ https://dash.tsc.upc.edu:3000/d/ediwvcrdqru9sf/slurm-job-details?orgId=1&var-partition=gpi&var-user=joan.manel.cardenas&var-slurmjobid_id=55016&from=now-24h&to=now
 =====================================================================
-Número de imágenes recortadas: 48
+/home/usuaris/imatge/joan.manel.cardenas/.local/lib/python3.10/site-packages/captum/attr/_core/guided_backprop_deconvnet.py:64: UserWarning: Setting backward hooks on ReLU activations.The hooks will be removed after the attribution is finished
+  warnings.warn(
+Número de imágenes recortadas: 25
 Número de participantes: 32165
 Info del participante 1: {'IdParticipante': '1000905', 'Sexo': 0.0, 'Edad_CI': 66.62}
 Info del participante 2: {'IdParticipante': '1002257', 'Sexo': 0.0, 'Edad_CI': 56.84}
@@ -17,14 +19,13 @@ Info del participante 7: {'IdParticipante': '1004517', 'Sexo': 0.0, 'Edad_CI': 5
 Info del participante 8: {'IdParticipante': '1006313', 'Sexo': 0.0, 'Edad_CI': 61.06}
 Info del participante 9: {'IdParticipante': '1006870', 'Sexo': 0.0, 'Edad_CI': 55.33}
 Info del participante 10: {'IdParticipante': '1006997', 'Sexo': 0.0, 'Edad_CI': 50.34}
-Traceback (most recent call last):
-  File "/home/usuaris/imatge/joan.manel.cardenas/age_predictions/g3.py", line 127, in <module>
-    attributions = guided_grad_cam.attribute(input_data)
-  File "/home/usuaris/imatge/joan.manel.cardenas/.local/lib/python3.10/site-packages/captum/log/__init__.py", line 42, in wrapper
-    return func(*args, **kwargs)
-  File "/home/usuaris/imatge/joan.manel.cardenas/.local/lib/python3.10/site-packages/captum/attr/_core/layer/grad_cam.py", line 195, in attribute
-    layer_gradients, layer_evals = compute_layer_gradients_and_eval(
-  File "/home/usuaris/imatge/joan.manel.cardenas/.local/lib/python3.10/site-packages/captum/_utils/gradient.py", line 602, in compute_layer_gradients_and_eval
-    assert output[0].numel() == 1, (
-AssertionError: Target not provided when necessary, cannot take gradient with respect to multiple outputs.
-srun: error: gpic09: task 0: Exited with exit code 1
+Predicted class for subject 1: 1000905
+Predicted class for subject 2: 1002257
+Predicted class for subject 3: 1002839
+Predicted class for subject 4: 1003760
+Predicted class for subject 5: 1003869
+Predicted class for subject 6: 1004480
+Predicted class for subject 7: 1004517
+Predicted class for subject 8: 1006313
+Predicted class for subject 9: 1006870
+Predicted class for subject 10: 1006997
