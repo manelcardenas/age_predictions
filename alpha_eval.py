@@ -35,7 +35,7 @@ for _, row in participants.iterrows():
     sex = row['Sexo']
     age = row['Edad_CI']
 
-    if sex == 1.0: #man=1, woman=2
+    if sex == 2.0: #man=1, woman=2
         continue  # Saltar si el sexo es 1
 
     # Find the folder corresponding to the participant
@@ -81,7 +81,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model = CNNmodel().to(device)   
 
 # Cargar el state_dict guardado
-state_dict = torch.load('best_models/best_model_female_DA.p')
+state_dict = torch.load('best_models/best_model_male_DA.p')
 
 # Crear un nuevo state_dict en el que las claves no tienen el prefijo "module."
 new_state_dict = OrderedDict()
@@ -100,7 +100,7 @@ predicted_ages = []
 real_ages = []
 
 # Iterar sobre las primeras 10 imágenes recortadas
-for i, subject_info in enumerate(cropped_images[:168]):
+for i, subject_info in enumerate(cropped_images):
     data = subject_info['data']
     age = subject_info['Edad_CI']
 
@@ -129,12 +129,12 @@ for i, subject_info in enumerate(cropped_images[:168]):
     predicted_ages.append(pred)
     real_ages.append(age)
 
-    # Visualización
-    plt.figure()
-    plt.bar(bc, prob)
-    plt.title(f'Participant {i+1} - Prediction: age={pred:.2f}\nloss={loss}')
-    plt.savefig(f'res_female_val_DA_2_{i+1}.png') # Guardar la figura como un archivo .png
-    plt.close()  # Cerrar la figura actual para liberar memoria
+    ## Visualización
+    #plt.figure()
+    #plt.bar(bc, prob)
+    #plt.title(f'Participant {i+1} - Prediction: age={pred:.2f}\nloss={loss}')
+    #plt.savefig(f'res_female_val_DA_2_{i+1}.png') # Guardar la figura como un archivo .png
+    #plt.close()  # Cerrar la figura actual para liberar memoria
 
     #print(f'Participant {i+1} - Predicted Age: {pred:.2f}')
     #print(f'Participant {i+1} - Real Age: {age}')
@@ -144,3 +144,13 @@ for i, subject_info in enumerate(cropped_images[:168]):
 
 mae = np.mean(np.abs(np.array(predicted_ages) - np.array(real_ages)))
 print(f'MAE: {mae:.2f}')
+
+# Plot the histogram of the real ages
+real_ages_int = [int(age) for age in real_ages]
+plt.figure(figsize=(10, 5))
+plt.hist(real_ages_int, bins=range(42, 83), alpha=0.7, color='orange', edgecolor='black')
+plt.xlabel('Age')
+plt.ylabel('Number of Subjects')
+plt.title('Age Distribution of Real Ages')
+plt.savefig('real_age_distribution.png')
+plt.show()

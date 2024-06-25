@@ -2,6 +2,7 @@ import torch
 import h5py
 import os
 import numpy as np
+import matplotlib.pyplot as plt
 
 from sklearn.model_selection import train_test_split
 from torch.utils.data import DataLoader
@@ -12,7 +13,7 @@ from model.model import CNNmodel
 from m_utils.data_transform import *
 from model.mri_dataset import MRIDataset
 
-h5_path = '/mnt/work/datasets/UKBiobank/MN_males_data.h5'
+h5_path = '/mnt/work/datasets/UKBiobank/MN_females_data.h5'
 
 save_dir = 'subjects_data'
 os.makedirs(save_dir, exist_ok=True)
@@ -21,66 +22,62 @@ with h5py.File(h5_path, 'r') as h5_file:
     keys = list(h5_file.keys())
     ages = [h5_file[subject_id].attrs['Age'] for subject_id in keys]
 
-age_range = [42,82]
-age_step = 1  # Paso de edad
+age_range = [42, 82]
+age_step = 1
 sigma = 1
 age_dist_list = []
 bin_center_list = []
 
 for age in ages:
-    age_array = np.array([age,])
+    age_array = np.array([age])
     age_dist, bc = num2vect(age_array, age_range, age_step, sigma)
     age_dist_list.append(age_dist)
-    bin_center_list.append(bc)
+    bin_center_list = bc  # Updated to store bin centers only once
 
-# Convertir la lista de distribuciones a un arreglo de numpy para facilitar el manejo posterior
-age_dist_array = np.array(age_dist_list)    
+# Convert the list of distributions to a numpy array for easier handling later
+age_dist_array = np.array(age_dist_list).squeeze()  # squeeze to remove extra dimensions
 
 train_transform = Compose([
     RandomShift(max_shift=2, p=0.5),
-    RandomMirror(p=0.5) 
+    RandomMirror(p=0.5)
 ])
 
-# Dividir los datos
-keys_train_val, keys_test, age_dist_train_val, age_dist_test = train_test_split(keys, age_dist_array, test_size=0.2, random_state=42)    #stratify=age_dist_train
+keys_train_val, keys_test, age_dist_train_val, age_dist_test = train_test_split(keys, age_dist_array, test_size=0.2, random_state=42)
 keys_train, keys_val, age_dist_train, age_dist_val = train_test_split(keys_train_val, age_dist_train_val, test_size=0.125, random_state=42)
 
 dataset_train = MRIDataset(h5_path, keys_train, age_dist_train, transform=train_transform)
 dataset_val = MRIDataset(h5_path, keys_val, age_dist_val)
 dataset_test = MRIDataset(h5_path, keys_test, age_dist_test)
 
-#dataloader
-train_loader = DataLoader(dataset_train, batch_size=8, shuffle=True, num_workers=10, pin_memory=True) #DROP_LAST 
-val_loader = DataLoader(dataset_val, batch_size=8, shuffle=False, num_workers=10, pin_memory=True) #DROP_LAST 
-test_loader = DataLoader(dataset_test, batch_size=8, shuffle=False, num_workers=10, pin_memory=True) #DROP_LAST  
+train_loader = DataLoader(dataset_train, batch_size=8, shuffle=True, num_workers=10, pin_memory=True)
+val_loader = DataLoader(dataset_val, batch_size=8, shuffle=False, num_workers=10, pin_memory=True)
+test_loader = DataLoader(dataset_test, batch_size=8, shuffle=False, num_workers=10, pin_memory=True)
 
-print(f'Number of samples in the test set: {len(dataset_val)}')
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model = CNNmodel()
-# Cargar el state_dict guardado
-state_dict = torch.load('best_models/best_model_male_DA_1.p')
 
-# Crear un nuevo state_dict en el que las claves no tienen el prefijo "module."
+state_dict = torch.load('best_models/best_model_female_DA.p')
 from collections import OrderedDict
 new_state_dict = OrderedDict()
 
 for k, v in state_dict.items():
-    name = k[7:]  # eliminar el prefijo 'module.'
+    name = k[7:]  # Remove the prefix 'module.'
     new_state_dict[name] = v
 
-# Cargar el nuevo state_dict en el modelo
 model.load_state_dict(new_state_dict)
 model = model.to(device)
 
 def calculate_mae(predictions, targets):
     return torch.mean(torch.abs(predictions - targets))
 
-# Evaluación en el conjunto de pruebas
 model.eval()
 test_loss = 0.0
 test_mae = 0.0
 all_predictions = []
 all_real_ages = []
+all_output_dists = []
+
+
 with torch.no_grad():
     for inputs, age_dist, age_real, subject_ids in val_loader:
         inputs = inputs.to(device)
@@ -88,13 +85,14 @@ with torch.no_grad():
         x = outputs[0].cpu().view(-1, 1, 40)
 
         preds = []
+        output_dists = []
         for i in range(inputs.size(0)):
             x_sample = x[i].detach().numpy().reshape(-1)
             prob = np.exp(x_sample)
-            pred = prob @ bin_center_list[i]
+            pred = prob @ bin_center_list
             preds.append(pred)
+            output_dists.append(prob)
         
-        # Convertir a tensor y calcular el MAE
         preds = torch.tensor(preds)
         preds_rounded = torch.round(preds * 100) / 100  
         mae = calculate_mae(preds_rounded, age_real)  
@@ -105,12 +103,47 @@ with torch.no_grad():
 
         all_predictions.extend(preds_rounded.tolist())
         all_real_ages.extend(age_real.tolist())
+        all_output_dists.extend(output_dists)
 
-# Calculando el loss de prueba promedio
 test_loss /= len(val_loader)
 test_mae /= len(val_loader)
 print(f'Test Loss: {test_loss}, Test MAE: {test_mae}')
 
-# Imprimir la edad real y la predicción para cada sujeto
+# Print the real age and prediction for each subject
 for real_age, prediction in zip(all_real_ages, all_predictions):
     print(f'Real Age: {real_age}, Predicted Age: {prediction}')
+
+# Verify and correct soft labels and real ages alignment
+soft_labels_corrected = []
+for real_age in all_real_ages[:5]:  # Check only the first five subjects
+    age_array = np.array([real_age])
+    age_dist, _ = num2vect(age_array, age_range, age_step, sigma)
+    soft_labels_corrected.append(age_dist.flatten())
+
+# Plot the soft labels and output probability distributions for the first five subjects
+for i in range(5):
+    plt.figure(figsize=(10, 5))
+    plt.bar(bin_center_list, soft_labels_corrected[i], label='Soft Label', alpha=0.5, color='blue')
+    plt.bar(bin_center_list, all_output_dists[i], label='Output Distribution', alpha=0.5, color='orange')
+    plt.xlabel('Age')
+    plt.ylabel('Probability')
+    plt.title(f'Subject {i+1}: Real Age {all_real_ages[i]}, Predicted Age {all_predictions[i]}')
+    plt.legend()
+    plt.savefig(f'subjects_data/subject_{i+1}.png')
+    plt.show()
+
+
+# Plot the age distribution of subjects in the training dataset
+train_ages = []
+for key in keys_train:
+    with h5py.File(h5_path, 'r') as h5_file:
+        age = h5_file[key].attrs['Age']
+        train_ages.append(int(age))  # Use only the integer part of the age
+
+plt.figure(figsize=(10, 5))
+plt.hist(train_ages, bins=range(42, 83), alpha=0.7, color='green', edgecolor='black')
+plt.xlabel('Age')
+plt.ylabel('Number of Subjects')
+plt.title('Age Distribution of Subjects in the Training Dataset')
+plt.savefig(f'subjects_data/train_age_distribution.png')
+plt.show()
