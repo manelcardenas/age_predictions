@@ -43,11 +43,11 @@ for index, row in reorder_demogs.iterrows():
     #actual_age = row['Age_modif']
     actual_age = round(row['Age_modif'], 2)
 
-    if sex == 1.0:  # man=1, woman=0
+    if sex == 0.0:  # man=1, woman=0
         continue  # Skip if sex is 1
 
     # Limitar la ejecución para fines de prueba
-    if int(subject_id) >= 1015000:  #25
+    if int(subject_id) >= 2015000:  #25
         break
 
     zip_filename = f"{subject_id}_20252_2_0.zip"
@@ -88,7 +88,7 @@ for i, image_info in enumerate(cropped_images[:10]):
 model = CNNmodel()
 
 # 2. Load the pretrained model weights
-state_dict = torch.load('best_models/best_model_female_DA.p')
+state_dict = torch.load('best_models/best_model_male_DA.p')
 # Create a new state_dict without the 'module.' prefix
 new_state_dict = OrderedDict()
 for k, v in state_dict.items():
@@ -106,7 +106,7 @@ os.makedirs(output_dir, exist_ok=True)
 
 mean_attention_map_sum = np.zeros((160, 192, 160), dtype=np.float32)
 
-for i in range(25):  # Visualize attention maps for the first 10 subjects
+for i in range(len(cropped_images)):  # Visualize attention maps for the first 10 subjects
     input_data = cropped_images[i]['data']  # Add batch and channel dimensions
     age = cropped_images[i]['Edad_CI']
     subject_id = cropped_images[i]['IdParticipante']
@@ -144,17 +144,18 @@ for i in range(25):  # Visualize attention maps for the first 10 subjects
     attention_map_resized = F.interpolate(torch.tensor(guided_gradcam).unsqueeze(0).unsqueeze(0), size=(160, 192, 160), mode='trilinear', align_corners=False).squeeze().numpy()
     # Verificar los valores de las atribuciones
     print(f"Valores mínimos y máximos de las atribuciones: {attention_map_resized.min()}, {attention_map_resized.max()}")
-    plt.figure()
-    plt.hist(attention_map_resized.flatten(), bins=50)
-    plt.title(f'Histograma de valores de atribuciones - Sujeto {i+1}')
-    plt.savefig(f'Histogram{i+1}.png')
-    plt.show()
+    #plt.figure()
+    #plt.hist(attention_map_resized.flatten(), bins=50)
+    #plt.title(f'Histograma de valores de atribuciones - Sujeto {i+1}')
+    #plt.savefig(f'Histogram{i+1}.png')
+    #plt.show()
 
-    guided_gradcam_norm = (attention_map_resized - attention_map_resized.min()) / (attention_map_resized.max() - attention_map_resized.min())
-    mean_attention_map_sum += guided_gradcam_norm
+    #guided_gradcam_norm = (attention_map_resized - attention_map_resized.min()) / (attention_map_resized.max() - attention_map_resized.min())
+    guided_gradcam_norm = attention_map_resized
+    mean_attention_map_sum += attention_map_resized
 
     attention_map_nii = nib.Nifti1Image(guided_gradcam_norm, affine=np.eye(4))
-    nib.save(attention_map_nii, os.path.join(output_dir, f'guided_gradcam_subject_{i+1}_class_{subject_id}.nii'))
+    #nib.save(attention_map_nii, os.path.join(output_dir, f'guided_gradcam_subject_{i+1}_class_{subject_id}.nii'))
 
     # Select a central slice of the volume to display
     central_slice_z = input_data.detach().squeeze().numpy()[80, :, :]  # Sección central en la dimensión Z
@@ -185,29 +186,29 @@ for i in range(25):  # Visualize attention maps for the first 10 subjects
     central_slice_x_norm = (central_slice_x_rotated - central_slice_x_rotated.min()) / (central_slice_x_rotated.max() - central_slice_x_rotated.min())
     central_slice_y_norm = (central_slice_y_rotated - central_slice_y_rotated.min()) / (central_slice_y_rotated.max() - central_slice_y_rotated.min())
 
-    # Visualize the central slices and attention maps overlay
-    plt.figure(figsize=(30, 15))
+    ## Visualize the central slices and attention maps overlay
+    #plt.figure(figsize=(30, 15))
 
-    plt.subplot(3, 2, 1)
-    plt.imshow(central_slice_z_norm, cmap='gray')  # Muestra la sección central del volumen (dimensión Z)
-    plt.imshow(attention_slice_z_rotated, cmap='jet', alpha=0.5)  # Superpone el mapa de atención (dimensión Z)
-    plt.title('Sección central del volumen con mapa de atención (Z)')
-    plt.axis('off')
+    #plt.subplot(3, 2, 1)
+    #plt.imshow(central_slice_z_norm, cmap='gray')  # Muestra la sección central del volumen (dimensión Z)
+    #plt.imshow(attention_slice_z_rotated, cmap='jet', alpha=0.5)  # Superpone el mapa de atención (dimensión Z)
+    #plt.title('Sección central del volumen con mapa de atención (Z)')
+    #plt.axis('off')
 
-    plt.subplot(3, 2, 3)
-    plt.imshow(central_slice_x_norm, cmap='gray')  # Muestra la sección central del volumen (dimensión X)
-    plt.imshow(attention_slice_x_rotated, cmap='jet', alpha=0.5)  # Superpone el mapa de atención (dimensión X)
-    plt.title('Sección central del volumen con mapa de atención (X)')
-    plt.axis('off')
+    #plt.subplot(3, 2, 3)
+    #plt.imshow(central_slice_x_norm, cmap='gray')  # Muestra la sección central del volumen (dimensión X)
+    #plt.imshow(attention_slice_x_rotated, cmap='jet', alpha=0.5)  # Superpone el mapa de atención (dimensión X)
+    #plt.title('Sección central del volumen con mapa de atención (X)')
+    #plt.axis('off')
 
-    plt.subplot(3, 2, 5)
-    plt.imshow(central_slice_y_norm, cmap='gray')  # Muestra la sección central del volumen (dimensión Y)
-    plt.imshow(attention_slice_y_rotated, cmap='jet', alpha=0.5)  # Superpone el mapa de atención (dimensión Y)
-    plt.title('Sección central del volumen con mapa de atención (Y)')
-    plt.axis('off')
+    #plt.subplot(3, 2, 5)
+    #plt.imshow(central_slice_y_norm, cmap='gray')  # Muestra la sección central del volumen (dimensión Y)
+    #plt.imshow(attention_slice_y_rotated, cmap='jet', alpha=0.5)  # Superpone el mapa de atención (dimensión Y)
+    #plt.title('Sección central del volumen con mapa de atención (Y)')
+    #plt.axis('off')
 
-    plt.savefig(f'input_data_volume_overlay_subject_{i+1}.png')
-    plt.show()
+    #plt.savefig(f'input_data_volume_overlay_subject_{i+1}.png')
+    #plt.show()
     
 
 mean_attention_map = mean_attention_map_sum / len(cropped_images)
