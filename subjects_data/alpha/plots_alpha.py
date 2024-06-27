@@ -5,7 +5,7 @@ import re
 real_ages = []
 predicted_ages = []
 
-file_path = '/home/usuaris/imatge/joan.manel.cardenas/age_predictions/alpha_res/res_alpha_female_DA_2.txt'
+file_path = '/home/usuaris/imatge/joan.manel.cardenas/age_predictions/alpha_res/res_alpha_female_DA_2_bias_corr.txt'
 
 # Leer el archivo y extraer las edades
 with open(file_path, 'r') as file:
@@ -21,7 +21,7 @@ with open(file_path, 'r') as file:
 fig, ax = plt.subplots()
 
 # Crear el gráfico de dispersión
-ax.scatter(real_ages, predicted_ages, c='lightblue', edgecolors='black', linewidths=0.5, label='Predicted vs Real')
+ax.scatter(real_ages, predicted_ages, c='lightgreen', edgecolors='black', linewidths=0.5, label='Predicted vs Real')
 
 # Crear la línea donde X = Y
 min_age = min(min(real_ages), min(predicted_ages))
@@ -34,5 +34,5 @@ ax.set_ylabel('Predicted Age')
 
 
 # Guardar la figura como un archivo .png
-plt.savefig('res_alpha_female_DA_2.png')
+plt.savefig('res_alpha_male_final_bias_corr.png')
 plt.close()  # Cerrar la figura actual para liberar memoria
