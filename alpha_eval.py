@@ -7,6 +7,8 @@ import matplotlib.pyplot as plt
 from torch.utils.data import Dataset, DataLoader
 from collections import OrderedDict
 import sys
+from sklearn.linear_model import LinearRegression
+
 sys.path.append('/home/usuaris/imatge/joan.manel.cardenas/age_predictions')
 from m_utils.crop_center import center_crop
 from model.loss import my_KLDivLoss
@@ -35,13 +37,11 @@ for _, row in participants.iterrows():
     sex = row['Sexo']
     age = row['Edad_CI']
 
-    if sex == 2.0: #man=1, woman=2
+    if sex == 1.0:  # man=1, woman=2
         continue  # Saltar si el sexo es 1
 
     # Find the folder corresponding to the participant
     for folder_name in os.listdir(zip_directory):
-        #print(participant_id)
-        #print(folder_name)
         if folder_name.startswith(participant_id):
             folder_path = os.path.join(zip_directory, folder_name)
             
@@ -81,7 +81,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model = CNNmodel().to(device)   
 
 # Cargar el state_dict guardado
-state_dict = torch.load('best_models/best_model_male_DA.p')
+state_dict = torch.load('best_models/best_model_female_DA_2.p')
 
 # Crear un nuevo state_dict en el que las claves no tienen el prefijo "module."
 new_state_dict = OrderedDict()
@@ -99,12 +99,12 @@ sigma = 1
 predicted_ages = []
 real_ages = []
 
-# Iterar sobre las primeras 10 imágenes recortadas
-for i, subject_info in enumerate(cropped_images):
+# Iterar sobre las primeras 255 imágenes recortadas
+for i, subject_info in enumerate(cropped_images[:168]):
     data = subject_info['data']
     age = subject_info['Edad_CI']
 
-     # Normalización Z de los datos MRI
+    # Normalización Z de los datos MRI
     data = (data - np.mean(data)) / np.std(data)
     data = data[np.newaxis, np.newaxis, ...]
     input_data = torch.tensor(data, dtype=torch.float32).to(device)
@@ -129,23 +129,43 @@ for i, subject_info in enumerate(cropped_images):
     predicted_ages.append(pred)
     real_ages.append(age)
 
-    ## Visualización
-    #plt.figure()
-    #plt.bar(bc, prob)
-    #plt.title(f'Participant {i+1} - Prediction: age={pred:.2f}\nloss={loss}')
-    #plt.savefig(f'res_female_val_DA_2_{i+1}.png') # Guardar la figura como un archivo .png
-    #plt.close()  # Cerrar la figura actual para liberar memoria
+    # Visualización
+    plt.figure()
+    plt.bar(bc, prob)
+    plt.title(f'Participant {i+1} - Prediction: age={pred:.2f}\nloss={loss}')
+    plt.show()
 
-    #print(f'Participant {i+1} - Predicted Age: {pred:.2f}')
-    #print(f'Participant {i+1} - Real Age: {age}')
-    #print(f'Participant {i+1} - Loss: {loss}')
-    print(f'Real Age: {age}, Predicted Age: {pred}')
-
+    #print(f'Real Age: {age}, Predicted Age: {pred}')
 
 mae = np.mean(np.abs(np.array(predicted_ages) - np.array(real_ages)))
 print(f'MAE: {mae:.2f}')
 
-# Plot the histogram of the real ages
+
+# Aplicar la corrección de bias
+predicted_ages = np.array(predicted_ages).reshape(-1, 1)
+real_ages = np.array(real_ages).reshape(-1, 1)
+
+# Calcular la regresión lineal entre la edad real y la edad predicha
+reg = LinearRegression().fit(real_ages, predicted_ages)
+alpha = reg.coef_[0][0]
+beta = reg.intercept_[0]
+
+# Aplicar la corrección de bias
+corrected_predicted_ages = predicted_ages + (real_ages - (alpha * real_ages + beta))
+
+# Calcular el MAE corregido
+mae_corrected = np.mean(np.abs(corrected_predicted_ages - real_ages))
+print(f'Slope (α): {alpha}')
+print(f'Intercept (β): {beta}')
+print(f'MAE (Corrected): {mae_corrected:.2f}')
+
+# Imprimir los resultados corregidos para cada sujeto
+for real_age, corrected_age in zip(real_ages, corrected_predicted_ages):
+    print(f'Real Age: {real_age[0]}, Corrected Predicted Age: {corrected_age[0]}')
+
+
+'''
+# Visualizar la distribución de edades reales
 real_ages_int = [int(age) for age in real_ages]
 plt.figure(figsize=(10, 5))
 plt.hist(real_ages_int, bins=range(42, 83), alpha=0.7, color='orange', edgecolor='black')
@@ -154,3 +174,8 @@ plt.ylabel('Number of Subjects')
 plt.title('Age Distribution of Real Ages')
 plt.savefig('real_age_distribution.png')
 plt.show()
+'''
+
+
+
+

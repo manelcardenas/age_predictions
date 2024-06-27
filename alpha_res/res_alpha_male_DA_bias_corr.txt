@@ -1,0 +1,193 @@
+=====================================================================
+ SLURM_JOB_ID        = 58286
+ SLURM_NODE          = gpic10
+ SLURM_JOB_PARTITION = gpi.compute
+ You can monitor your Job here: 
+ https://dash.tsc.upc.edu:3000/d/ediwvcrdqru9sf/slurm-job-details?orgId=1&var-partition=gpi&var-user=joan.manel.cardenas&var-slurmjobid_id=58286&from=now-24h&to=now
+=====================================================================
+/home/usuaris/imatge/joan.manel.cardenas/age_predictions/alpha_eval.py:133: RuntimeWarning: More than 20 figures have been opened. Figures created through the pyplot interface (`matplotlib.pyplot.figure`) are retained until explicitly closed and may consume too much memory. (To control this warning, see the rcParam `figure.max_open_warning`). Consider using `matplotlib.pyplot.close()`.
+  plt.figure()
+Number of cropped images: 168
+Number of participants: 450
+Info of participant 1: {'IdParticipante': '10065', 'Sexo': 1.0, 'Edad_CI': 49.97}
+Info of participant 2: {'IdParticipante': '10066', 'Sexo': 1.0, 'Edad_CI': 56.02}
+Info of participant 3: {'IdParticipante': '10130', 'Sexo': 1.0, 'Edad_CI': 57.99}
+Info of participant 4: {'IdParticipante': '10145', 'Sexo': 1.0, 'Edad_CI': 59.33}
+Info of participant 5: {'IdParticipante': '10162', 'Sexo': 1.0, 'Edad_CI': 67.34}
+Info of participant 6: {'IdParticipante': '10176', 'Sexo': 1.0, 'Edad_CI': 70.33}
+Info of participant 7: {'IdParticipante': '10183', 'Sexo': 1.0, 'Edad_CI': 67.46}
+Info of participant 8: {'IdParticipante': '10200', 'Sexo': 1.0, 'Edad_CI': 64.51}
+Info of participant 9: {'IdParticipante': '10222', 'Sexo': 1.0, 'Edad_CI': 59.26}
+Info of participant 10: {'IdParticipante': '10316', 'Sexo': 1.0, 'Edad_CI': 61.63}
+MAE: 5.28
+Slope (α): 0.4684558176740208
+Intercept (β): 27.715840985347874
+MAE (Corrected): 1.96
+Real Age: 49.97, Corrected Predicted Age: 51.47277113541902
+Real Age: 56.02, Corrected Predicted Age: 56.89668840635921
+Real Age: 57.99, Corrected Predicted Age: 57.61008207398641
+Real Age: 59.33, Corrected Predicted Age: 58.516132186999
+Real Age: 67.34, Corrected Predicted Age: 67.95464978448499
+Real Age: 70.33, Corrected Predicted Age: 68.9127054374803
+Real Age: 67.46, Corrected Predicted Age: 65.24062774939411
+Real Age: 64.51, Corrected Predicted Age: 64.93783799112252
+Real Age: 59.26, Corrected Predicted Age: 59.77461402354199
+Real Age: 61.63, Corrected Predicted Age: 58.3449750375269
+Real Age: 65.49, Corrected Predicted Age: 66.9907673924995
+Real Age: 65.67, Corrected Predicted Age: 61.17876809581544
+Real Age: 63.15, Corrected Predicted Age: 64.18874727061967
+Real Age: 56.92, Corrected Predicted Age: 58.729601962511495
+Real Age: 60.48, Corrected Predicted Age: 60.682965872946234
+Real Age: 59.67, Corrected Predicted Age: 60.030230766693286
+Real Age: 61.87, Corrected Predicted Age: 57.36658668591814
+Real Age: 66.72, Corrected Predicted Age: 62.828860058348944
+Real Age: 56.73, Corrected Predicted Age: 54.47562579922141
+Real Age: 63.86, Corrected Predicted Age: 64.24219036787838
+Real Age: 62.69, Corrected Predicted Age: 65.96258436113479
+Real Age: 64.81, Corrected Predicted Age: 67.68092278546877
+Real Age: 64.49, Corrected Predicted Age: 61.766967765901796
+Real Age: 67.49, Corrected Predicted Age: 72.73834036329455
+Real Age: 59.34, Corrected Predicted Age: 58.01916110461234
+Real Age: 54.29, Corrected Predicted Age: 54.379614425030546
+Real Age: 62.88, Corrected Predicted Age: 62.21395649705702
+Real Age: 62.6, Corrected Predicted Age: 66.61992778220161
+Real Age: 59.33, Corrected Predicted Age: 57.967062194121226
+Real Age: 52.7, Corrected Predicted Age: 53.615642953621744
+Real Age: 62.85, Corrected Predicted Age: 63.95738617500873
+Real Age: 52.96, Corrected Predicted Age: 53.960399795319006
+Real Age: 56.78, Corrected Predicted Age: 56.10147497343988
+Real Age: 57.34, Corrected Predicted Age: 56.580510632824456
+Real Age: 63.3, Corrected Predicted Age: 59.13521763198963
+Real Age: 52.73, Corrected Predicted Age: 54.43961653028581
+Real Age: 60.45, Corrected Predicted Age: 57.162965930813016
+Real Age: 63.67, Corrected Predicted Age: 70.34649598961573
+Real Age: 62.62, Corrected Predicted Age: 59.830899076183364
+Real Age: 53.76, Corrected Predicted Age: 53.313409689721276
+Real Age: 62.41, Corrected Predicted Age: 60.25701035625633
+Real Age: 55.67, Corrected Predicted Age: 54.52941559276901
+Real Age: 57.74, Corrected Predicted Age: 59.05640612969341
+Real Age: 65.57, Corrected Predicted Age: 67.17787378283359
+Real Age: 67.09, Corrected Predicted Age: 64.19426115392805
+Real Age: 63.67, Corrected Predicted Age: 63.0442005579755
+Real Age: 55.7, Corrected Predicted Age: 56.52763208426202
+Real Age: 59.09, Corrected Predicted Age: 60.378010044320284
+Real Age: 62.91, Corrected Predicted Age: 60.580000812248485
+Real Age: 66.0, Corrected Predicted Age: 62.91613550709917
+Real Age: 52.49, Corrected Predicted Age: 51.95185102421507
+Real Age: 62.32, Corrected Predicted Age: 62.99591846398808
+Real Age: 67.05, Corrected Predicted Age: 64.06052160477276
+Real Age: 67.13, Corrected Predicted Age: 70.09808414884796
+Real Age: 59.19, Corrected Predicted Age: 56.401832614010964
+Real Age: 64.12, Corrected Predicted Age: 67.67692043128326
+Real Age: 65.17, Corrected Predicted Age: 64.66255854323063
+Real Age: 67.62, Corrected Predicted Age: 72.35199557803521
+Real Age: 50.69, Corrected Predicted Age: 54.215935393591124
+Real Age: 64.91, Corrected Predicted Age: 63.748270084967714
+Real Age: 57.21, Corrected Predicted Age: 55.039711146568486
+Real Age: 62.57, Corrected Predicted Age: 60.83741852806792
+Real Age: 58.97, Corrected Predicted Age: 57.427980688828924
+Real Age: 59.63, Corrected Predicted Age: 59.096550104537606
+Real Age: 54.57, Corrected Predicted Age: 54.843930258572925
+Real Age: 58.93, Corrected Predicted Age: 61.05581285383342
+Real Age: 58.36, Corrected Predicted Age: 55.52894556639815
+Real Age: 55.03, Corrected Predicted Age: 53.94928447714231
+Real Age: 66.28, Corrected Predicted Age: 66.31102677164232
+Real Age: 61.97, Corrected Predicted Age: 59.82727309981354
+Real Age: 62.89, Corrected Predicted Age: 60.39687304294408
+Real Age: 56.97, Corrected Predicted Age: 59.07163235563965
+Real Age: 59.67, Corrected Predicted Age: 59.55501472785168
+Real Age: 64.29, Corrected Predicted Age: 62.39554529867527
+Real Age: 65.91, Corrected Predicted Age: 69.53724338663872
+Real Age: 55.32, Corrected Predicted Age: 54.21017434387433
+Real Age: 57.4, Corrected Predicted Age: 57.60645947646912
+Real Age: 52.42, Corrected Predicted Age: 52.19416512087366
+Real Age: 66.16, Corrected Predicted Age: 65.79435395390561
+Real Age: 58.35, Corrected Predicted Age: 59.39627937894114
+Real Age: 59.41, Corrected Predicted Age: 57.687377734530294
+Real Age: 51.35, Corrected Predicted Age: 53.14742779044985
+Real Age: 59.81, Corrected Predicted Age: 58.14399750372107
+Real Age: 58.1, Corrected Predicted Age: 56.62492432726469
+Real Age: 60.22, Corrected Predicted Age: 59.79620197204086
+Real Age: 58.34, Corrected Predicted Age: 59.74085228183522
+Real Age: 59.28, Corrected Predicted Age: 56.70791673813588
+Real Age: 65.45, Corrected Predicted Age: 67.84541735200469
+Real Age: 60.31, Corrected Predicted Age: 57.41415374472861
+Real Age: 59.19, Corrected Predicted Age: 59.013304266018785
+Real Age: 66.12, Corrected Predicted Age: 63.51395606425221
+Real Age: 63.72, Corrected Predicted Age: 59.8400048769558
+Real Age: 64.07, Corrected Predicted Age: 62.899628666085746
+Real Age: 60.78, Corrected Predicted Age: 58.76630019047097
+Real Age: 65.17, Corrected Predicted Age: 62.66715656510169
+Real Age: 56.81, Corrected Predicted Age: 57.09787344001208
+Real Age: 56.74, Corrected Predicted Age: 57.16278898135864
+Real Age: 61.94, Corrected Predicted Age: 58.80412889389568
+Real Age: 58.37, Corrected Predicted Age: 58.447993212751065
+Real Age: 56.85, Corrected Predicted Age: 58.74056328605865
+Real Age: 60.2, Corrected Predicted Age: 61.20375468746918
+Real Age: 67.25, Corrected Predicted Age: 65.52567485869088
+Real Age: 65.59, Corrected Predicted Age: 64.53534387661504
+Real Age: 64.42, Corrected Predicted Age: 67.37594667791775
+Real Age: 64.59, Corrected Predicted Age: 62.14226691703227
+Real Age: 54.3, Corrected Predicted Age: 54.620539798132114
+Real Age: 60.54, Corrected Predicted Age: 59.744678434707765
+Real Age: 62.63, Corrected Predicted Age: 61.79294408743807
+Real Age: 66.98, Corrected Predicted Age: 65.79890528423422
+Real Age: 63.74, Corrected Predicted Age: 58.53349099102282
+Real Age: 62.3, Corrected Predicted Age: 63.036951715760395
+Real Age: 59.92, Corrected Predicted Age: 63.78728309592941
+Real Age: 55.13, Corrected Predicted Age: 56.8060242945627
+Real Age: 64.79, Corrected Predicted Age: 65.99416266896301
+Real Age: 53.74, Corrected Predicted Age: 55.1931420498798
+Real Age: 59.0, Corrected Predicted Age: 57.03671837105258
+Real Age: 51.93, Corrected Predicted Age: 54.92282008237863
+Real Age: 63.61, Corrected Predicted Age: 66.38453539497606
+Real Age: 58.64, Corrected Predicted Age: 58.834109614426254
+Real Age: 59.77, Corrected Predicted Age: 65.3858253824676
+Real Age: 65.83, Corrected Predicted Age: 69.68431117391401
+Real Age: 65.59, Corrected Predicted Age: 67.65522218755807
+Real Age: 62.84, Corrected Predicted Age: 60.81981770999359
+Real Age: 65.34, Corrected Predicted Age: 64.26004931943217
+Real Age: 58.74, Corrected Predicted Age: 60.89484609241102
+Real Age: 60.61, Corrected Predicted Age: 59.10308697203737
+Real Age: 63.75, Corrected Predicted Age: 66.69965240538639
+Real Age: 61.67, Corrected Predicted Age: 60.866141062266294
+Real Age: 67.18, Corrected Predicted Age: 68.53069970559595
+Real Age: 66.62, Corrected Predicted Age: 67.81849115942109
+Real Age: 63.87, Corrected Predicted Age: 62.825918090941805
+Real Age: 67.35, Corrected Predicted Age: 65.20345293754738
+Real Age: 63.86, Corrected Predicted Age: 72.23006912610583
+Real Age: 60.8, Corrected Predicted Age: 58.4014716793651
+Real Age: 58.06, Corrected Predicted Age: 57.34386785316551
+Real Age: 59.2, Corrected Predicted Age: 58.19306067308764
+Real Age: 61.47, Corrected Predicted Age: 63.6257572313509
+Real Age: 63.43, Corrected Predicted Age: 68.21486684034394
+Real Age: 66.15, Corrected Predicted Age: 67.04152457385283
+Real Age: 66.63, Corrected Predicted Age: 66.15948178568468
+Real Age: 59.33, Corrected Predicted Age: 58.23440247148652
+Real Age: 69.07, Corrected Predicted Age: 76.89829866072468
+Real Age: 61.9, Corrected Predicted Age: 60.60746897372082
+Real Age: 55.75, Corrected Predicted Age: 54.07426427788446
+Real Age: 61.67, Corrected Predicted Age: 59.450889766892985
+Real Age: 56.44, Corrected Predicted Age: 57.6363838197216
+Real Age: 61.92, Corrected Predicted Age: 60.35017971708483
+Real Age: 65.4, Corrected Predicted Age: 67.72880612752083
+Real Age: 67.14, Corrected Predicted Age: 66.93410804421936
+Real Age: 67.04, Corrected Predicted Age: 65.47101137536072
+Real Age: 70.0, Corrected Predicted Age: 75.16297773333136
+Real Age: 67.61, Corrected Predicted Age: 71.00447160429394
+Real Age: 66.91, Corrected Predicted Age: 66.06619470230646
+Real Age: 63.9, Corrected Predicted Age: 58.45334250579699
+Real Age: 62.93, Corrected Predicted Age: 63.536042547880804
+Real Age: 69.12, Corrected Predicted Age: 68.08135153403018
+Real Age: 65.56, Corrected Predicted Age: 64.80323303555869
+Real Age: 67.9, Corrected Predicted Age: 68.18615094415127
+Real Age: 65.84, Corrected Predicted Age: 61.7955497942266
+Real Age: 64.7, Corrected Predicted Age: 63.459680258342516
+Real Age: 56.69, Corrected Predicted Age: 55.56702572339275
+Real Age: 65.18, Corrected Predicted Age: 65.54450850860289
+Real Age: 63.2, Corrected Predicted Age: 65.9162926006234
+Real Age: 66.83, Corrected Predicted Age: 63.728037564774795
+Real Age: 66.26, Corrected Predicted Age: 71.83326232326678
+Real Age: 64.98, Corrected Predicted Age: 62.34694910439705
+Real Age: 63.99, Corrected Predicted Age: 66.86899659614426
+Real Age: 66.76, Corrected Predicted Age: 69.93275168751236
